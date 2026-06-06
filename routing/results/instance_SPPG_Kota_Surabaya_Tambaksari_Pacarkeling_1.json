@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Tambaksari Pacarkeling 1",
+    "depot": {
+        "lat": -7.258704010052,
+        "lng": 112.755940627659
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 64,
+            "nama_sekolah": "Sd Negeri Gading V & Viii",
+            "demand": 412,
+            "lat": -7.2406834,
+            "lng": 112.7627247
+        },
+        {
+            "no_sekolah": 69,
+            "nama_sekolah": "Sd Negeri Ploso I",
+            "demand": 410,
+            "lat": -7.2518029,
+            "lng": 112.7636384
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            4.232399999999999,
+            1.5434
+        ],
+        [
+            3.9111,
+            0.0,
+            3.3296
+        ],
+        [
+            2.4791999999999996,
+            2.9697,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            5.303333333333333,
+            3.296666666666667
+        ],
+        [
+            6.02,
+            0.0,
+            6.048333333333333
+        ],
+        [
+            4.1866666666666665,
+            5.79,
+            0.0
+        ]
+    ]
+}

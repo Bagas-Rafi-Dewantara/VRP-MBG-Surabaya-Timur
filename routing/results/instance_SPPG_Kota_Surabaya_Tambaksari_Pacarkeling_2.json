@@ -1,0 +1,41 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Tambaksari Pacarkeling 2",
+    "depot": {
+        "lat": -7.2620423175,
+        "lng": 112.753547988877
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 67,
+            "nama_sekolah": "Sd Negeri Pacar Keling 5-6-7-8",
+            "demand": 406,
+            "lat": -7.258024,
+            "lng": 112.7550497
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            0.7404
+        ],
+        [
+            0.7823,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            2.005
+        ],
+        [
+            1.5683333333333331,
+            0.0
+        ]
+    ]
+}

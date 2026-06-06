@@ -1,0 +1,41 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Rungkut Kalirungkut",
+    "depot": {
+        "lat": -7.324757330693,
+        "lng": 112.773091979959
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 44,
+            "nama_sekolah": "Sma Negeri 14 Surabaya",
+            "demand": 1115,
+            "lat": -7.3152241,
+            "lng": 112.7656165
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            3.0732
+        ],
+        [
+            2.27,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            4.58
+        ],
+        [
+            4.21,
+            0.0
+        ]
+    ]
+}

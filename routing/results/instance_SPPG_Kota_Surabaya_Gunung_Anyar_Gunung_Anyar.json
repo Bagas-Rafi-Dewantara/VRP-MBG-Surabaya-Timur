@@ -1,0 +1,41 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar",
+    "depot": {
+        "lat": -7.3334,
+        "lng": 112.7838
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 19,
+            "nama_sekolah": "Smpn 62 Surabaya",
+            "demand": 1056,
+            "lat": -7.3417855,
+            "lng": 112.7947526
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            3.1477
+        ],
+        [
+            3.1157,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            5.373333333333333
+        ],
+        [
+            6.23,
+            0.0
+        ]
+    ]
+}

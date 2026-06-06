@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Gubeng Baratajaya 3",
+    "depot": {
+        "lat": -7.2972536,
+        "lng": 112.758372
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 3,
+            "nama_sekolah": "Sd Negeri Kertajaya",
+            "demand": 421,
+            "lat": -7.2834351,
+            "lng": 112.7598779
+        },
+        {
+            "no_sekolah": 9,
+            "nama_sekolah": "Sd Negeri Mojo Viii Nomor 227",
+            "demand": 414,
+            "lat": -7.2708142,
+            "lng": 112.7629625
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            2.2583,
+            3.6033000000000004
+        ],
+        [
+            2.5024,
+            0.0,
+            1.8828
+        ],
+        [
+            3.8261999999999996,
+            2.1136999999999997,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            3.1483333333333334,
+            5.571666666666667
+        ],
+        [
+            3.5349999999999997,
+            0.0,
+            3.5616666666666665
+        ],
+        [
+            5.858333333333333,
+            3.8,
+            0.0
+        ]
+    ]
+}

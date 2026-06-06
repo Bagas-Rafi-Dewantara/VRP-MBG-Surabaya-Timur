@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Tambaksari Gading",
+    "depot": {
+        "lat": -7.2461338,
+        "lng": 112.7729803
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 65,
+            "nama_sekolah": "Sd Negeri Gading Vii & Ix",
+            "demand": 426,
+            "lat": -7.2424409,
+            "lng": 112.765306
+        },
+        {
+            "no_sekolah": 70,
+            "nama_sekolah": "Sd Negeri Ploso Iii",
+            "demand": 423,
+            "lat": -7.2514442,
+            "lng": 112.7709145
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            3.3781999999999996,
+            2.5603000000000002
+        ],
+        [
+            1.3492,
+            0.0,
+            1.7979
+        ],
+        [
+            1.6752,
+            2.8533000000000004,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            4.413333333333333,
+            3.7666666666666666
+        ],
+        [
+            2.295,
+            0.0,
+            3.2916666666666665
+        ],
+        [
+            2.7483333333333335,
+            4.406666666666666,
+            0.0
+        ]
+    ]
+}

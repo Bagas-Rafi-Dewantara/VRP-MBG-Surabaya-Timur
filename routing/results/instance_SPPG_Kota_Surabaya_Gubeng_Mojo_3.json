@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Gubeng Mojo 3",
+    "depot": {
+        "lat": -7.269682854887,
+        "lng": 112.771483393251
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 10,
+            "nama_sekolah": "Sd Negeri Pacar Keling X",
+            "demand": 436,
+            "lat": -7.2674335,
+            "lng": 112.754024
+        },
+        {
+            "no_sekolah": 8,
+            "nama_sekolah": "Sd Negeri Mojo Vi Nomor 225",
+            "demand": 418,
+            "lat": -7.269058,
+            "lng": 112.7705012
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            3.6064000000000003,
+            0.12279999999999999
+        ],
+        [
+            4.2661999999999995,
+            0.0,
+            4.389
+        ],
+        [
+            0.12279999999999999,
+            2.9948,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            7.09,
+            0.295
+        ],
+        [
+            6.946666666666667,
+            0.0,
+            7.241666666666666
+        ],
+        [
+            0.295,
+            6.864999999999999,
+            0.0
+        ]
+    ]
+}

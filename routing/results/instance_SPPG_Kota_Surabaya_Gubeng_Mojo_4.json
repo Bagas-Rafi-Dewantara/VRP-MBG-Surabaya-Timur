@@ -1,0 +1,41 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Gubeng Mojo 4",
+    "depot": {
+        "lat": -7.267972089941,
+        "lng": 112.768710792423
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 15,
+            "nama_sekolah": "Smk Negeri 5 Surabaya",
+            "demand": 1147,
+            "lat": -7.2651282,
+            "lng": 112.7691311
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            1.5251
+        ],
+        [
+            0.8955,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            2.5933333333333333
+        ],
+        [
+            1.8166666666666667,
+            0.0
+        ]
+    ]
+}

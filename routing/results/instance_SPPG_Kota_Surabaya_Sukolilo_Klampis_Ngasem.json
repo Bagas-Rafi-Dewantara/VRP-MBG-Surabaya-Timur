@@ -1,0 +1,87 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Sukolilo Klampis Ngasem",
+    "depot": {
+        "lat": -7.290615382274,
+        "lng": 112.774984814588
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 56,
+            "nama_sekolah": "Sdn Semolowaru 2/262",
+            "demand": 447,
+            "lat": -7.3003136,
+            "lng": 112.7795773
+        },
+        {
+            "no_sekolah": 52,
+            "nama_sekolah": "Sd Negeri Menur Pumpungan 4",
+            "demand": 423,
+            "lat": -7.2993116,
+            "lng": 112.7648496
+        },
+        {
+            "no_sekolah": 53,
+            "nama_sekolah": "Sd Negeri Menur Pumpungan V",
+            "demand": 414,
+            "lat": -7.2971207,
+            "lng": 112.7644104
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            1.8123,
+            3.0029,
+            2.6519
+        ],
+        [
+            2.3784,
+            0.0,
+            2.313,
+            2.4824
+        ],
+        [
+            3.5693,
+            1.9872,
+            0.0,
+            0.455
+        ],
+        [
+            2.303,
+            2.3426,
+            0.3554,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            2.9183333333333334,
+            4.155,
+            4.341666666666667
+        ],
+        [
+            3.6933333333333334,
+            0.0,
+            2.7116666666666664,
+            3.3333333333333335
+        ],
+        [
+            5.136666666666667,
+            2.5383333333333336,
+            0.0,
+            1.555
+        ],
+        [
+            4.760000000000001,
+            3.3516666666666666,
+            0.8133333333333332,
+            0.0
+        ]
+    ]
+}

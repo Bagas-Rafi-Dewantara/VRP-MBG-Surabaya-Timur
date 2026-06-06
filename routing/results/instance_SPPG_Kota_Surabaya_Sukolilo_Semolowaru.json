@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Sukolilo Semolowaru",
+    "depot": {
+        "lat": -7.297155257795,
+        "lng": 112.775514396032
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 58,
+            "nama_sekolah": "Smp Negeri 30 Surabaya",
+            "demand": 1077,
+            "lat": -7.3070097,
+            "lng": 112.7902185
+        },
+        {
+            "no_sekolah": 46,
+            "nama_sekolah": "Sd Negeri Keputih 245",
+            "demand": 403,
+            "lat": -7.289573,
+            "lng": 112.7848946
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            4.9338,
+            1.96
+        ],
+        [
+            4.9473,
+            0.0,
+            4.0054
+        ],
+        [
+            1.9567999999999999,
+            3.8966,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            7.968333333333334,
+            3.6866666666666665
+        ],
+        [
+            8.038333333333334,
+            0.0,
+            5.318333333333333
+        ],
+        [
+            3.921666666666667,
+            5.376666666666667,
+            0.0
+        ]
+    ]
+}

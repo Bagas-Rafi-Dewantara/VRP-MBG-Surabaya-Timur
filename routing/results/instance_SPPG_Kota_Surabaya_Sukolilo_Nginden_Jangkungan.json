@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan",
+    "depot": {
+        "lat": -7.3033426,
+        "lng": 112.7664091
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 57,
+            "nama_sekolah": "Mts Negeri 1 Surabaya",
+            "demand": 1066,
+            "lat": -7.3080955,
+            "lng": 112.7863865
+        },
+        {
+            "no_sekolah": 47,
+            "nama_sekolah": "Sd Negeri Klampis Ngasem 3",
+            "demand": 408,
+            "lat": -7.2810928,
+            "lng": 112.7714031
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            3.6323000000000003,
+            4.857
+        ],
+        [
+            3.865,
+            0.0,
+            5.2414
+        ],
+        [
+            4.403,
+            5.6697,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            6.571666666666667,
+            7.52
+        ],
+        [
+            6.135000000000001,
+            0.0,
+            6.785
+        ],
+        [
+            6.711666666666667,
+            7.483333333333333,
+            0.0
+        ]
+    ]
+}

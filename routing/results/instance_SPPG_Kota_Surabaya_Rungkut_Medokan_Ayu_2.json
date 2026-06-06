@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Rungkut Medokan Ayu 2",
+    "depot": {
+        "lat": -7.327093299165,
+        "lng": 112.792632576447
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 40,
+            "nama_sekolah": "Madrasah Tsanawiyah Negeri 3 Surabaya",
+            "demand": 1081,
+            "lat": -7.3247345,
+            "lng": 112.7961373
+        },
+        {
+            "no_sekolah": 29,
+            "nama_sekolah": "Sd Negeri Kedung Baruk I / 275",
+            "demand": 407,
+            "lat": -7.3121226,
+            "lng": 112.7759586
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            1.0103,
+            4.4028
+        ],
+        [
+            0.798,
+            0.0,
+            4.4268
+        ],
+        [
+            4.730899999999999,
+            4.8946000000000005,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            2.4650000000000003,
+            6.548333333333333
+        ],
+        [
+            2.095,
+            0.0,
+            6.705
+        ],
+        [
+            6.635000000000001,
+            7.173333333333333,
+            0.0
+        ]
+    ]
+}

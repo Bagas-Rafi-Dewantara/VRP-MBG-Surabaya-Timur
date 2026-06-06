@@ -1,0 +1,41 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Gubeng Pucang Sewu",
+    "depot": {
+        "lat": -7.291520585907,
+        "lng": 112.751491178177
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 13,
+            "nama_sekolah": "Smp Negeri 6 Surabaya",
+            "demand": 1006,
+            "lat": -7.273867,
+            "lng": 112.7485632
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            3.6678
+        ],
+        [
+            4.3408,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            4.916666666666667
+        ],
+        [
+            4.5649999999999995,
+            0.0
+        ]
+    ]
+}

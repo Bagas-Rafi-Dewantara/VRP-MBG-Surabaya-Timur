@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Gubeng Mojo 2",
+    "depot": {
+        "lat": -7.274488307198,
+        "lng": 112.772301935019
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 4,
+            "nama_sekolah": "Sd Negeri Kertajaya I Nomor 2017",
+            "demand": 417,
+            "lat": -7.2796928,
+            "lng": 112.7596454
+        },
+        {
+            "no_sekolah": 2,
+            "nama_sekolah": "Sd Negeri Gubeng I",
+            "demand": 416,
+            "lat": -7.2724586,
+            "lng": 112.7541806
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            3.246,
+            3.9985999999999997
+        ],
+        [
+            3.207,
+            0.0,
+            1.4336
+        ],
+        [
+            4.211399999999999,
+            2.0885,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            4.828333333333333,
+            6.739999999999999
+        ],
+        [
+            4.571666666666667,
+            0.0,
+            2.8916666666666666
+        ],
+        [
+            6.516666666666667,
+            3.945,
+            0.0
+        ]
+    ]
+}

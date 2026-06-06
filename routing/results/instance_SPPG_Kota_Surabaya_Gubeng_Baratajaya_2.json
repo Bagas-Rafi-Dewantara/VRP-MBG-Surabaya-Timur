@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Gubeng Baratajaya 2",
+    "depot": {
+        "lat": -7.2943,
+        "lng": 112.7602
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 5,
+            "nama_sekolah": "Sd Negeri Kertajaya Iv",
+            "demand": 442,
+            "lat": -7.2832467,
+            "lng": 112.7518648
+        },
+        {
+            "no_sekolah": 6,
+            "nama_sekolah": "Sd Negeri Kertajaya Ix Nomor 215",
+            "demand": 424,
+            "lat": -7.284033,
+            "lng": 112.7517944
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            2.2417,
+            2.1542
+        ],
+        [
+            2.1778000000000004,
+            0.0,
+            0.0875
+        ],
+        [
+            2.0903,
+            0.0875,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            3.3333333333333335,
+            3.121666666666667
+        ],
+        [
+            3.1383333333333336,
+            0.0,
+            0.21166666666666664
+        ],
+        [
+            2.9266666666666667,
+            0.21166666666666664,
+            0.0
+        ]
+    ]
+}

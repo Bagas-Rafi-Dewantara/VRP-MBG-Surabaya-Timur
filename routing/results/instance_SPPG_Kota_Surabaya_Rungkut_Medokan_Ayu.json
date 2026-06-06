@@ -1,0 +1,41 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Rungkut Medokan Ayu",
+    "depot": {
+        "lat": -7.319832846885,
+        "lng": 112.794419568801
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 43,
+            "nama_sekolah": "Ma Negeri Surabaya",
+            "demand": 1193,
+            "lat": -7.3090269,
+            "lng": 112.7984608
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            1.864
+        ],
+        [
+            1.864,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            4.766666666666667
+        ],
+        [
+            4.913333333333333,
+            0.0
+        ]
+    ]
+}

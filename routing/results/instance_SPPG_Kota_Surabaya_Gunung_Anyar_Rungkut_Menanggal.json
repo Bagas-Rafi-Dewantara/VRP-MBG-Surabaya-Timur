@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Gunung Anyar Rungkut Menanggal",
+    "depot": {
+        "lat": -7.338715017465,
+        "lng": 112.771717967825
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 18,
+            "nama_sekolah": "Sd Negeri Rungkut Menanggal Ii",
+            "demand": 449,
+            "lat": -7.3364419,
+            "lng": 112.7775149
+        },
+        {
+            "no_sekolah": 17,
+            "nama_sekolah": "Sd Negeri Gununganyar Tambak No 628",
+            "demand": 446,
+            "lat": -7.3371773,
+            "lng": 112.8036513
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            0.9359,
+            6.4745
+        ],
+        [
+            0.9359,
+            0.0,
+            6.5004
+        ],
+        [
+            5.7932,
+            5.9445,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            1.8216666666666665,
+            10.43
+        ],
+        [
+            1.82,
+            0.0,
+            11.543333333333333
+        ],
+        [
+            9.893333333333334,
+            10.501666666666667,
+            0.0
+        ]
+    ]
+}

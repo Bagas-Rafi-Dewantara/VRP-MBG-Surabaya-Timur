@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Rungkut Kalirungkut 2",
+    "depot": {
+        "lat": -7.324187880067,
+        "lng": 112.779434766983
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 42,
+            "nama_sekolah": "Smp Negeri 35",
+            "demand": 1094,
+            "lat": -7.3274602,
+            "lng": 112.7728435
+        },
+        {
+            "no_sekolah": 36,
+            "nama_sekolah": "Sd Negeri Rungkut Kidul I/267",
+            "demand": 406,
+            "lat": -7.3300049,
+            "lng": 112.7709265
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            1.8762,
+            2.347
+        ],
+        [
+            2.0624000000000002,
+            0.0,
+            0.5502
+        ],
+        [
+            1.9585,
+            0.5502,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            4.083333333333333,
+            5.085
+        ],
+        [
+            4.02,
+            0.0,
+            1.4066666666666667
+        ],
+        [
+            4.1033333333333335,
+            1.3533333333333333,
+            0.0
+        ]
+    ]
+}

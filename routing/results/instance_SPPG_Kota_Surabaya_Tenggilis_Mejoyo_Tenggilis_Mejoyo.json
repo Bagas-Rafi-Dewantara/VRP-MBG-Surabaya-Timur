@@ -1,0 +1,87 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Tenggilis Mejoyo Tenggilis Mejoyo",
+    "depot": {
+        "lat": -7.312176990002,
+        "lng": 112.756075995395
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 84,
+            "nama_sekolah": "Smp Negeri 39 Surabaya",
+            "demand": 1002,
+            "lat": -7.3099125,
+            "lng": 112.7603895
+        },
+        {
+            "no_sekolah": 82,
+            "nama_sekolah": "Sd Negeri Tenggilis Mejoyo 1",
+            "demand": 439,
+            "lat": -7.3157546,
+            "lng": 112.7543289
+        },
+        {
+            "no_sekolah": 78,
+            "nama_sekolah": "Sd Negeri Kendangsari 2",
+            "demand": 418,
+            "lat": -7.3227346,
+            "lng": 112.7507928
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            2.2254,
+            1.1179000000000001,
+            2.2423
+        ],
+        [
+            2.1138000000000003,
+            0.0,
+            1.68,
+            2.8044000000000002
+        ],
+        [
+            1.2637,
+            3.3579,
+            0.0,
+            1.1333
+        ],
+        [
+            2.4998,
+            4.5941,
+            2.1198,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            3.978333333333333,
+            1.53,
+            3.3833333333333333
+        ],
+        [
+            3.915,
+            0.0,
+            3.253333333333333,
+            5.1066666666666665
+        ],
+        [
+            1.905,
+            5.401666666666667,
+            0.0,
+            2.07
+        ],
+        [
+            4.076666666666666,
+            7.573333333333333,
+            3.6883333333333335,
+            0.0
+        ]
+    ]
+}

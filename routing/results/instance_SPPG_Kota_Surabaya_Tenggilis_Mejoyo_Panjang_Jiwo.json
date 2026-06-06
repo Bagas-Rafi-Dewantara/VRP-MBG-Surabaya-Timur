@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Tenggilis Mejoyo Panjang Jiwo",
+    "depot": {
+        "lat": -7.310744690388,
+        "lng": 112.759053415041
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 85,
+            "nama_sekolah": "Sma Negeri 16 Surabaya",
+            "demand": 1142,
+            "lat": -7.3099429,
+            "lng": 112.7596512
+        },
+        {
+            "no_sekolah": 81,
+            "nama_sekolah": "Sd Negeri Panjang Jiwo 1 No.265",
+            "demand": 434,
+            "lat": -7.3087431,
+            "lng": 112.76159
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            2.302,
+            3.2839
+        ],
+        [
+            0.6884,
+            0.0,
+            1.8169000000000002
+        ],
+        [
+            1.2814,
+            0.6122000000000001,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            3.6666666666666665,
+            5.058333333333334
+        ],
+        [
+            1.4516666666666667,
+            0.0,
+            2.675
+        ],
+        [
+            2.378333333333333,
+            1.1783333333333335,
+            0.0
+        ]
+    ]
+}

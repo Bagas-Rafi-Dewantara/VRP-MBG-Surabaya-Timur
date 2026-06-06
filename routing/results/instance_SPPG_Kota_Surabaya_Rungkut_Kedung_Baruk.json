@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Rungkut Kedung Baruk",
+    "depot": {
+        "lat": -7.3201097,
+        "lng": 112.7792538
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 41,
+            "nama_sekolah": "Smp Negeri 23 Surabaya",
+            "demand": 1014,
+            "lat": -7.3199654,
+            "lng": 112.7775606
+        },
+        {
+            "no_sekolah": 28,
+            "nama_sekolah": "Sd Negeri Kalirungkut Iv",
+            "demand": 413,
+            "lat": -7.3262744,
+            "lng": 112.7784362
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            0.2537,
+            1.1145
+        ],
+        [
+            0.322,
+            0.0,
+            1.152
+        ],
+        [
+            1.1083,
+            0.8796,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            0.77,
+            2.9283333333333332
+        ],
+        [
+            0.9316666666666666,
+            0.0,
+            3.183333333333333
+        ],
+        [
+            3.0816666666666666,
+            2.42,
+            0.0
+        ]
+    ]
+}

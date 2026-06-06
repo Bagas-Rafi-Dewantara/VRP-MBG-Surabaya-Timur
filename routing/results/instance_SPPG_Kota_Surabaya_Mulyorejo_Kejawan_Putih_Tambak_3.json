@@ -1,0 +1,41 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Mulyorejo Kejawan Putih Tambak 3",
+    "depot": {
+        "lat": -7.2813,
+        "lng": 112.8021
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 23,
+            "nama_sekolah": "Sd Negeri Kejawen Putih 1",
+            "demand": 440,
+            "lat": -7.2773006,
+            "lng": 112.802061
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            0.512
+        ],
+        [
+            0.512,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            0.9016666666666667
+        ],
+        [
+            0.8466666666666666,
+            0.0
+        ]
+    ]
+}

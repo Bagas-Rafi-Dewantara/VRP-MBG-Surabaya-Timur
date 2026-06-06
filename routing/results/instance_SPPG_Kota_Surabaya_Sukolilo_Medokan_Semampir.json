@@ -1,0 +1,41 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Sukolilo Medokan Semampir",
+    "depot": {
+        "lat": -7.304322979089,
+        "lng": 112.793195672703
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 60,
+            "nama_sekolah": "Smk Negeri 10 Surabaya",
+            "demand": 1140,
+            "lat": -7.2933984,
+            "lng": 112.800167
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            2.6141
+        ],
+        [
+            2.5598,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            3.796666666666667
+        ],
+        [
+            3.518333333333333,
+            0.0
+        ]
+    ]
+}
