@@ -121,7 +121,17 @@ if __name__ == "__main__":
     else:
         print(f"Ditemukan {len(json_files)} cluster SPPG. Menghitung Simulated Annealing...")
         
-        all_sppg_results = []
+        # Objek utama sesuai arsitektur ideal VRP
+        final_output = {
+            "algorithm": "Simulated Annealing",
+            "global_summary": {
+            "total_distance_km": 0.0,
+            "total_time_minutes": 0.0,
+            "total_mobil": 0,
+            "feasible": True
+        },
+        "results_per_sppg": []
+        }
         
         for file_name in json_files:
             file_path = os.path.join(instances_dir, file_name)
@@ -132,13 +142,21 @@ if __name__ == "__main__":
             sppg_name = instance_data["sppg_name"]
             print(f"-> Memproses rute untuk: {sppg_name}")
             
-            # Jalankan optimasi SA
+            # Jalankan optimasi SA Fast-Tuning
             details = run_optimization(instance_data)
-            
-            # Ambil data single route yang sudah valid logikanya
             rute_sppg = details["single_route_data"]
             
-            all_sppg_results.append({
+            # Akumulasikan ke Global Summary
+            final_output["global_summary"]["total_distance_km"] += details["total_distance_km"]
+            # Asumsi total waktu operasional adalah akumulasi seluruh mobil yang jalan berseri/paralel
+            final_output["global_summary"]["total_time_minutes"] += rute_sppg["time_spent_minutes"]
+            final_output["global_summary"]["total_mobil"] += 1 # 1 SPPG dihandle 1 mobil (atau disesuaikan rute)
+            
+            if not details["is_feasible"]:
+                final_output["global_summary"]["feasible"] = False
+            
+            # Masukkan detail ke list per SPPG
+            final_output["results_per_sppg"].append({
                 "sppg": sppg_name,
                 "distance_km": rute_sppg["distance_km"],
                 "time_spent_minutes": rute_sppg["time_spent_minutes"],
@@ -148,12 +166,17 @@ if __name__ == "__main__":
                 "route": rute_sppg["route"]
             })
                 
-        # Simpan hasil akhir kompilasi menjadi sa.json di folder results/
+        # Pembulatan angka akhir global
+        final_output["global_summary"]["total_distance_km"] = round(final_output["global_summary"]["total_distance_km"], 2)
+        final_output["global_summary"]["total_time_minutes"] = round(final_output["global_summary"]["total_time_minutes"], 2)
+        
+        # Simpan hasil akhir kompilasi menjadi sa.json
         output_json_path = os.path.join(results_dir, "sa.json")
         with open(output_json_path, 'w') as f:
-            json.dump(all_sppg_results, f, indent=4)
+            json.dump(final_output, f, indent=4)
             
         print(f"\n==============================================")
         print(f"PROSES SIMULATED ANNEALING SELESAI!")
         print(f"File output sukses ditulis ke: {output_json_path}")
+        print(f"Total Jarak Surabaya Timur: {final_output['global_summary']['total_distance_km']} km")
         print(f"==============================================")
