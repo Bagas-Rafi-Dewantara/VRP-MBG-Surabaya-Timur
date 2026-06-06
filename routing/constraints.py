@@ -1,78 +1,113 @@
-def evaluate_solution(sequence, schools, distance_matrix, time_matrix, config):
+from datetime import datetime, timedelta
+
+def minutes_to_time_str(base_time_str, minutes_added):
+    """Mengubah menit akumulasi menjadi format jam dinding (HH:MM)"""
+    base_time = datetime.strptime(base_time_str, "%H:%M")
+    result_time = base_time + timedelta(minutes=minutes_added)
+    return result_time.strftime("%H:%M")
+
+# Tambahkan parameter sppg_name di baris def ini
+def evaluate_solution(sequence, schools, distance_matrix, time_matrix, config, sppg_name="SPPG"):
     """
-    sequence: List urutan indeks sekolah (Contoh: [3, 1, 4, 2])
-            Catatan: Indeks di dalam sequence ini merujuk pada urutan di list 'schools' (dimulai dari 0).
-            Sedangkan pada matriks OSRM, indeks sekolah adalah (indeks_sequence + 1) karena indeks 0 adalah DEPOT.
-    schools: List data sekolah dari JSON instance
-    distance_matrix: Matriks jarak 2D dari OSRM
-    time_matrix: Matriks waktu 2D dari OSRM
-    config: Dict berisi nilai constraint (max_capacity, max_time_minutes, service_time_per_school)
+    Evaluator CVRPTW Fix Logika Kapasitas & Timestamp Jam Dinding.
+    Jika kapasitas boks habis, armada dipaksa mencatat rute kembali ke SPPG (0) 
+    untuk refill, lalu melanjutkan sisa pengiriman.
     """
     max_cap = config["max_capacity"]
     max_time = config["max_time_minutes"]
     service_time = config["service_time_per_school"]
     
-    routes = []
-    current_route = [0]  # Mulai dari Depot (SPPG)
-    current_load = 0
-    total_distance = 0
-    total_time = 0
+    remaining_demand = {i: schools[i]["demand"] for i in range(len(schools))}
     
-    prev_matrix_idx = 0  # Mulai dari indeks 0 (Depot) pada matriks jarak/waktu
+    routes_output = []
+    total_distance_global = 0
+    max_time_spent_global = 0
+    global_feasible = True
+    
+    prev_matrix_idx = 0 
+    current_load = 0
+    time_spent = 0
+    current_route_nodes = []
     
     for seq_idx in sequence:
-        school = schools[seq_idx]
-        demand = school["demand"]
-        
-        # Indeks sekolah di dalam matriks jarak/waktu OSRM adalah posisi sekolah + 1
+        if remaining_demand[seq_idx] <= 0:
+            continue
+            
         matrix_idx = seq_idx + 1
         
-        # --- Evaluasi Constraint Kapasitas ---
-        if current_load + demand > max_cap:
-            # Jika melebihi kapasitas, paksa armada kembali ke Depot (0) dulu
-            current_route.append(0)
-            routes.append(current_route)
+        while remaining_demand[seq_idx] > 0:
+            demand_sekolah = remaining_demand[seq_idx]
+            tersisa_di_boks = max_cap - current_load
             
-            # Hitung akumulasi jarak dan waktu perjalanan kembali ke Depot
-            total_distance += distance_matrix[prev_matrix_idx][0]
-            total_time += time_matrix[prev_matrix_idx][0]
+            if tersisa_di_boks == 0:
+                travel_time_to_sppg = time_matrix[prev_matrix_idx][0]
+                travel_dist_to_sppg = distance_matrix[prev_matrix_idx][0]
+                
+                time_spent += travel_time_to_sppg
+                total_distance_global += travel_dist_to_sppg
+                
+                # FIX DISINI: Pakai variabel sppg_name langsung, bukan mengambil dari objek school
+                current_route_nodes.append({
+                    "SPPG": f"{sppg_name} (Refill)",
+                    "arrival_time": minutes_to_time_str("08:00", time_spent),
+                    "departure_time": minutes_to_time_str("08:00", time_spent + 10)
+                })
+                time_spent += 10
+                
+                current_load = 0
+                prev_matrix_idx = 0
+                tersisa_di_boks = max_cap
             
-            # Reset muatan dan mulai rute baru dari Depot (0) langsung menuju ke sekolah saat ini
-            current_route = [0, matrix_idx]
-            current_load = demand
-            total_distance += distance_matrix[0][matrix_idx]
-            total_time += time_matrix[0][matrix_idx] + service_time
-        else:
-            # Jika muatan masih aman, langsung lanjut ke sekolah tersebut
-            current_route.append(matrix_idx)
-            current_load += demand
-            total_distance += distance_matrix[prev_matrix_idx][matrix_idx]
-            total_time += time_matrix[prev_matrix_idx][matrix_idx] + service_time
+            jumlah_drop = min(demand_sekolah, tersisa_di_boks)
             
-        prev_matrix_idx = matrix_idx
+            travel_time = time_matrix[prev_matrix_idx][matrix_idx]
+            travel_dist = distance_matrix[prev_matrix_idx][matrix_idx]
+            
+            time_spent += travel_time
+            arrival_str = minutes_to_time_str("08:00", time_spent)
+            
+            time_spent += service_time
+            departure_str = minutes_to_time_str("08:00", time_spent)
+            
+            current_route_nodes.append({
+                "school": f"{schools[seq_idx]['nama_sekolah']} (Drop: {jumlah_drop} tray)",
+                "arrival_time": arrival_str,
+                "departure_time": departure_str
+            })
+            
+            current_load += jumlah_drop
+            remaining_demand[seq_idx] -= jumlah_drop
+            total_distance_global += travel_dist
+            prev_matrix_idx = matrix_idx
+
+    if prev_matrix_idx != 0:
+        travel_time_to_depot = time_matrix[prev_matrix_idx][0]
+        travel_dist_to_depot = distance_matrix[prev_matrix_idx][0]
         
-    # Setelah semua sekolah selesai dikunjungi, armada wajib pulang ke Depot (0)
-    current_route.append(0)
-    routes.append(current_route)
-    total_distance += distance_matrix[prev_matrix_idx][0]
-    total_time += time_matrix[prev_matrix_idx][0]
+        time_spent += travel_time_to_depot
+        total_distance_global += travel_dist_to_depot
+        
+    return_str = minutes_to_time_str("08:00", time_spent)
+    feasible_time = time_spent <= max_time
     
-    # --- Evaluasi Constraint Waktu (Hard Time Window) ---
+    single_sppg_route = {
+        "distance_km": round(total_distance_global, 2),
+        "time_spent_minutes": round(time_spent, 2),
+        "departure_time": "08:00",
+        "return_time": return_str,
+        "feasible_time": feasible_time,
+        "route": current_route_nodes
+    }
+    
     penalty = 0
-    is_feasible = True
-    
-    if total_time > max_time:
-        is_feasible = False
-        # Berikan nilai penalti yang sangat besar jika melanggar waktu 180 menit
-        penalty += (total_time - max_time) * 10000 
+    if time_spent > max_time:
+        penalty += (time_spent - max_time) * 10000
         
-    # Fitness score dirancang untuk diminimasi (semakin kecil jarak + penalti, solusi semakin optimal)
-    fitness_score = total_distance + penalty
+    fitness_score = total_distance_global + penalty
     
     return {
-        "routes": routes,                 # Struktur rute pecah berdasar bolak-balik depot
-        "total_distance_km": total_distance,
-        "total_time_minutes": total_time,
-        "is_feasible": is_feasible,
+        "single_route_data": single_sppg_route,
+        "total_distance_km": round(total_distance_global, 2),
+        "is_feasible": feasible_time,
         "fitness": fitness_score
     }

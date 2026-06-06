@@ -72,16 +72,14 @@ def build_all_instances(csv_path, output_dir):
         print(f"Berhasil membuat data instance -> {output_file}")
 
 if __name__ == "__main__":
-    # Mendapatkan path absolut dari folder tempat file build_instance.py ini berada
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    
-    # Menyusun path absolut ke file clustered_data.csv secara dinamis
     CSV_INPUT = os.path.abspath(os.path.join(current_dir, "../data/clustered_data.csv"))
     
-    # Menyusun path absolut ke folder results
-    OUTPUT_FOLDER = os.path.join(current_dir, "results") 
+    # KITA PINDAHKAN KESINI: khusus buat nyimpen data mentah matriks jarak
+    OUTPUT_FOLDER = os.path.join(current_dir, "dist_matrix") 
     
     print(f"Membaca file dari: {CSV_INPUT}")
-    print(f"Menyimpan hasil ke: {OUTPUT_FOLDER}")
+    print(f"Menyimpan file matriks/instance ke: {OUTPUT_FOLDER}")
     
     build_all_instances(CSV_INPUT, OUTPUT_FOLDER)
+
