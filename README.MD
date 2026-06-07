@@ -73,9 +73,7 @@ If the next school causes the vehicle load to exceed 1050 trays, the vehicle mus
 ### Time Constraint
 
 Distribution starts at: 08:00 AM
-
 Deadline:11:00 AM
-
 Maximum operational duration:180 minutes
 
 ### Service Time
