@@ -2,7 +2,7 @@
     "algorithm": "Genetic Algorithm",
     "global_summary": {
         "total_distance_km": 413.95,
-        "total_time_minutes": 2035.81,
+        "total_time_minutes": 2035.73,
         "total_mobil": 45,
         "feasible": true
     },
@@ -625,18 +625,18 @@
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Klampis Ngasem 2",
             "distance_km": 8.09,
-            "time_spent_minutes": 64.12,
+            "time_spent_minutes": 64.04,
             "departure_time": "08:00",
             "return_time": "09:04",
             "feasible_time": true,
             "route": [
                 {
-                    "school": "Sd Negeri Manyar Sabrangan 3 (Drop: 449 tray)",
+                    "school": "Sd Negeri Klampis Ngasem 5 (Drop: 430 tray)",
                     "arrival_time": "08:02",
                     "departure_time": "08:12"
                 },
                 {
-                    "school": "Sd Negeri Klampis Ngasem 5 (Drop: 430 tray)",
+                    "school": "Sd Negeri Manyar Sabrangan 3 (Drop: 449 tray)",
                     "arrival_time": "08:13",
                     "departure_time": "08:23"
                 },
@@ -647,8 +647,8 @@
                 },
                 {
                     "SPPG": "SPPG Kota Surabaya Sukolilo Klampis Ngasem 2 (Refill)",
-                    "arrival_time": "08:39",
-                    "departure_time": "08:49"
+                    "arrival_time": "08:38",
+                    "departure_time": "08:48"
                 },
                 {
                     "school": "Sd Negeri Menur Pumpungan (Drop: 242 tray)",

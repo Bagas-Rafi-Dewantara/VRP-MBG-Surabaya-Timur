@@ -19,11 +19,8 @@ def evaluate_solution(sequence, schools, distance_matrix, time_matrix, config, s
     
     remaining_demand = {i: schools[i]["demand"] for i in range(len(schools))}
     
-    routes_output = []
+
     total_distance_global = 0
-    max_time_spent_global = 0
-    global_feasible = True
-    
     prev_matrix_idx = 0 
     current_load = 0
     time_spent = 0
