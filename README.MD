@@ -72,17 +72,17 @@ If the next school causes the vehicle load to exceed 1050 trays, the vehicle mus
 
 ### Time Constraint
 
-Distribution starts at: 08:00 AM
-Deadline:11:00 AM
-Maximum operational duration:180 minutes
+- Distribution starts at: 08:00 AM
+- Deadline: 11:00 AM
+- Maximum operational duration: 180 minutes
 
 ### Service Time
 Loading/unloading time per school: 10 minutes
 
 ### Vehicle Speed
-Constant vehicle speed: 40 km/hour
-Travel time is calculated using:
-Travel Time (minutes) = Distance (km) / 40 × 60
+- Constant vehicle speed: 40 km/hour
+- Travel time is calculated using: 
+- Travel Time (minutes) = Distance (km) / 40 × 60
 
 ## Project Structure
 
@@ -167,11 +167,9 @@ Example:
 
 ## Authors
 
-Izzuddin Hammadi Faiz   (5026231018)
-Bagas Rafi Dewantara    (5026231091)
-Raffi Deva Anargya      (5026231104)
-Abdul Ghoni             (5026231109)
+* Izzuddin Hammadi Faiz   (5026231018)
+* Bagas Rafi Dewantara    (5026231091)
+* Raffi Deva Anargya      (5026231104)
+* Abdul Ghoni             (5026231109)
 
-Information Systems Department
-Institut Teknologi Sepuluh Nopember (ITS)
-2026
+Information Systems Department Institut Teknologi Sepuluh Nopember (ITS) 2026
