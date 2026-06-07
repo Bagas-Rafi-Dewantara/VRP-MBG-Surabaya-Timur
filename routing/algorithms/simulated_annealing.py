@@ -146,7 +146,28 @@ if __name__ == "__main__":
             # Jalankan optimasi SA Fast-Tuning
             details = run_optimization(instance_data)
             rute_sppg = details["single_route_data"]
+            polyline = []
 
+            polyline.append([
+                instance_data["depot"]["lat"],
+                instance_data["depot"]["lng"]
+            ])
+
+            for stop in rute_sppg["route"]:
+                if "school" in stop:
+                    nama_sekolah = stop["school"].split(" (")[0]
+                    for s in instance_data["schools"]:
+                        if s["nama_sekolah"] == nama_sekolah:
+                            polyline.append([
+                                s["lat"],
+                                s["lng"]
+                            ])
+                            break
+
+            polyline.append([
+                instance_data["depot"]["lat"],
+                instance_data["depot"]["lng"]
+            ])
             all_times.append(
                 rute_sppg["time_spent_minutes"]
             )
@@ -167,6 +188,7 @@ if __name__ == "__main__":
                 "departure_time": rute_sppg["departure_time"],
                 "return_time": rute_sppg["return_time"],
                 "feasible_time": rute_sppg["feasible_time"],
+                "polyline": polyline,
                 "route": rute_sppg["route"]
             })
 
