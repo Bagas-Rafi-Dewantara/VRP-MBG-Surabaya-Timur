@@ -121,6 +121,7 @@ if __name__ == "__main__":
     else:
         print(f"Ditemukan {len(json_files)} cluster SPPG. Menghitung Simulated Annealing...")
         
+        all_times = []
         # Objek utama sesuai arsitektur ideal VRP
         final_output = {
             "algorithm": "Simulated Annealing",
@@ -145,11 +146,14 @@ if __name__ == "__main__":
             # Jalankan optimasi SA Fast-Tuning
             details = run_optimization(instance_data)
             rute_sppg = details["single_route_data"]
+
+            all_times.append(
+                rute_sppg["time_spent_minutes"]
+            )
             
             # Akumulasikan ke Global Summary
             final_output["global_summary"]["total_distance_km"] += details["total_distance_km"]
             # Asumsi total waktu operasional adalah akumulasi seluruh mobil yang jalan berseri/paralel
-            final_output["global_summary"]["total_time_minutes"] += rute_sppg["time_spent_minutes"]
             final_output["global_summary"]["total_mobil"] += 1 # 1 SPPG dihandle 1 mobil (atau disesuaikan rute)
             
             if not details["is_feasible"]:
@@ -165,10 +169,15 @@ if __name__ == "__main__":
                 "feasible_time": rute_sppg["feasible_time"],
                 "route": rute_sppg["route"]
             })
+
+        if all_times:
+            final_output["global_summary"]["total_time_minutes"] = round(
+            max(all_times),
+            2
+        )
                 
         # Pembulatan angka akhir global
         final_output["global_summary"]["total_distance_km"] = round(final_output["global_summary"]["total_distance_km"], 2)
-        final_output["global_summary"]["total_time_minutes"] = round(final_output["global_summary"]["total_time_minutes"], 2)
         
         # Simpan hasil akhir kompilasi menjadi sa.json
         output_json_path = os.path.join(results_dir, "sa.json")
