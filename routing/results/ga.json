@@ -2,18 +2,38 @@
     "algorithm": "Genetic Algorithm",
     "global_summary": {
         "total_distance_km": 438.46,
-        "total_time_minutes": 2272.27,
+        "total_time_minutes": 103.76,
         "total_mobil": 47,
+        "total_algorithm_runtime_seconds": 1.95,
         "feasible": true
     },
     "results_per_sppg": [
         {
             "sppg": "SPPG Kota Surabaya Gubeng Baratajaya",
+            "algorithm_runtime_seconds": 0.08,
             "distance_km": 11.42,
             "time_spent_minutes": 47.41,
             "departure_time": "08:00",
             "return_time": "08:47",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.298931103836,
+                    112.758879574098
+                ],
+                [
+                    -7.2834351,
+                    112.7598779
+                ],
+                [
+                    -7.269058,
+                    112.7705012
+                ],
+                [
+                    -7.298931103836,
+                    112.758879574098
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Kertajaya",
@@ -36,11 +56,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Baratajaya 2",
+            "algorithm_runtime_seconds": 0.06,
             "distance_km": 8.25,
             "time_spent_minutes": 39.81,
             "departure_time": "08:00",
             "return_time": "08:39",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.2943,
+                    112.7602
+                ],
+                [
+                    -7.2832467,
+                    112.7518648
+                ],
+                [
+                    -7.269412,
+                    112.7535019
+                ],
+                [
+                    -7.2943,
+                    112.7602
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Kertajaya Iv",
@@ -63,11 +102,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Baratajaya 3",
+            "algorithm_runtime_seconds": 0.05,
             "distance_km": 7.54,
             "time_spent_minutes": 38.09,
             "departure_time": "08:00",
             "return_time": "08:38",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.2972536,
+                    112.758372
+                ],
+                [
+                    -7.2796928,
+                    112.7596454
+                ],
+                [
+                    -7.284033,
+                    112.7517944
+                ],
+                [
+                    -7.2972536,
+                    112.758372
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Kertajaya I Nomor 2017",
@@ -90,11 +148,26 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Gubeng",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 2.82,
             "time_spent_minutes": 16.78,
             "departure_time": "08:00",
             "return_time": "08:16",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.271241199817,
+                    112.751257658355
+                ],
+                [
+                    -7.2659374,
+                    112.7558135
+                ],
+                [
+                    -7.271241199817,
+                    112.751257658355
+                ]
+            ],
             "route": [
                 {
                     "school": "Smpn 29 Surabaya",
@@ -111,11 +184,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Mojo",
+            "algorithm_runtime_seconds": 0.05,
             "distance_km": 10.33,
             "time_spent_minutes": 44.79,
             "departure_time": "08:00",
             "return_time": "08:44",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.267169019797,
+                    112.766468968599
+                ],
+                [
+                    -7.263804,
+                    112.7635538
+                ],
+                [
+                    -7.2802469,
+                    112.7539416
+                ],
+                [
+                    -7.267169019797,
+                    112.766468968599
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Pacar Kembang Iv",
@@ -138,11 +230,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Mojo 2",
+            "algorithm_runtime_seconds": 0.06,
             "distance_km": 7.72,
             "time_spent_minutes": 38.54,
             "departure_time": "08:00",
             "return_time": "08:38",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.274488307198,
+                    112.772301935019
+                ],
+                [
+                    -7.2708142,
+                    112.7629625
+                ],
+                [
+                    -7.2756469,
+                    112.760769
+                ],
+                [
+                    -7.274488307198,
+                    112.772301935019
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Mojo Viii Nomor 227",
@@ -165,11 +276,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Mojo 3",
+            "algorithm_runtime_seconds": 0.07,
             "distance_km": 10.17,
             "time_spent_minutes": 44.42,
             "departure_time": "08:00",
             "return_time": "08:44",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.269682854887,
+                    112.771483393251
+                ],
+                [
+                    -7.2724586,
+                    112.7541806
+                ],
+                [
+                    -7.2674335,
+                    112.754024
+                ],
+                [
+                    -7.269682854887,
+                    112.771483393251
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Gubeng I",
@@ -192,11 +322,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Mojo 4",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 4.84,
             "time_spent_minutes": 41.62,
             "departure_time": "08:00",
             "return_time": "08:41",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.267972089941,
+                    112.768710792423
+                ],
+                [
+                    -7.2651282,
+                    112.7691311
+                ],
+                [
+                    -7.2651282,
+                    112.7691311
+                ],
+                [
+                    -7.267972089941,
+                    112.768710792423
+                ]
+            ],
             "route": [
                 {
                     "school": "Smk Negeri 5 Surabaya",
@@ -225,11 +374,26 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Pucang Sewu",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 8.01,
             "time_spent_minutes": 29.22,
             "departure_time": "08:00",
             "return_time": "08:29",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.291520585907,
+                    112.751491178177
+                ],
+                [
+                    -7.273867,
+                    112.7485632
+                ],
+                [
+                    -7.291520585907,
+                    112.751491178177
+                ]
+            ],
             "route": [
                 {
                     "school": "Smp Negeri 6 Surabaya",
@@ -246,11 +410,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 12.53,
             "time_spent_minutes": 60.06,
             "departure_time": "08:00",
             "return_time": "09:00",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.3334,
+                    112.7838
+                ],
+                [
+                    -7.3417855,
+                    112.7947526
+                ],
+                [
+                    -7.3417855,
+                    112.7947526
+                ],
+                [
+                    -7.3334,
+                    112.7838
+                ]
+            ],
             "route": [
                 {
                     "school": "Smpn 62 Surabaya",
@@ -279,11 +462,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar 2",
+            "algorithm_runtime_seconds": 0.05,
             "distance_km": 34.9,
             "time_spent_minutes": 103.76,
             "departure_time": "08:00",
             "return_time": "09:43",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.24917,
+                    112.75083
+                ],
+                [
+                    -7.3371773,
+                    112.8036513
+                ],
+                [
+                    -7.3332211,
+                    112.7834048
+                ],
+                [
+                    -7.24917,
+                    112.75083
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Gununganyar Tambak No 628",
@@ -306,11 +508,26 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gunung Anyar Rungkut Menanggal",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 1.87,
             "time_spent_minutes": 14.49,
             "departure_time": "08:00",
             "return_time": "08:14",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.338715017465,
+                    112.771717967825
+                ],
+                [
+                    -7.3364419,
+                    112.7775149
+                ],
+                [
+                    -7.338715017465,
+                    112.771717967825
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Rungkut Menanggal Ii",
@@ -327,11 +544,26 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Kalisari",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 2.97,
             "time_spent_minutes": 17.12,
             "departure_time": "08:00",
             "return_time": "08:17",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.267039016479,
+                    112.798691016062
+                ],
+                [
+                    -7.2612227,
+                    112.796486
+                ],
+                [
+                    -7.267039016479,
+                    112.798691016062
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Kalisari I",
@@ -348,11 +580,26 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Kejawan Putih Tambak 3",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 1.02,
             "time_spent_minutes": 12.46,
             "departure_time": "08:00",
             "return_time": "08:12",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.2813,
+                    112.8021
+                ],
+                [
+                    -7.2773006,
+                    112.802061
+                ],
+                [
+                    -7.2813,
+                    112.8021
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Kejawen Putih 1",
@@ -369,11 +616,26 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Mulyorejo",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 3.36,
             "time_spent_minutes": 18.06,
             "departure_time": "08:00",
             "return_time": "08:18",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.260168999089,
+                    112.781760996572
+                ],
+                [
+                    -7.2571061,
+                    112.779005
+                ],
+                [
+                    -7.260168999089,
+                    112.781760996572
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Kalijudan Ii",
@@ -390,11 +652,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Mulyorejo 2",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 4.67,
             "time_spent_minutes": 41.2,
             "departure_time": "08:00",
             "return_time": "08:41",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.266020349492,
+                    112.782801261253
+                ],
+                [
+                    -7.2637184,
+                    112.7852997
+                ],
+                [
+                    -7.2637184,
+                    112.7852997
+                ],
+                [
+                    -7.266020349492,
+                    112.782801261253
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Mulyorejo 1 Dan Smp Negeri 45 Surabaya",
@@ -423,11 +704,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Mulyorejo 3",
+            "algorithm_runtime_seconds": 0.08,
             "distance_km": 13.86,
             "time_spent_minutes": 53.26,
             "departure_time": "08:00",
             "return_time": "08:53",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.271760216268,
+                    112.785855092526
+                ],
+                [
+                    -7.2595864,
+                    112.7910639
+                ],
+                [
+                    -7.2689121,
+                    112.7994734
+                ],
+                [
+                    -7.271760216268,
+                    112.785855092526
+                ]
+            ],
             "route": [
                 {
                     "school": "Sdn Sutorejo 1-240",
@@ -450,11 +750,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Kalirungkut",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 10.69,
             "time_spent_minutes": 55.65,
             "departure_time": "08:00",
             "return_time": "08:55",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.324757330693,
+                    112.773091979959
+                ],
+                [
+                    -7.3152241,
+                    112.7656165
+                ],
+                [
+                    -7.3152241,
+                    112.7656165
+                ],
+                [
+                    -7.324757330693,
+                    112.773091979959
+                ]
+            ],
             "route": [
                 {
                     "school": "Sma Negeri 14 Surabaya",
@@ -483,11 +802,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Kalirungkut 2",
+            "algorithm_runtime_seconds": 0.09,
             "distance_km": 8.32,
             "time_spent_minutes": 59.98,
             "departure_time": "08:00",
             "return_time": "08:59",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.324187880067,
+                    112.779434766983
+                ],
+                [
+                    -7.3274602,
+                    112.7728435
+                ],
+                [
+                    -7.3274602,
+                    112.7728435
+                ],
+                [
+                    -7.3300049,
+                    112.7709265
+                ],
+                [
+                    -7.324187880067,
+                    112.779434766983
+                ]
+            ],
             "route": [
                 {
                     "school": "Smp Negeri 35",
@@ -522,11 +864,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Kedung Baruk",
+            "algorithm_runtime_seconds": 0.07,
             "distance_km": 2.8,
             "time_spent_minutes": 36.72,
             "departure_time": "08:00",
             "return_time": "08:36",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.3201097,
+                    112.7792538
+                ],
+                [
+                    -7.3199654,
+                    112.7775606
+                ],
+                [
+                    -7.3262744,
+                    112.7784362
+                ],
+                [
+                    -7.3201097,
+                    112.7792538
+                ]
+            ],
             "route": [
                 {
                     "school": "Smp Negeri 23 Surabaya",
@@ -555,11 +916,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Medokan Ayu",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 7.46,
             "time_spent_minutes": 47.89,
             "departure_time": "08:00",
             "return_time": "08:47",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.319832846885,
+                    112.794419568801
+                ],
+                [
+                    -7.3090269,
+                    112.7984608
+                ],
+                [
+                    -7.3090269,
+                    112.7984608
+                ],
+                [
+                    -7.319832846885,
+                    112.794419568801
+                ]
+            ],
             "route": [
                 {
                     "school": "Ma Negeri Surabaya",
@@ -588,11 +968,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Medokan Ayu 2",
+            "algorithm_runtime_seconds": 0.08,
             "distance_km": 11.98,
             "time_spent_minutes": 68.74,
             "departure_time": "08:00",
             "return_time": "09:08",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.327093299165,
+                    112.792632576447
+                ],
+                [
+                    -7.3247345,
+                    112.7961373
+                ],
+                [
+                    -7.3247345,
+                    112.7961373
+                ],
+                [
+                    -7.3121226,
+                    112.7759586
+                ],
+                [
+                    -7.327093299165,
+                    112.792632576447
+                ]
+            ],
             "route": [
                 {
                     "school": "Madrasah Tsanawiyah Negeri 3 Surabaya",
@@ -627,11 +1030,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Penjaringansari",
+            "algorithm_runtime_seconds": 0.07,
             "distance_km": 6.85,
             "time_spent_minutes": 56.44,
             "departure_time": "08:00",
             "return_time": "08:56",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.322549008449,
+                    112.789185015852
+                ],
+                [
+                    -7.3251369,
+                    112.796495
+                ],
+                [
+                    -7.3251369,
+                    112.796495
+                ],
+                [
+                    -7.3295115,
+                    112.7948318
+                ],
+                [
+                    -7.322549008449,
+                    112.789185015852
+                ]
+            ],
             "route": [
                 {
                     "school": "Madrasah Tsanawiyah Negeri 3 Kota Surabaya",
@@ -666,11 +1092,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Penjaringansari 3",
+            "algorithm_runtime_seconds": 0.07,
             "distance_km": 16.06,
             "time_spent_minutes": 78.53,
             "departure_time": "08:00",
             "return_time": "09:18",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.3223,
+                    112.7822
+                ],
+                [
+                    -7.3190313,
+                    112.7866784
+                ],
+                [
+                    -7.3113677,
+                    112.7968442
+                ],
+                [
+                    -7.323502,
+                    112.765009
+                ],
+                [
+                    -7.3223,
+                    112.7822
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Penjaringan Sari Ii",
@@ -705,11 +1154,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Penjaringansari 4",
+            "algorithm_runtime_seconds": 0.07,
             "distance_km": 15.51,
             "time_spent_minutes": 77.23,
             "departure_time": "08:00",
             "return_time": "09:17",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.319335511136,
+                    112.783792498932
+                ],
+                [
+                    -7.3187182,
+                    112.763671
+                ],
+                [
+                    -7.3246549,
+                    112.7968495
+                ],
+                [
+                    -7.3151706,
+                    112.7838036
+                ],
+                [
+                    -7.319335511136,
+                    112.783792498932
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Kendang Sari Iii",
@@ -744,11 +1216,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Rungkut Kidul",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 3.95,
             "time_spent_minutes": 39.48,
             "departure_time": "08:00",
             "return_time": "08:39",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.327642020456,
+                    112.772012004988
+                ],
+                [
+                    -7.3275132,
+                    112.7749979
+                ],
+                [
+                    -7.3275132,
+                    112.7749979
+                ],
+                [
+                    -7.327642020456,
+                    112.772012004988
+                ]
+            ],
             "route": [
                 {
                     "school": "Sma Negeri 17",
@@ -777,11 +1268,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Klampis Ngasem",
+            "algorithm_runtime_seconds": 0.07,
             "distance_km": 9.78,
             "time_spent_minutes": 63.47,
             "departure_time": "08:00",
             "return_time": "09:03",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.290615382274,
+                    112.774984814588
+                ],
+                [
+                    -7.3003136,
+                    112.7795773
+                ],
+                [
+                    -7.3023832,
+                    112.7694342
+                ],
+                [
+                    -7.2885451,
+                    112.7659991
+                ],
+                [
+                    -7.290615382274,
+                    112.774984814588
+                ]
+            ],
             "route": [
                 {
                     "school": "Sdn Semolowaru 2/262",
@@ -816,11 +1330,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Klampis Ngasem 2",
+            "algorithm_runtime_seconds": 0.07,
             "distance_km": 10.37,
             "time_spent_minutes": 64.9,
             "departure_time": "08:00",
             "return_time": "09:04",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.289840993243,
+                    112.775878624869
+                ],
+                [
+                    -7.2971207,
+                    112.7644104
+                ],
+                [
+                    -7.2993116,
+                    112.7648496
+                ],
+                [
+                    -7.2849156,
+                    112.7739343
+                ],
+                [
+                    -7.289840993243,
+                    112.775878624869
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Menur Pumpungan V",
@@ -855,11 +1392,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Medokan Semampir",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 10.35,
             "time_spent_minutes": 54.83,
             "departure_time": "08:00",
             "return_time": "08:54",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.304322979089,
+                    112.793195672703
+                ],
+                [
+                    -7.2933984,
+                    112.800167
+                ],
+                [
+                    -7.2933984,
+                    112.800167
+                ],
+                [
+                    -7.304322979089,
+                    112.793195672703
+                ]
+            ],
             "route": [
                 {
                     "school": "Smk Negeri 10 Surabaya",
@@ -888,11 +1444,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Menur Pumpungan",
+            "algorithm_runtime_seconds": 0.07,
             "distance_km": 14.36,
             "time_spent_minutes": 74.45,
             "departure_time": "08:00",
             "return_time": "09:14",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.297736689121,
+                    112.768613897622
+                ],
+                [
+                    -7.3049728,
+                    112.7822079
+                ],
+                [
+                    -7.3037702,
+                    112.7756995
+                ],
+                [
+                    -7.2851985,
+                    112.7737939
+                ],
+                [
+                    -7.297736689121,
+                    112.768613897622
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Medokan Semampir 1",
@@ -927,11 +1506,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan",
+            "algorithm_runtime_seconds": 0.07,
             "distance_km": 20.77,
             "time_spent_minutes": 89.86,
             "departure_time": "08:00",
             "return_time": "09:29",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.3033426,
+                    112.7664091
+                ],
+                [
+                    -7.3080955,
+                    112.7863865
+                ],
+                [
+                    -7.3080955,
+                    112.7863865
+                ],
+                [
+                    -7.2810928,
+                    112.7714031
+                ],
+                [
+                    -7.3033426,
+                    112.7664091
+                ]
+            ],
             "route": [
                 {
                     "school": "Mts Negeri 1 Surabaya",
@@ -966,11 +1568,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan 2",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 16.01,
             "time_spent_minutes": 68.42,
             "departure_time": "08:00",
             "return_time": "09:08",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.305555862695,
+                    112.772618832255
+                ],
+                [
+                    -7.3071326,
+                    112.7892382
+                ],
+                [
+                    -7.3071326,
+                    112.7892382
+                ],
+                [
+                    -7.305555862695,
+                    112.772618832255
+                ]
+            ],
             "route": [
                 {
                     "school": "Sma Negeri 20 Surabaya",
@@ -999,11 +1620,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Semolowaru",
+            "algorithm_runtime_seconds": 0.07,
             "distance_km": 20.78,
             "time_spent_minutes": 89.87,
             "departure_time": "08:00",
             "return_time": "09:29",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.297155257795,
+                    112.775514396032
+                ],
+                [
+                    -7.3070097,
+                    112.7902185
+                ],
+                [
+                    -7.3070097,
+                    112.7902185
+                ],
+                [
+                    -7.289573,
+                    112.7848946
+                ],
+                [
+                    -7.297155257795,
+                    112.775514396032
+                ]
+            ],
             "route": [
                 {
                     "school": "Smp Negeri 30 Surabaya",
@@ -1038,11 +1682,26 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Gading",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 3.99,
             "time_spent_minutes": 19.57,
             "departure_time": "08:00",
             "return_time": "08:19",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.2461338,
+                    112.7729803
+                ],
+                [
+                    -7.251375,
+                    112.7741626
+                ],
+                [
+                    -7.2461338,
+                    112.7729803
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Ploso V",
@@ -1059,11 +1718,26 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Gading 2",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 5.72,
             "time_spent_minutes": 23.74,
             "departure_time": "08:00",
             "return_time": "08:23",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.246559386722,
+                    112.774114689219
+                ],
+                [
+                    -7.2479587,
+                    112.7789512
+                ],
+                [
+                    -7.246559386722,
+                    112.774114689219
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Gading Iii",
@@ -1080,11 +1754,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkeling 1",
+            "algorithm_runtime_seconds": 0.05,
             "distance_km": 3.65,
             "time_spent_minutes": 28.77,
             "departure_time": "08:00",
             "return_time": "08:28",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.258704010052,
+                    112.755940627659
+                ],
+                [
+                    -7.2508246,
+                    112.7546594
+                ],
+                [
+                    -7.258024,
+                    112.7550497
+                ],
+                [
+                    -7.258704010052,
+                    112.755940627659
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Tambaksari Iii",
@@ -1107,11 +1800,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkeling 2",
+            "algorithm_runtime_seconds": 0.05,
             "distance_km": 8.98,
             "time_spent_minutes": 41.54,
             "departure_time": "08:00",
             "return_time": "08:41",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.2620423175,
+                    112.753547988877
+                ],
+                [
+                    -7.2588341,
+                    112.7604435
+                ],
+                [
+                    -7.2406834,
+                    112.7627247
+                ],
+                [
+                    -7.2620423175,
+                    112.753547988877
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Pacar Keling 1",
@@ -1134,11 +1846,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkeling 3",
+            "algorithm_runtime_seconds": 0.05,
             "distance_km": 5.99,
             "time_spent_minutes": 34.38,
             "departure_time": "08:00",
             "return_time": "08:34",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.258436417793,
+                    112.757119626159
+                ],
+                [
+                    -7.2451932,
+                    112.7695033
+                ],
+                [
+                    -7.2562786,
+                    112.765432
+                ],
+                [
+                    -7.258436417793,
+                    112.757119626159
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Gading 1",
@@ -1161,11 +1892,26 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkembang",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 2.19,
             "time_spent_minutes": 15.25,
             "departure_time": "08:00",
             "return_time": "08:15",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.257147993547,
+                    112.764616987093
+                ],
+                [
+                    -7.2500157,
+                    112.7653516
+                ],
+                [
+                    -7.257147993547,
+                    112.764616987093
+                ]
+            ],
             "route": [
                 {
                     "school": "Smp Negeri 9 Surabaya",
@@ -1182,11 +1928,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkembang 2",
+            "algorithm_runtime_seconds": 0.05,
             "distance_km": 11.06,
             "time_spent_minutes": 46.55,
             "departure_time": "08:00",
             "return_time": "08:46",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.262476620852,
+                    112.771433905126
+                ],
+                [
+                    -7.2518029,
+                    112.7636384
+                ],
+                [
+                    -7.2424409,
+                    112.765306
+                ],
+                [
+                    -7.262476620852,
+                    112.771433905126
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Ploso I",
@@ -1209,11 +1974,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkembang 3",
+            "algorithm_runtime_seconds": 0.05,
             "distance_km": 11.07,
             "time_spent_minutes": 46.56,
             "departure_time": "08:00",
             "return_time": "08:46",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.264657228205,
+                    112.761639111473
+                ],
+                [
+                    -7.2422649,
+                    112.7711971
+                ],
+                [
+                    -7.2514442,
+                    112.7709145
+                ],
+                [
+                    -7.264657228205,
+                    112.761639111473
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Gading Iv",
@@ -1236,11 +2020,30 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Tambaksari 1",
+            "algorithm_runtime_seconds": 0.05,
             "distance_km": 5.41,
             "time_spent_minutes": 32.99,
             "departure_time": "08:00",
             "return_time": "08:32",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.260056094853,
+                    112.756706817428
+                ],
+                [
+                    -7.2484974,
+                    112.7595601
+                ],
+                [
+                    -7.2515303,
+                    112.7538699
+                ],
+                [
+                    -7.260056094853,
+                    112.756706817428
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Rangkah I, Sd Negeri Rangkah Iv",
@@ -1263,11 +2066,26 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Tambaksari 2",
+            "algorithm_runtime_seconds": 0.0,
             "distance_km": 2.98,
             "time_spent_minutes": 17.14,
             "departure_time": "08:00",
             "return_time": "08:17",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.254102680485,
+                    112.755204528922
+                ],
+                [
+                    -7.2488259,
+                    112.7600892
+                ],
+                [
+                    -7.254102680485,
+                    112.755204528922
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Rangkah Vi, Sd Negeri Rangkah Vii",
@@ -1284,11 +2102,38 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tenggilis Mejoyo Kendangsari",
+            "algorithm_runtime_seconds": 0.12,
             "distance_km": 16.99,
             "time_spent_minutes": 90.77,
             "departure_time": "08:00",
             "return_time": "09:30",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.3268,
+                    112.75
+                ],
+                [
+                    -7.3131164,
+                    112.7581571
+                ],
+                [
+                    -7.3213213,
+                    112.7522139
+                ],
+                [
+                    -7.3352442,
+                    112.7472824
+                ],
+                [
+                    -7.3211228,
+                    112.7523806
+                ],
+                [
+                    -7.3268,
+                    112.75
+                ]
+            ],
             "route": [
                 {
                     "school": "Sdn Tenggilis Mejoyo 1",
@@ -1329,11 +2174,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tenggilis Mejoyo Panjang Jiwo",
+            "algorithm_runtime_seconds": 0.07,
             "distance_km": 8.39,
             "time_spent_minutes": 60.14,
             "departure_time": "08:00",
             "return_time": "09:00",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.310744690388,
+                    112.759053415041
+                ],
+                [
+                    -7.3099429,
+                    112.7596512
+                ],
+                [
+                    -7.3099429,
+                    112.7596512
+                ],
+                [
+                    -7.3087431,
+                    112.76159
+                ],
+                [
+                    -7.310744690388,
+                    112.759053415041
+                ]
+            ],
             "route": [
                 {
                     "school": "Sma Negeri 16 Surabaya",
@@ -1368,11 +2236,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tenggilis Mejoyo Tenggilis Mejoyo",
+            "algorithm_runtime_seconds": 0.08,
             "distance_km": 9.09,
             "time_spent_minutes": 61.82,
             "departure_time": "08:00",
             "return_time": "09:01",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.312176990002,
+                    112.756075995395
+                ],
+                [
+                    -7.3157546,
+                    112.7543289
+                ],
+                [
+                    -7.3227346,
+                    112.7507928
+                ],
+                [
+                    -7.3099125,
+                    112.7603895
+                ],
+                [
+                    -7.312176990002,
+                    112.756075995395
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Tenggilis Mejoyo 1",
@@ -1407,11 +2298,34 @@
         },
         {
             "sppg": "SPPG Kota Surabaya - Rungkut",
+            "algorithm_runtime_seconds": 0.08,
             "distance_km": 10.63,
             "time_spent_minutes": 65.5,
             "departure_time": "08:00",
             "return_time": "09:05",
             "feasible_time": true,
+            "polyline": [
+                [
+                    -7.3223,
+                    112.7822
+                ],
+                [
+                    -7.3280093,
+                    112.7911258
+                ],
+                [
+                    -7.3280981,
+                    112.7780877
+                ],
+                [
+                    -7.3221935,
+                    112.7703674
+                ],
+                [
+                    -7.3223,
+                    112.7822
+                ]
+            ],
             "route": [
                 {
                     "school": "Sd Negeri Medokan Ayu Ii",

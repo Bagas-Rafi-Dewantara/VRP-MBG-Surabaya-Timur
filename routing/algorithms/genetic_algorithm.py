@@ -121,6 +121,8 @@ class GeneticAlgorithmVRP:
 
 
 if __name__ == "__main__":
+    import time
+
     routing_dir = os.path.abspath(os.path.join(current_dir, ".."))
     instances_dir = os.path.join(routing_dir, "dist_matrix")
     results_dir = os.path.join(routing_dir, "results")
@@ -139,12 +141,14 @@ if __name__ == "__main__":
     else:
         print(f"Ditemukan {len(json_files)} cluster SPPG. Menghitung Genetic Algorithm...")
 
+        all_times = []
         final_output = {
             "algorithm": "Genetic Algorithm",
             "global_summary": {
                 "total_distance_km": 0.0,
                 "total_time_minutes": 0.0,
                 "total_mobil": 0,
+                "total_algorithm_runtime_seconds": 0.0,
                 "feasible": True
             },
             "results_per_sppg": []
@@ -160,29 +164,49 @@ if __name__ == "__main__":
             n_schools = len(instance_data["schools"])
             print(f"-> Memproses rute untuk: {sppg_name} ({n_schools} sekolah)")
 
+            waktu_mulai = time.time()
             ga = GeneticAlgorithmVRP(instance_data)
             details = ga.run()
+            runtime_detik = round(time.time() - waktu_mulai, 2)
+            print(f"      [Runtime] Algoritma selesai dalam {runtime_detik} detik")
+
             rute_sppg = details["single_route_data"]
 
+            polyline = [[instance_data["depot"]["lat"], instance_data["depot"]["lng"]]]
+            for stop in rute_sppg["route"]:
+                if "school" in stop:
+                    nama_sekolah = stop["school"].split(" (")[0]
+                    for s in instance_data["schools"]:
+                        if s["nama_sekolah"] == nama_sekolah:
+                            polyline.append([s["lat"], s["lng"]])
+                            break
+            polyline.append([instance_data["depot"]["lat"], instance_data["depot"]["lng"]])
+
+            all_times.append(rute_sppg["time_spent_minutes"])
             final_output["global_summary"]["total_distance_km"] += details["total_distance_km"]
-            final_output["global_summary"]["total_time_minutes"] += rute_sppg["time_spent_minutes"]
             final_output["global_summary"]["total_mobil"] += 1
+            final_output["global_summary"]["total_algorithm_runtime_seconds"] += runtime_detik
 
             if not details["is_feasible"]:
                 final_output["global_summary"]["feasible"] = False
 
             final_output["results_per_sppg"].append({
                 "sppg": sppg_name,
+                "algorithm_runtime_seconds": runtime_detik,
                 "distance_km": rute_sppg["distance_km"],
                 "time_spent_minutes": rute_sppg["time_spent_minutes"],
                 "departure_time": rute_sppg["departure_time"],
                 "return_time": rute_sppg["return_time"],
                 "feasible_time": rute_sppg["feasible_time"],
+                "polyline": polyline,
                 "route": rute_sppg["route"]
             })
 
+        if all_times:
+            final_output["global_summary"]["total_time_minutes"] = round(max(all_times), 2)
+
         final_output["global_summary"]["total_distance_km"] = round(final_output["global_summary"]["total_distance_km"], 2)
-        final_output["global_summary"]["total_time_minutes"] = round(final_output["global_summary"]["total_time_minutes"], 2)
+        final_output["global_summary"]["total_algorithm_runtime_seconds"] = round(final_output["global_summary"]["total_algorithm_runtime_seconds"], 2)
 
         output_json_path = os.path.join(results_dir, "ga.json")
         with open(output_json_path, "w") as f:
@@ -191,5 +215,7 @@ if __name__ == "__main__":
         print(f"\n==============================================")
         print(f"PROSES GENETIC ALGORITHM SELESAI!")
         print(f"File output sukses ditulis ke: {output_json_path}")
+        print(f"Total Runtime Komputasi: {final_output['global_summary']['total_algorithm_runtime_seconds']} detik")
         print(f"Total Jarak Surabaya Timur: {final_output['global_summary']['total_distance_km']} km")
+        print(f"Total Waktu Tempuh: {final_output['global_summary']['total_time_minutes']} menit")
         print(f"==============================================")
