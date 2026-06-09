@@ -2,18 +2,13 @@ import os
 import json
 import random
 import sys
+import optuna
+
+optuna.logging.set_verbosity(optuna.logging.WARNING)
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.abspath(os.path.join(current_dir, "..")))
 from constraints import evaluate_solution
-
-POPULATION_SIZE = 50
-MAX_GENERATIONS = 200
-CROSSOVER_RATE = 0.85
-MUTATION_RATE = 0.15
-TOURNAMENT_K = 3
-ELITE_SIZE = 2
-PATIENCE = 30
 
 
 def _fitness(sequence, instance):
@@ -27,8 +22,8 @@ def _fitness(sequence, instance):
     )
 
 
-def _tournament_select(population, fitnesses):
-    candidates = random.sample(range(len(population)), TOURNAMENT_K)
+def _tournament_select(population, fitnesses, tournament_k):
+    candidates = random.sample(range(len(population)), tournament_k)
     best = min(candidates, key=lambda i: fitnesses[i])
     return population[best]
 
@@ -56,49 +51,54 @@ def _swap_mutate(sequence):
 
 
 class GeneticAlgorithmVRP:
-    def __init__(self, instance_data):
+    def __init__(self, instance_data, population_size=50, max_generations=200,
+                 crossover_rate=0.85, mutation_rate=0.15, tournament_k=3,
+                 elite_size=2, patience=30):
         self.instance = instance_data
         self.n = len(instance_data["schools"])
+        self.population_size = population_size
+        self.max_generations = max_generations
+        self.crossover_rate = crossover_rate
+        self.mutation_rate = mutation_rate
+        self.tournament_k = tournament_k
+        self.elite_size = elite_size
+        self.patience = patience
 
     def run(self):
-        # Edge case: 0 or 1 school — no optimization needed
         if self.n == 0:
             return evaluate_solution([], self.instance["schools"], self.instance["distance_matrix"],
                                      self.instance["time_matrix"], self.instance["constraints"],
                                      sppg_name=self.instance["sppg_name"])
         if self.n == 1:
-            seq = [0]
-            return _fitness(seq, self.instance)
+            return _fitness([0], self.instance)
 
-        # Initialize population
-        population = [list(range(self.n)) for _ in range(POPULATION_SIZE)]
+        population = [list(range(self.n)) for _ in range(self.population_size)]
         for chrom in population:
             random.shuffle(chrom)
 
         fitnesses = [_fitness(c, self.instance)["fitness"] for c in population]
 
-        best_idx = min(range(POPULATION_SIZE), key=lambda i: fitnesses[i])
+        best_idx = min(range(self.population_size), key=lambda i: fitnesses[i])
         best_seq = population[best_idx].copy()
         best_fitness = fitnesses[best_idx]
         best_eval = _fitness(best_seq, self.instance)
 
         no_improve = 0
 
-        for _ in range(MAX_GENERATIONS):
-            # Elitism: carry top ELITE_SIZE individuals unchanged
-            elite_indices = sorted(range(POPULATION_SIZE), key=lambda i: fitnesses[i])[:ELITE_SIZE]
+        for _ in range(self.max_generations):
+            elite_indices = sorted(range(self.population_size), key=lambda i: fitnesses[i])[:self.elite_size]
             new_population = [population[i].copy() for i in elite_indices]
 
-            while len(new_population) < POPULATION_SIZE:
-                p1 = _tournament_select(population, fitnesses)
-                p2 = _tournament_select(population, fitnesses)
+            while len(new_population) < self.population_size:
+                p1 = _tournament_select(population, fitnesses, self.tournament_k)
+                p2 = _tournament_select(population, fitnesses, self.tournament_k)
 
-                if self.n >= 2 and random.random() < CROSSOVER_RATE:
+                if self.n >= 2 and random.random() < self.crossover_rate:
                     child = _order_crossover(p1, p2)
                 else:
                     child = p1.copy()
 
-                if self.n >= 2 and random.random() < MUTATION_RATE:
+                if self.n >= 2 and random.random() < self.mutation_rate:
                     child = _swap_mutate(child)
 
                 new_population.append(child)
@@ -106,7 +106,7 @@ class GeneticAlgorithmVRP:
             population = new_population
             fitnesses = [_fitness(c, self.instance)["fitness"] for c in population]
 
-            gen_best_idx = min(range(POPULATION_SIZE), key=lambda i: fitnesses[i])
+            gen_best_idx = min(range(self.population_size), key=lambda i: fitnesses[i])
             if fitnesses[gen_best_idx] < best_fitness:
                 best_fitness = fitnesses[gen_best_idx]
                 best_seq = population[gen_best_idx].copy()
@@ -114,10 +114,54 @@ class GeneticAlgorithmVRP:
                 no_improve = 0
             else:
                 no_improve += 1
-                if no_improve >= PATIENCE:
+                if no_improve >= self.patience:
                     break
 
         return best_eval
+
+
+def run_optimization(instance_data):
+    print("      Melakukan Hyperparameter Tuning dengan Optuna...")
+
+    def objective(trial):
+        cr = trial.suggest_float("crossover_rate", 0.6, 0.95)
+        mr = trial.suggest_float("mutation_rate", 0.05, 0.3)
+        tk = trial.suggest_int("tournament_k", 2, 5)
+        ps = trial.suggest_int("population_size", 20, 60)
+
+        ga_tune = GeneticAlgorithmVRP(
+            instance_data=instance_data,
+            population_size=ps,
+            max_generations=50,
+            crossover_rate=cr,
+            mutation_rate=mr,
+            tournament_k=tk,
+            elite_size=2,
+            patience=15,
+        )
+        result = ga_tune.run()
+        return result["total_distance_km"]
+
+    study = optuna.create_study(direction="minimize")
+    study.optimize(objective, n_trials=15)
+
+    best = study.best_params
+    print(f"      [Tuned] Params terbaik: CR={round(best['crossover_rate'], 2)}, "
+          f"MR={round(best['mutation_rate'], 2)}, "
+          f"TK={best['tournament_k']}, "
+          f"Pop={best['population_size']}")
+
+    ga_final = GeneticAlgorithmVRP(
+        instance_data=instance_data,
+        population_size=50,
+        max_generations=200,
+        crossover_rate=best["crossover_rate"],
+        mutation_rate=best["mutation_rate"],
+        tournament_k=best["tournament_k"],
+        elite_size=2,
+        patience=30,
+    )
+    return ga_final.run()
 
 
 if __name__ == "__main__":
@@ -143,7 +187,7 @@ if __name__ == "__main__":
 
         all_times = []
         final_output = {
-            "algorithm": "Genetic Algorithm",
+            "algorithm": "Genetic Algorithm (Optuna Tuned)",
             "global_summary": {
                 "total_distance_km": 0.0,
                 "total_time_minutes": 0.0,
@@ -165,8 +209,7 @@ if __name__ == "__main__":
             print(f"-> Memproses rute untuk: {sppg_name} ({n_schools} sekolah)")
 
             waktu_mulai = time.time()
-            ga = GeneticAlgorithmVRP(instance_data)
-            details = ga.run()
+            details = run_optimization(instance_data)
             runtime_detik = round(time.time() - waktu_mulai, 2)
             print(f"      [Runtime] Algoritma selesai dalam {runtime_detik} detik")
 
