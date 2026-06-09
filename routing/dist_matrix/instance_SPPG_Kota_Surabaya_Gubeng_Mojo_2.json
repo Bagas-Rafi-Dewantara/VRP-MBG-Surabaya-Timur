@@ -11,51 +11,51 @@
     },
     "schools": [
         {
-            "no_sekolah": 4,
-            "nama_sekolah": "Sd Negeri Kertajaya I Nomor 2017",
-            "demand": 417,
-            "lat": -7.2796928,
-            "lng": 112.7596454
+            "no_sekolah": 1,
+            "nama_sekolah": "Sd Negeri Airlangga Iii Nomor 200",
+            "demand": 439,
+            "lat": -7.2756469,
+            "lng": 112.760769
         },
         {
-            "no_sekolah": 2,
-            "nama_sekolah": "Sd Negeri Gubeng I",
-            "demand": 416,
-            "lat": -7.2724586,
-            "lng": 112.7541806
+            "no_sekolah": 9,
+            "nama_sekolah": "Sd Negeri Mojo Viii Nomor 227",
+            "demand": 414,
+            "lat": -7.2708142,
+            "lng": 112.7629625
         }
     ],
     "distance_matrix": [
         [
             0.0,
-            3.246,
-            3.9985999999999997
+            4.1575,
+            2.9171
         ],
         [
-            3.207,
+            2.8298,
             0.0,
-            1.4336
+            1.5987
         ],
         [
-            4.211399999999999,
-            2.0885,
+            3.4036,
+            1.9768,
             0.0
         ]
     ],
     "time_matrix": [
         [
             0.0,
-            4.869,
-            5.9979
+            6.236249999999999,
+            4.37565
         ],
         [
-            4.810499999999999,
+            4.2447,
             0.0,
-            2.1504
+            2.39805
         ],
         [
-            6.317099999999999,
-            3.1327499999999997,
+            5.1053999999999995,
+            2.9652,
             0.0
         ]
     ]

@@ -13,9 +13,9 @@ def minutes_to_time_str(base_time_str, minutes_added):
 def distance_to_minutes(distance_km):
     """
     Asumsi mobil boks:
-    40 km/jam
+    25 km/jam
     """
-    return (distance_km / 40) * 60
+    return (distance_km / 25) * 60
 
 
 # ==========================================

@@ -11,51 +11,51 @@
     },
     "schools": [
         {
-            "no_sekolah": 12,
-            "nama_sekolah": "Sekolah Dasar Negeri Gubeng Iii - 206",
-            "demand": 402,
-            "lat": -7.269412,
-            "lng": 112.7535019
+            "no_sekolah": 3,
+            "nama_sekolah": "Sd Negeri Kertajaya",
+            "demand": 421,
+            "lat": -7.2834351,
+            "lng": 112.7598779
         },
         {
-            "no_sekolah": 7,
-            "nama_sekolah": "Sd Negeri Kertajaya V Nomor 211",
-            "demand": 400,
-            "lat": -7.2802469,
-            "lng": 112.7539416
+            "no_sekolah": 8,
+            "nama_sekolah": "Sd Negeri Mojo Vi Nomor 225",
+            "demand": 418,
+            "lat": -7.269058,
+            "lng": 112.7705012
         }
     ],
     "distance_matrix": [
         [
             0.0,
-            4.4874,
-            2.89
+            2.3713,
+            5.247
         ],
         [
-            4.3678,
+            2.6226,
             0.0,
-            2.6163000000000003
+            3.4135
         ],
         [
-            3.9998,
-            1.7472,
+            5.6354,
+            3.8026,
             0.0
         ]
     ],
     "time_matrix": [
         [
             0.0,
-            6.7311000000000005,
-            4.335000000000001
+            3.55695,
+            7.870499999999999
         ],
         [
-            6.5517,
+            3.9339,
             0.0,
-            3.92445
+            5.1202499999999995
         ],
         [
-            5.9997,
-            2.6208,
+            8.4531,
+            5.7039,
             0.0
         ]
     ]

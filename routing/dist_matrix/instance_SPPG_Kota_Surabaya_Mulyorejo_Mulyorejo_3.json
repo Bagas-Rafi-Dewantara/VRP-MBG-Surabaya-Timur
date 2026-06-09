@@ -1,0 +1,62 @@
+{
+    "sppg_name": "SPPG Kota Surabaya Mulyorejo Mulyorejo 3",
+    "depot": {
+        "lat": -7.271760216268,
+        "lng": 112.785855092526
+    },
+    "constraints": {
+        "max_capacity": 1050,
+        "max_time_minutes": 180,
+        "service_time_per_school": 10
+    },
+    "schools": [
+        {
+            "no_sekolah": 22,
+            "nama_sekolah": "Sd Negeri Kalisari Ii",
+            "demand": 420,
+            "lat": -7.2689121,
+            "lng": 112.7994734
+        },
+        {
+            "no_sekolah": 24,
+            "nama_sekolah": "Sdn Sutorejo 1-240",
+            "demand": 401,
+            "lat": -7.2595864,
+            "lng": 112.7910639
+        }
+    ],
+    "distance_matrix": [
+        [
+            0.0,
+            5.2951999999999995,
+            5.3627
+        ],
+        [
+            3.6369000000000002,
+            0.0,
+            4.907
+        ],
+        [
+            4.6582,
+            4.857600000000001,
+            0.0
+        ]
+    ],
+    "time_matrix": [
+        [
+            0.0,
+            7.9428,
+            8.04405
+        ],
+        [
+            5.45535,
+            0.0,
+            7.3605
+        ],
+        [
+            6.9873,
+            7.286400000000001,
+            0.0
+        ]
+    ]
+}
