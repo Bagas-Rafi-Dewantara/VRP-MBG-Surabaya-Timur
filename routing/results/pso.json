@@ -1,8 +1,8 @@
 {
-    "algorithm": "Particle Swarm Optimization",
+    "algorithm": "Particle Swarm Optimization (Optuna Tuned)",
     "global_summary": {
         "total_distance_km": 438.46,
-        "total_time_minutes": 2272.27,
+        "total_time_minutes": 103.76,
         "total_mobil": 47,
         "feasible": true
     },

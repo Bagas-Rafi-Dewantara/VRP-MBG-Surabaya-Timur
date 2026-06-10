@@ -196,6 +196,8 @@ if __name__ == "__main__":
     else:
         print(f"Ditemukan {len(json_files)} cluster SPPG. Menghitung Particle Swarm Optimization...")
 
+        all_times = []
+
         final_output = {
             "algorithm": "Particle Swarm Optimization (Optuna Tuned)",
             "global_summary": {
@@ -235,9 +237,9 @@ if __name__ == "__main__":
             polyline.append([instance_data["depot"]["lat"], instance_data["depot"]["lng"]])
 
             final_output["global_summary"]["total_distance_km"]               += details["total_distance_km"]
-            final_output["global_summary"]["total_time_minutes"]              += rute_sppg["time_spent_minutes"]
             final_output["global_summary"]["total_mobil"]                     += 1
             final_output["global_summary"]["total_algorithm_runtime_seconds"] += runtime_detik
+            all_times.append(rute_sppg["time_spent_minutes"])
 
             if not details["is_feasible"]:
                 final_output["global_summary"]["feasible"] = False
@@ -255,7 +257,7 @@ if __name__ == "__main__":
             })
 
         final_output["global_summary"]["total_distance_km"]               = round(final_output["global_summary"]["total_distance_km"],  2)
-        final_output["global_summary"]["total_time_minutes"]              = round(final_output["global_summary"]["total_time_minutes"], 2)
+        final_output["global_summary"]["total_time_minutes"]              = round(max(all_times), 2) if all_times else 0.0
         final_output["global_summary"]["total_algorithm_runtime_seconds"] = round(final_output["global_summary"]["total_algorithm_runtime_seconds"], 2)
 
         output_json_path = os.path.join(results_dir, "pso.json")
