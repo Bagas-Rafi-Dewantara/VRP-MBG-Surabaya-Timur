@@ -44,71 +44,178 @@ function initMap() {
  */
 function updateMap(algData, sppgFilter) {
     if (!map || !routeLayerGroup || !algData) return;
-    currentAlgData = algData;
 
+    currentAlgData = algData;
     routeLayerGroup.clearLayers();
 
-    const sppgList = sppgFilter === 'all'
-        ? algData.results_per_sppg
-        : algData.results_per_sppg.filter(s => s.sppg === sppgFilter);
+    const sppgList =
+        sppgFilter === 'all'
+            ? algData.results_per_sppg
+            : algData.results_per_sppg.filter(
+                s => s.sppg === sppgFilter
+            );
 
     const bounds = L.latLngBounds();
+
     let colorIdx = 0;
 
-    sppgList.forEach(sppgData => {
-        const color = CLUSTER_PALETTE[colorIdx % CLUSTER_PALETTE.length];
+    sppgList.forEach((sppgData) => {
+
+        const color =
+            CLUSTER_PALETTE[
+                colorIdx % CLUSTER_PALETTE.length
+            ];
+
         colorIdx++;
 
-        if (!sppgData.polyline || sppgData.polyline.length < 2) return;
+        if (
+            !sppgData.route_order ||
+            sppgData.route_order.length < 2
+        ) {
+            return;
+        }
 
-        // Draw animated dashed polyline
-        const polyline = L.polyline(sppgData.polyline, {
-            color,
-            weight: 3,
-            opacity: 0.85,
-            dashArray: '8, 6',
-        }).addTo(routeLayerGroup);
+        const shortName =
+            sppgData.sppg.replace(
+                "SPPG Kota Surabaya ",
+                ""
+            );
 
-        const shortName = sppgData.sppg.replace('SPPG Kota Surabaya ', '');
-        const schoolCount = countSchools(sppgData);
+        const schoolCount =
+            countSchools(sppgData);
 
-        polyline.bindTooltip(`<strong>${shortName}</strong><br>${schoolCount} sekolah · ${sppgData.distance_km.toFixed(2)} km`, {
-            sticky: true,
-            className: '',
-        });
+        const coords =
+            sppgData.route_order
+                .map(
+                    p => `${p.lng},${p.lat}`
+                )
+                .join(";");
 
-        polyline.on('click', () => showRouteDetail(sppgData));
+        // MARKER DEPOT
 
-        // Depot marker (first & last polyline point)
-        const depotLatLng = sppgData.polyline[0];
-        L.marker(depotLatLng, { icon: makeCircleIcon('#f43f5e', 14, true) })
-            .addTo(routeLayerGroup)
-            .bindPopup(`
-                <strong>🏭 SPPG (Depot)</strong><br>
-                ${sppgData.sppg.replace('SPPG Kota Surabaya ', '')}<br>
-                <br>
-                📦 <strong>${schoolCount} sekolah</strong> dilayani<br>
-                🛣️ Jarak: <strong>${sppgData.distance_km.toFixed(2)} km</strong><br>
-                ⏱️ Waktu: <strong>${sppgData.time_spent_minutes.toFixed(1)} menit</strong><br>
-                🕗 Berangkat: ${sppgData.departure_time} | Kembali: ${sppgData.return_time}
-            `);
+        const depotLatLng = [
+            sppgData.route_order[0].lat,
+            sppgData.route_order[0].lng
+        ];
 
-        // School markers (intermediate polyline points)
-        sppgData.polyline.slice(1, -1).forEach((latLng, i) => {
-            L.marker(latLng, { icon: makeCircleIcon(color, 9) })
+        L.marker(
+            depotLatLng,
+            {
+                icon: makeCircleIcon(
+                    "#f43f5e",
+                    14,
+                    true
+                )
+            }
+        )
+        .addTo(routeLayerGroup)
+        .bindPopup(`
+            <strong>🏭 SPPG (Depot)</strong><br>
+            ${shortName}<br><br>
+
+            📦 ${schoolCount} sekolah<br>
+            🛣️ ${sppgData.distance_km.toFixed(2)} km<br>
+            ⏱️ ${sppgData.time_spent_minutes.toFixed(1)} menit<br>
+            🕗 ${sppgData.departure_time} - ${sppgData.return_time}
+        `);
+
+        // MARKER SEKOLAH
+
+        sppgData.route_order
+            .slice(1, -1)
+            .forEach((point, i) => {
+
+                L.marker(
+                    [point.lat, point.lng],
+                    {
+                        icon: makeCircleIcon(
+                            color,
+                            9
+                        )
+                    }
+                )
                 .addTo(routeLayerGroup)
-                .bindPopup(`<strong>🏫 Sekolah ke-${i + 1}</strong><br>Cluster: ${shortName}`);
+                .bindPopup(`
+                    <strong>${point.name}</strong><br>
+                    Urutan ${i + 1}
+                `);
+
+            });
+
+        // ROUTE OSRM
+
+        fetch(
+            `https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`
+        )
+        .then(res => res.json())
+        .then(data => {
+
+            if (
+                !data.routes ||
+                !data.routes.length
+            ) {
+                return;
+            }
+
+            const geometry =
+                data.routes[0]
+                    .geometry
+                    .coordinates;
+
+            const latlngs =
+                geometry.map(
+                    coord => [
+                        coord[1],
+                        coord[0]
+                    ]
+                );
+
+            const polyline =
+                L.polyline(
+                    latlngs,
+                    {
+                        color,
+                        weight: 4,
+                        opacity: 0.9
+                    }
+                )
+                .addTo(routeLayerGroup);
+
+            polyline.bindTooltip(
+                `<strong>${shortName}</strong><br>${schoolCount} sekolah · ${sppgData.distance_km.toFixed(2)} km`
+            );
+
+            polyline.on(
+                'click',
+                () => showRouteDetail(sppgData)
+            );
+
+            bounds.extend(
+                polyline.getBounds()
+            );
+
+            map.fitBounds(
+                bounds,
+                {
+                    padding: [30, 30],
+                    maxZoom: 15
+                }
+            );
+
+        })
+        .catch(err => {
+            console.error(
+                "OSRM error:",
+                err
+            );
         });
 
-        bounds.extend(polyline.getBounds());
     });
 
-    if (bounds.isValid()) {
-        map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
-    }
-
-    // Update sidebar detail
-    updateRouteDetail(sppgFilter, algData);
+    updateRouteDetail(
+        sppgFilter,
+        algData
+    );
 }
 
 function showRouteDetail(sppgData) {

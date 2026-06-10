@@ -64,3 +64,39 @@ def get_osrm_matrices(coordinates):
             [[0.0] * n for _ in range(n)],
             [[0.0] * n for _ in range(n)]
         )
+    
+def get_osrm_route_geometry(coordinates):
+
+    coord_string = ";".join(
+        [f"{lng},{lat}" for lng, lat in coordinates]
+    )
+
+    url = f"http://router.project-osrm.org/route/v1/driving/{coord_string}"
+
+    params = {
+        "overview": "full",
+        "geometries": "geojson"
+    }
+
+    try:
+        response = requests.get(
+            url,
+            params=params,
+            timeout=30
+        )
+
+        data = response.json()
+
+        if data["code"] != "Ok":
+            return []
+
+        geometry = data["routes"][0]["geometry"]["coordinates"]
+
+        return [
+            [lat, lng]
+            for lng, lat in geometry
+        ]
+
+    except Exception as e:
+        print(e)
+        return []
