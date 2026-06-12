@@ -1,16 +1,15 @@
 {
-    "algorithm": "Particle Swarm Optimization (Optuna Tuned)",
+    "algorithm": "Particle Swarm Opt.",
     "global_summary": {
         "total_distance_km": 438.46,
         "total_time_minutes": 125.48,
+        "total_algorithm_runtime_seconds": 1.23,
         "total_mobil": 47,
-        "total_algorithm_runtime_seconds": 10.5,
         "feasible": true
     },
     "results_per_sppg": [
         {
             "sppg": "SPPG Kota Surabaya Gubeng Baratajaya",
-            "algorithm_runtime_seconds": 0.35,
             "distance_km": 11.42,
             "time_spent_minutes": 77.13,
             "departure_time": "08:20",
@@ -65,7 +64,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Baratajaya 2",
-            "algorithm_runtime_seconds": 0.28,
             "distance_km": 8.25,
             "time_spent_minutes": 72.38,
             "departure_time": "08:20",
@@ -120,7 +118,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Baratajaya 3",
-            "algorithm_runtime_seconds": 0.27,
             "distance_km": 7.54,
             "time_spent_minutes": 71.31,
             "departure_time": "08:20",
@@ -175,7 +172,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Gubeng",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 2.82,
             "time_spent_minutes": 54.24,
             "departure_time": "08:20",
@@ -218,7 +214,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Mojo",
-            "algorithm_runtime_seconds": 0.27,
             "distance_km": 10.33,
             "time_spent_minutes": 75.49,
             "departure_time": "08:20",
@@ -273,7 +268,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Mojo 2",
-            "algorithm_runtime_seconds": 0.28,
             "distance_km": 7.72,
             "time_spent_minutes": 71.59,
             "departure_time": "08:20",
@@ -328,7 +322,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Mojo 3",
-            "algorithm_runtime_seconds": 0.28,
             "distance_km": 10.17,
             "time_spent_minutes": 75.26,
             "departure_time": "08:20",
@@ -383,7 +376,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Mojo 4",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 4.84,
             "time_spent_minutes": 87.26,
             "departure_time": "08:20",
@@ -444,7 +436,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Pucang Sewu",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 8.01,
             "time_spent_minutes": 62.01,
             "departure_time": "08:20",
@@ -487,7 +478,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 12.53,
             "time_spent_minutes": 98.79,
             "departure_time": "08:20",
@@ -548,7 +538,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar 2",
-            "algorithm_runtime_seconds": 0.28,
             "distance_km": 34.9,
             "time_spent_minutes": 112.35,
             "departure_time": "08:20",
@@ -603,7 +592,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Gunung Anyar Rungkut Menanggal",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 1.87,
             "time_spent_minutes": 52.81,
             "departure_time": "08:20",
@@ -646,7 +634,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Kalisari",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 2.97,
             "time_spent_minutes": 54.45,
             "departure_time": "08:20",
@@ -689,7 +676,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Kejawan Putih Tambak 3",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 1.02,
             "time_spent_minutes": 51.54,
             "departure_time": "08:20",
@@ -732,7 +718,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Mulyorejo",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 3.36,
             "time_spent_minutes": 55.04,
             "departure_time": "08:20",
@@ -775,7 +760,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Mulyorejo 2",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 4.67,
             "time_spent_minutes": 87.0,
             "departure_time": "08:20",
@@ -836,7 +820,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Mulyorejo 3",
-            "algorithm_runtime_seconds": 0.28,
             "distance_km": 13.86,
             "time_spent_minutes": 80.79,
             "departure_time": "08:20",
@@ -891,7 +874,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Kalirungkut",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 10.69,
             "time_spent_minutes": 96.03,
             "departure_time": "08:20",
@@ -952,7 +934,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Kalirungkut 2",
-            "algorithm_runtime_seconds": 0.41,
             "distance_km": 8.32,
             "time_spent_minutes": 102.49,
             "departure_time": "08:20",
@@ -1025,7 +1006,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Kedung Baruk",
-            "algorithm_runtime_seconds": 0.34,
             "distance_km": 2.8,
             "time_spent_minutes": 84.2,
             "departure_time": "08:20",
@@ -1086,7 +1066,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Medokan Ayu",
-            "algorithm_runtime_seconds": 0.02,
             "distance_km": 7.46,
             "time_spent_minutes": 91.18,
             "departure_time": "08:20",
@@ -1147,7 +1126,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Medokan Ayu 2",
-            "algorithm_runtime_seconds": 0.4,
             "distance_km": 11.98,
             "time_spent_minutes": 107.96,
             "departure_time": "08:20",
@@ -1220,7 +1198,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Penjaringansari",
-            "algorithm_runtime_seconds": 0.48,
             "distance_km": 6.85,
             "time_spent_minutes": 100.27,
             "departure_time": "08:20",
@@ -1293,7 +1270,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Penjaringansari 3",
-            "algorithm_runtime_seconds": 0.42,
             "distance_km": 16.06,
             "time_spent_minutes": 114.08,
             "departure_time": "08:20",
@@ -1366,7 +1342,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Penjaringansari 4",
-            "algorithm_runtime_seconds": 0.43,
             "distance_km": 15.51,
             "time_spent_minutes": 113.27,
             "departure_time": "08:20",
@@ -1439,7 +1414,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Rungkut Kidul",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 3.95,
             "time_spent_minutes": 85.93,
             "departure_time": "08:20",
@@ -1500,7 +1474,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Klampis Ngasem",
-            "algorithm_runtime_seconds": 0.42,
             "distance_km": 9.78,
             "time_spent_minutes": 104.67,
             "departure_time": "08:20",
@@ -1573,7 +1546,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Klampis Ngasem 2",
-            "algorithm_runtime_seconds": 0.43,
             "distance_km": 10.37,
             "time_spent_minutes": 105.56,
             "departure_time": "08:20",
@@ -1646,7 +1618,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Medokan Semampir",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 10.35,
             "time_spent_minutes": 95.52,
             "departure_time": "08:20",
@@ -1707,7 +1678,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Menur Pumpungan",
-            "algorithm_runtime_seconds": 0.43,
             "distance_km": 14.36,
             "time_spent_minutes": 111.53,
             "departure_time": "08:20",
@@ -1780,7 +1750,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan",
-            "algorithm_runtime_seconds": 0.41,
             "distance_km": 20.77,
             "time_spent_minutes": 121.16,
             "departure_time": "08:20",
@@ -1853,7 +1822,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan 2",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 16.01,
             "time_spent_minutes": 104.01,
             "departure_time": "08:20",
@@ -1914,7 +1882,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Semolowaru",
-            "algorithm_runtime_seconds": 0.4,
             "distance_km": 20.78,
             "time_spent_minutes": 121.17,
             "departure_time": "08:20",
@@ -1987,7 +1954,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Gading",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 3.99,
             "time_spent_minutes": 55.98,
             "departure_time": "08:20",
@@ -2030,7 +1996,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Gading 2",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 5.72,
             "time_spent_minutes": 58.59,
             "departure_time": "08:20",
@@ -2073,7 +2038,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkeling 1",
-            "algorithm_runtime_seconds": 0.27,
             "distance_km": 3.65,
             "time_spent_minutes": 65.48,
             "departure_time": "08:20",
@@ -2128,7 +2092,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkeling 2",
-            "algorithm_runtime_seconds": 0.28,
             "distance_km": 8.98,
             "time_spent_minutes": 73.46,
             "departure_time": "08:20",
@@ -2183,7 +2146,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkeling 3",
-            "algorithm_runtime_seconds": 0.29,
             "distance_km": 5.99,
             "time_spent_minutes": 68.99,
             "departure_time": "08:20",
@@ -2238,7 +2200,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkembang",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 2.19,
             "time_spent_minutes": 53.28,
             "departure_time": "08:20",
@@ -2281,7 +2242,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkembang 2",
-            "algorithm_runtime_seconds": 0.28,
             "distance_km": 11.06,
             "time_spent_minutes": 76.59,
             "departure_time": "08:20",
@@ -2336,7 +2296,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkembang 3",
-            "algorithm_runtime_seconds": 0.3,
             "distance_km": 11.07,
             "time_spent_minutes": 76.6,
             "departure_time": "08:20",
@@ -2391,7 +2350,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Tambaksari 1",
-            "algorithm_runtime_seconds": 0.28,
             "distance_km": 5.41,
             "time_spent_minutes": 68.12,
             "departure_time": "08:20",
@@ -2446,7 +2404,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Tambaksari 2",
-            "algorithm_runtime_seconds": 0.01,
             "distance_km": 2.98,
             "time_spent_minutes": 54.46,
             "departure_time": "08:20",
@@ -2489,7 +2446,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tenggilis Mejoyo Kendangsari",
-            "algorithm_runtime_seconds": 0.52,
             "distance_km": 16.99,
             "time_spent_minutes": 125.48,
             "departure_time": "08:20",
@@ -2574,7 +2530,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tenggilis Mejoyo Panjang Jiwo",
-            "algorithm_runtime_seconds": 0.41,
             "distance_km": 8.39,
             "time_spent_minutes": 102.59,
             "departure_time": "08:20",
@@ -2647,7 +2602,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tenggilis Mejoyo Tenggilis Mejoyo",
-            "algorithm_runtime_seconds": 0.42,
             "distance_km": 9.09,
             "time_spent_minutes": 103.64,
             "departure_time": "08:20",
@@ -2720,7 +2674,6 @@
         },
         {
             "sppg": "SPPG Kota Surabaya - Rungkut",
-            "algorithm_runtime_seconds": 0.4,
             "distance_km": 10.63,
             "time_spent_minutes": 105.94,
             "departure_time": "08:20",

@@ -90,14 +90,15 @@ class SimulatedAnnealingVRP:
 
 def run_optimization(instance_data):
     """
-    Menjalankan Simulated Annealing yang sudah di-tuning agar cepat (Fast-SA)
+    SA dengan ~50 iterasi total:
+    max_iter_per_temp=1, stopping_temp=0.5 → ~50 temperature steps × 1 iter = ~50 evaluasi
     """
     sa = SimulatedAnnealingVRP(
         instance_data=instance_data,
-        initial_temp=100,        # Diturunkan dari 1500 ke 100 (sudah cukup untuk VRP skala kecil)
-        cooling_rate=0.90,        # Dipercepat penurunannya dari 0.98 ke 0.90
-        max_iter_per_temp=30,     # Dikurangi dari 100 ke 30 iterasi per langkah suhu
-        stopping_temp=0.1         # Dinaikkan dari 0.01 ke 0.1
+        initial_temp=100,
+        cooling_rate=0.90,
+        max_iter_per_temp=1,
+        stopping_temp=0.5
     )
     best_seq, details = sa.run()
     return details

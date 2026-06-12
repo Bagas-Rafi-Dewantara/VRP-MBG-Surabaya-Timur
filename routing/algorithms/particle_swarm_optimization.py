@@ -150,30 +150,14 @@ class ParticleSwarmOptimizationVRP:
 
 
 def run_optimization(instance_data: dict) -> dict:
-    """Tuning W, C1, C2 dengan Optuna lalu jalankan PSO final dengan parameter terbaik."""
-    print("      Melakukan Hyperparameter Tuning dengan Optuna...")
-
-    def objective(trial):
-        w  = trial.suggest_float("w",  0.3, 0.9)
-        c1 = trial.suggest_float("c1", 0.5, 2.5)
-        c2 = trial.suggest_float("c2", 0.5, 2.5)
-        result = ParticleSwarmOptimizationVRP(
-            instance_data=instance_data, n_particles=20, max_iter=50,
-            w=w, c1=c1, c2=c2, patience=15,
-        ).run()
-        return result["total_distance_km"]
-
-    study = optuna.create_study(direction="minimize")
-    study.optimize(objective, n_trials=20)
-
-    best = study.best_params
-    print(f"      [Tuned] W={round(best['w'], 3)}, C1={round(best['c1'], 3)}, C2={round(best['c2'], 3)}")
-
     return ParticleSwarmOptimizationVRP(
         instance_data=instance_data,
-        n_particles=N_PARTICLES, max_iter=MAX_ITER,
-        w=best["w"], c1=best["c1"], c2=best["c2"],
-        patience=PATIENCE,
+        n_particles=20,
+        max_iter=50,
+        w=0.7,
+        c1=1.5,
+        c2=1.5,
+        patience=50,
     ).run()
 
 

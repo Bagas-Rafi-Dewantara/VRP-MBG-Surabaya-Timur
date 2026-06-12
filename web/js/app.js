@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     initMap();
     initCharts();
 
-    // --- Load all algorithm JSON files ---
-    const data = await loadAllData();
+    // --- Load all data (algorithm JSONs + history) in parallel ---
+    const [data] = await Promise.all([loadAllData(), loadHistoryData()]);
     const loadedAlgs = Object.keys(data);
 
     if (loadedAlgs.length === 0) {
@@ -48,6 +48,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             // When switching to compare tab, re-render charts
             if (targetId === 'compare-tab') {
                 renderCompareTab(currentAlg);
+            }
+            // When switching to history tab, render history
+            if (targetId === 'history-tab') {
+                renderHistoryTab();
             }
         });
     });

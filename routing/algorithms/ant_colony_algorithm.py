@@ -126,49 +126,17 @@ class AntColonyVRP:
         return best_sol, best_eval
 
 def run_optimization(instance_data):
-    print("      Melakukan Hyperparameter Tuning dengan Optuna...")
-
-    # Blok wajib Optuna untuk mencari parameter terbaik
-    def objective(trial):
-        # Batasan ruang pencarian parameter
-        a = trial.suggest_float('alpha', 0.5, 3.0)
-        b = trial.suggest_float('beta', 1.0, 5.0)
-        e = trial.suggest_float('evap_rate', 0.1, 0.9)
-
-        # Iterasi kecil untuk proses evaluasi agar cepat
-        aco_tune = AntColonyVRP(
-            instance_data=instance_data,
-            num_ants=10,       
-            iterations=15,     
-            alpha=a,         
-            beta=b,          
-            evap_rate=e,     
-            q=1000             
-        )
-        
-        _, details = aco_tune.run()
-        return details["total_distance_km"]
-
-    # Eksekusi pencarian Optuna
-    study = optuna.create_study(direction="minimize")
-    study.optimize(objective, n_trials=15) # Mencoba 15 kombinasi
-
-    best_params = study.best_params
-    print(f"      [Tuned] Params terbaik: Alpha={round(best_params['alpha'], 2)}, Beta={round(best_params['beta'], 2)}, Evap={round(best_params['evap_rate'], 2)}")
-    
-    # Menjalankan ACO final secara penuh dengan parameter terbaik hasil tuning
-    aco_final = AntColonyVRP(
+    aco = AntColonyVRP(
         instance_data=instance_data,
-        num_ants=25,       # Jumlah semut dinaikkan untuk hasil final
-        iterations=50,     # Jumlah iterasi dinaikkan untuk konvergensi maksimal
-        alpha=best_params['alpha'],
-        beta=best_params['beta'],
-        evap_rate=best_params['evap_rate'],
-        q=1000
+        num_ants=25,
+        iterations=50,
+        alpha=1.0,
+        beta=2.0,
+        evap_rate=0.5,
+        q=1000,
     )
-    
-    _, final_details = aco_final.run()
-    return final_details
+    _, details = aco.run()
+    return details
 
 if __name__ == "__main__":
     import time # Pastikan modul time di-import
