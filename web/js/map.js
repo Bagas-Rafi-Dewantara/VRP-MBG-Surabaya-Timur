@@ -269,8 +269,11 @@ function updateRouteDetail(sppgFilter, algData) {
                 <span class="route-step-icon">🏁</span>
                 <div class="route-step-info">
                     <div class="route-step-name">Kembali ke SPPG</div>
-                    <div class="route-step-meta">Tiba: ${step.arrival_time}</div>
+                    <div class="route-step-meta"></div>
                 </div>`;
+            div.querySelector('.route-step-meta').textContent = step.finish_time
+                ? `Tiba: ${step.arrival_time} · Selesai bongkar: ${step.finish_time}`
+                : `Tiba: ${step.arrival_time}`;
         }
 
         content.appendChild(div);
