@@ -147,4 +147,85 @@ function renderHistoryTab() {
         card.append(header, bestBadge, tableWrapper);
         container.appendChild(card);
     });
+
+    // ── Convergence chart ────────────────────────────────────────────
+    _renderConvergenceChart(data);
+}
+
+let _convChart = null;
+
+function _renderConvergenceChart(data) {
+    const section = document.getElementById('convergence-section');
+    if (!section) return;
+
+    const ALG_COLORS = {
+        sa:  { border: '#3b82f6', bg: 'rgba(59,130,246,0.12)' },
+        ga:  { border: '#10b981', bg: 'rgba(16,185,129,0.12)' },
+        pso: { border: '#f59e0b', bg: 'rgba(245,158,11,0.12)' },
+        aco: { border: '#8b5cf6', bg: 'rgba(139,92,246,0.12)' },
+    };
+
+    // Build unified x-axis length (max across algorithms)
+    const maxLen = Math.max(...Object.values(data.algorithms).map(a => (a.convergence_average || []).length));
+    if (maxLen === 0) { section.style.display = 'none'; return; }
+    section.style.display = '';
+
+    const labels = Array.from({ length: maxLen }, (_, i) => i + 1);
+
+    const datasets = ['sa', 'ga', 'pso', 'aco'].map(key => {
+        const alg = data.algorithms[key];
+        if (!alg || !alg.convergence_average) return null;
+        const c = ALG_COLORS[key];
+        // Pad shorter curves with last value
+        const curve = [...alg.convergence_average];
+        while (curve.length < maxLen) curve.push(curve[curve.length - 1]);
+        return {
+            label: algorithmMeta[key].name,
+            data: curve,
+            borderColor: c.border,
+            backgroundColor: c.bg,
+            borderWidth: 2,
+            pointRadius: 0,
+            tension: 0.3,
+            fill: false,
+        };
+    }).filter(Boolean);
+
+    const canvas = document.getElementById('chart-convergence');
+    if (!canvas) return;
+
+    if (_convChart) { _convChart.destroy(); _convChart = null; }
+
+    _convChart = new Chart(canvas, {
+        type: 'line',
+        data: { labels, datasets },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: {
+                    labels: { color: '#7b9bc8', font: { size: 12 } }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)} km`
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: 'Iterasi', color: '#4a6080' },
+                    ticks: { color: '#4a6080', maxTicksLimit: 10 },
+                    grid:  { color: 'rgba(99,147,255,0.07)' },
+                },
+                y: {
+                    title: { display: true, text: 'Total Jarak (km)', color: '#4a6080' },
+                    ticks: { color: '#4a6080' },
+                    grid:  { color: 'rgba(99,147,255,0.07)' },
+                }
+            }
+        }
+    });
 }

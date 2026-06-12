@@ -784,3 +784,22 @@ select:disabled { opacity: 0.4; cursor: not-allowed; }
     font-family: monospace;
     font-size: 0.8rem;
 }
+
+/* ── Convergence chart section ─────────────────────────────────────────── */
+.convergence-section {
+    margin-top: 1rem;
+}
+
+.convergence-section .chart-card {
+    border-top: 3px solid var(--accent-blue);
+}
+
+.convergence-section .chart-card-header h3 {
+    font-size: 0.95rem;
+}
+
+.convergence-section .chart-card-header p {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}

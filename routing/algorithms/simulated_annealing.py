@@ -53,26 +53,27 @@ class SimulatedAnnealingVRP:
         best_fitness = current_fitness
         
         if self.num_schools < 2:
-            return best_sol, best_eval
+            return best_sol, best_eval, []
             
         temp = self.initial_temp
-        
+        convergence = []
+
         # 2. Looping SA
         while temp > self.stopping_temp:
             for _ in range(self.max_iter_per_temp):
                 neighbor_sol = self.get_neighbor(current_sol)
-                
+
                 # TAMBAHKAN PARAMETER sppg_name DI UJUNG SINI JUGA
                 neighbor_eval = evaluate_solution(neighbor_sol, self.schools, self.distance_matrix, self.time_matrix, self.config, sppg_name=self.instance["sppg_name"])
                 neighbor_fitness = neighbor_eval["fitness"]
-                
+
                 delta_energy = neighbor_fitness - current_fitness
-                
+
                 if delta_energy < 0:
                     current_sol = neighbor_sol
                     current_fitness = neighbor_fitness
                     current_eval = neighbor_eval
-                    
+
                     if neighbor_fitness < best_fitness:
                         best_sol = neighbor_sol.copy()
                         best_fitness = neighbor_fitness
@@ -83,10 +84,11 @@ class SimulatedAnnealingVRP:
                         current_sol = neighbor_sol
                         current_fitness = neighbor_fitness
                         current_eval = neighbor_eval
-            
+
             temp *= self.cooling_rate
-            
-        return best_sol, best_eval
+            convergence.append(best_eval["total_distance_km"])
+
+        return best_sol, best_eval, convergence
 
 def run_optimization(instance_data):
     """
@@ -100,7 +102,8 @@ def run_optimization(instance_data):
         max_iter_per_temp=1,
         stopping_temp=0.5
     )
-    best_seq, details = sa.run()
+    best_seq, details, convergence = sa.run()
+    details["convergence"] = convergence
     return details
 
 if __name__ == "__main__":

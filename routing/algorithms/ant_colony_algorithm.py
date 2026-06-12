@@ -34,7 +34,7 @@ class AntColonyVRP:
         if self.num_schools < 2:
             best_sol = [0] if self.num_schools == 1 else []
             best_eval = evaluate_solution(best_sol, self.schools, self.distance_matrix, self.time_matrix, self.config, sppg_name=self.instance["sppg_name"])
-            return best_sol, best_eval
+            return best_sol, best_eval, []
 
         # 2. Inisialisasi Pheromone (Tau) dan Visibilitas (Eta) secara linier
         pheromone = [[1.0 for _ in range(self.num_schools)] for _ in range(self.num_schools)]
@@ -59,6 +59,7 @@ class AntColonyVRP:
         best_sol = []
         best_eval = None
         best_fitness = float('inf')
+        convergence = []
 
         # 3. Looping Utama ACO
         for _ in range(self.iterations):
@@ -123,7 +124,9 @@ class AntColonyVRP:
                     ke = seq[step + 1]
                     pheromone[dari][ke] += deposit
 
-        return best_sol, best_eval
+            convergence.append(best_eval["total_distance_km"])
+
+        return best_sol, best_eval, convergence
 
 def run_optimization(instance_data):
     aco = AntColonyVRP(
@@ -135,7 +138,8 @@ def run_optimization(instance_data):
         evap_rate=0.5,
         q=1000,
     )
-    _, details = aco.run()
+    _, details, convergence = aco.run()
+    details["convergence"] = convergence
     return details
 
 if __name__ == "__main__":

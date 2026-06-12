@@ -81,15 +81,15 @@ class ParticleSwarmOptimizationVRP:
         self.c2          = c2
         self.patience    = patience
 
-    def run(self) -> dict:
+    def run(self):
         if self.n == 0:
             return evaluate_solution(
                 [], self.instance["schools"], self.instance["distance_matrix"],
                 self.instance["time_matrix"], self.instance["constraints"],
                 sppg_name=self.instance["sppg_name"],
-            )
+            ), []
         if self.n == 1:
-            return _fitness([0], self.instance)
+            return _fitness([0], self.instance), []
 
         swarm = [PSOParticle(self.n) for _ in range(self.n_particles)]
 
@@ -108,6 +108,7 @@ class ParticleSwarmOptimizationVRP:
                 gbest_eval     = eval_result
 
         no_improve = 0
+        convergence = []
 
         for _ in range(self.max_iter):
             prev_gbest = gbest_fitness
@@ -139,6 +140,8 @@ class ParticleSwarmOptimizationVRP:
                     gbest_position = particle.position.copy()
                     gbest_eval     = eval_result
 
+            convergence.append(gbest_eval["total_distance_km"])
+
             if gbest_fitness < prev_gbest:
                 no_improve = 0
             else:
@@ -146,11 +149,11 @@ class ParticleSwarmOptimizationVRP:
                 if no_improve >= self.patience:
                     break
 
-        return gbest_eval
+        return gbest_eval, convergence
 
 
 def run_optimization(instance_data: dict) -> dict:
-    return ParticleSwarmOptimizationVRP(
+    result, convergence = ParticleSwarmOptimizationVRP(
         instance_data=instance_data,
         n_particles=20,
         max_iter=50,
@@ -159,6 +162,8 @@ def run_optimization(instance_data: dict) -> dict:
         c2=1.5,
         patience=50,
     ).run()
+    result["convergence"] = convergence
+    return result
 
 
 if __name__ == "__main__":

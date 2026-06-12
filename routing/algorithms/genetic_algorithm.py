@@ -68,9 +68,9 @@ class GeneticAlgorithmVRP:
         if self.n == 0:
             return evaluate_solution([], self.instance["schools"], self.instance["distance_matrix"],
                                      self.instance["time_matrix"], self.instance["constraints"],
-                                     sppg_name=self.instance["sppg_name"])
+                                     sppg_name=self.instance["sppg_name"]), []
         if self.n == 1:
-            return _fitness([0], self.instance)
+            return _fitness([0], self.instance), []
 
         population = [list(range(self.n)) for _ in range(self.population_size)]
         for chrom in population:
@@ -84,6 +84,7 @@ class GeneticAlgorithmVRP:
         best_eval = _fitness(best_seq, self.instance)
 
         no_improve = 0
+        convergence = []
 
         for _ in range(self.max_generations):
             elite_indices = sorted(range(self.population_size), key=lambda i: fitnesses[i])[:self.elite_size]
@@ -115,9 +116,12 @@ class GeneticAlgorithmVRP:
             else:
                 no_improve += 1
                 if no_improve >= self.patience:
+                    convergence.append(best_eval["total_distance_km"])
                     break
 
-        return best_eval
+            convergence.append(best_eval["total_distance_km"])
+
+        return best_eval, convergence
 
 
 def run_optimization(instance_data):
@@ -131,7 +135,9 @@ def run_optimization(instance_data):
         elite_size=2,
         patience=50,
     )
-    return ga.run()
+    result, convergence = ga.run()
+    result["convergence"] = convergence
+    return result
 
 
 if __name__ == "__main__":

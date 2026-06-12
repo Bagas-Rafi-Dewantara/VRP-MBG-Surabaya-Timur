@@ -47,13 +47,28 @@ def build_route_order(sppg_name, route, depot, schools):
     return ro
 
 
+def _aggregate_convergence(per_sppg_curves):
+    """Sum convergence across all SPPGs per iteration step (total distance curve)."""
+    if not per_sppg_curves:
+        return []
+    max_len = max((len(c) for c in per_sppg_curves), default=0)
+    if max_len == 0:
+        return []
+    totals = []
+    for i in range(max_len):
+        step_sum = sum(c[i] if i < len(c) else c[-1] for c in per_sppg_curves if c)
+        totals.append(round(step_sum, 4))
+    return totals
+
+
 def run_once(alg_name, run_fn, instances, run_number):
-    """Jalankan satu algoritma pada semua instance, kembalikan metrik & data rute lengkap."""
+    """Jalankan satu algoritma pada semua instance, kembalikan metrik, rute lengkap, dan convergence."""
     all_times = []
     total_distance = 0.0
     total_runtime = 0.0
     feasible = True
     results_per_sppg = []
+    per_sppg_convergence = []
 
     for instance_data in instances:
         sppg_name = instance_data["sppg_name"]
@@ -67,6 +82,11 @@ def run_once(alg_name, run_fn, instances, run_number):
         total_runtime += runtime
         if not details["is_feasible"]:
             feasible = False
+
+        conv = details.get("convergence", [])
+        if not conv:
+            conv = [details["total_distance_km"]]
+        per_sppg_convergence.append(conv)
 
         route_order = build_route_order(
             sppg_name, rute["route"],
@@ -92,7 +112,8 @@ def run_once(alg_name, run_fn, instances, run_number):
         "runtime_seconds": round(total_runtime, 2),
         "feasible": feasible,
     }
-    return summary, results_per_sppg
+    convergence_total = _aggregate_convergence(per_sppg_convergence)
+    return summary, results_per_sppg, convergence_total
 
 
 def save_best_alg_json(alg_key, alg_name, best_summary, best_sppg):
@@ -144,14 +165,16 @@ def main():
         runs_summary = []
         best_summary = None
         best_sppg = None
+        all_convergences = []
 
         for r in range(1, N_RUNS + 1):
             print(f"  Run {r}/{N_RUNS}...", end=" ", flush=True)
-            summary, sppg_data = run_once(alg_key, run_fn, instances, r)
+            summary, sppg_data, conv_total = run_once(alg_key, run_fn, instances, r)
             runs_summary.append(summary)
+            all_convergences.append(conv_total)
 
             print(f"{summary['total_distance_km']:.2f} km | "
-                  f"{summary['total_time_minutes']:.1f} mnt | "
+                  f"{summary['total_time_minutes']:.2f} mnt | "
                   f"{summary['runtime_seconds']:.2f} dtk | "
                   f"{'OK' if summary['feasible'] else 'INFEASIBLE'}")
 
@@ -169,11 +192,20 @@ def main():
             "runtime_seconds":   round(sum(runtimes) / N_RUNS, 2),
         }
 
+        # Average convergence curve across all 10 runs
+        max_len = max((len(c) for c in all_convergences if c), default=0)
+        conv_avg = []
+        for i in range(max_len):
+            vals = [c[i] if i < len(c) else c[-1] for c in all_convergences if c]
+            conv_avg.append(round(sum(vals) / len(vals), 4))
+
         history["algorithms"][alg_key] = {
             "name": alg_name,
             "runs": runs_summary,
             "best": best_summary,
             "average": average,
+            "convergence_per_run": all_convergences,
+            "convergence_average": conv_avg,
         }
 
         print(f"  Best : {best_summary['total_distance_km']:.2f} km (run #{best_summary['run']})")

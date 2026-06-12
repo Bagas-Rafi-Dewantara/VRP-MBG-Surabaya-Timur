@@ -189,6 +189,19 @@
                     </div>
                 </div>
                 <div id="history-content" class="history-grid"></div>
+
+                <!-- Convergence chart -->
+                <div id="convergence-section" class="convergence-section" style="display:none">
+                    <div class="chart-card" style="margin:0 1.25rem 1.5rem">
+                        <div class="chart-card-header">
+                            <h3>Grafik Konvergensi <span class="unit-badge">rata-rata 10 run</span></h3>
+                            <p>Total jarak semua SPPG (km) per iterasi — menunjukkan seberapa cepat tiap algoritma menemukan solusi optimal.</p>
+                        </div>
+                        <div class="chart-wrapper" style="height:280px">
+                            <canvas id="chart-convergence"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- TAB: Table -->
