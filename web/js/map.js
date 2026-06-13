@@ -2,6 +2,9 @@ let map = null;
 let routeLayerGroup = null;
 let currentAlgData = null;
 
+let currentTheme = "dark";
+let currentBaseLayer = null;
+
 const CLUSTER_PALETTE = [
     '#3b82f6','#10b981','#f59e0b','#8b5cf6','#ec4899',
     '#14b8a6','#f97316','#06b6d4','#84cc16','#a855f7',
@@ -22,20 +25,57 @@ function makeCircleIcon(color, size = 12, pulse = false) {
     });
 }
 
+function createBaseLayer(theme) {
+
+    return L.tileLayer(
+        theme === "dark"
+            ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+        {
+            attribution: "© OpenStreetMap © CARTO",
+            subdomains: "abcd",
+            maxZoom: 20
+        }
+    );
+
+}
+
 function initMap() {
-    map = L.map('map', {
+
+    map = L.map("map", {
         center: [-7.29, 112.77],
         zoom: 13,
-        zoomControl: true,
+        zoomControl: true
     });
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap © CARTO',
-        subdomains: 'abcd',
-        maxZoom: 20,
-    }).addTo(map);
+    currentBaseLayer =
+        createBaseLayer("dark");
 
-    routeLayerGroup = L.layerGroup().addTo(map);
+    currentBaseLayer.addTo(map);
+
+    routeLayerGroup =
+        L.layerGroup().addTo(map);
+
+}
+
+function toggleMapTheme() {
+
+    console.log("BEFORE:", currentTheme);
+
+    if (currentBaseLayer) {
+        map.removeLayer(currentBaseLayer);
+    }
+
+    currentTheme =
+        currentTheme === "dark"
+            ? "light"
+            : "dark";
+
+    currentBaseLayer =
+        createBaseLayer(currentTheme);
+
+    currentBaseLayer.addTo(map);
+
 }
 
 /**
@@ -103,7 +143,7 @@ function updateMap(algData, sppgFilter) {
             {
                 icon: makeCircleIcon(
                     "#f43f5e",
-                    14,
+                    18,
                     true
                 )
             }
@@ -130,7 +170,7 @@ function updateMap(algData, sppgFilter) {
                     {
                         icon: makeCircleIcon(
                             color,
-                            9
+                            12
                         )
                     }
                 )
@@ -170,16 +210,21 @@ function updateMap(algData, sppgFilter) {
                     ]
                 );
 
-            const polyline =
-                L.polyline(
-                    latlngs,
-                    {
-                        color,
-                        weight: 4,
-                        opacity: 0.9
-                    }
-                )
-                .addTo(routeLayerGroup);
+            L.polyline(
+                latlngs,
+                {
+                    color: "#ffffff",
+                    weight: 10,
+                    opacity: 0.25
+                }
+            ).addTo(routeLayerGroup);
+
+            const polyline = L.polyline(latlngs, {
+                color,
+                weight: 4,
+                opacity: 0.9,
+                className: "animated-route"
+            }).addTo(routeLayerGroup);
 
             polyline.bindTooltip(
                 `<strong>${shortName}</strong><br>${schoolCount} sekolah · ${sppgData.distance_km.toFixed(2)} km`
@@ -276,3 +321,26 @@ function updateRouteDetail(sppgFilter, algData) {
         content.appendChild(div);
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const toggle =
+        document.getElementById("theme-toggle-btn");
+
+    const label =
+        document.getElementById("theme-label");
+
+    if (!toggle) return;
+
+    toggle.addEventListener("change", () => {
+
+        toggleMapTheme();
+
+        label.innerHTML =
+            currentTheme === "dark"
+                ? "🌙 Dark"
+                : "☀️ Light";
+
+    });
+
+});

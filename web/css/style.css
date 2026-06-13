@@ -657,3 +657,65 @@ select:disabled { opacity: 0.4; cursor: not-allowed; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+
+.theme-switch-container{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.switch{
+    position:relative;
+    display:inline-block;
+    width:52px;
+    height:28px;
+}
+
+.switch input{
+    opacity:0;
+    width:0;
+    height:0;
+}
+
+.slider{
+    position:absolute;
+    cursor:pointer;
+    inset:0;
+    background:#334155;
+    transition:.3s;
+    border-radius:999px;
+}
+
+.slider:before{
+    content:"";
+    position:absolute;
+    width:22px;
+    height:22px;
+    left:3px;
+    top:3px;
+    background:white;
+    border-radius:50%;
+    transition:.3s;
+}
+
+input:checked + .slider{
+    background:#3b82f6;
+}
+
+input:checked + .slider:before{
+    transform:translateX(24px);
+}
+
+.leaflet-interactive.animated-route {
+    stroke-dasharray: 12 8;
+    animation: dashMove 1s linear infinite;
+}
+
+@keyframes dashMove {
+    from {
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dashoffset: -20;
+    }
+}

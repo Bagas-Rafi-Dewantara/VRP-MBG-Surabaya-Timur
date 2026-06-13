@@ -167,6 +167,23 @@ function _updateBarChart(id, labels, values, algKeys, selectedAlg, tooltipFmt, m
         }],
     };
 
+    const minVal = Math.min(...values);
+    const maxVal = Math.max(...values);
+
+    chart.options.scales.y = {
+        beginAtZero: false,
+        min: Math.floor(minVal - 1),
+        max: Math.ceil(maxVal + 1),
+
+        grid: {
+            color: 'rgba(255,255,255,0.04)'
+        },
+
+        ticks: {
+            color: '#7b9bc8'
+        }
+    };
+
     chart.options.plugins.tooltip = {
         ...commonBarOptions.plugins.tooltip,
         callbacks: {
