@@ -1,252 +1,336 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard VRP MBG Surabaya Timur</title>
-    <meta name="description" content="Dashboard visualisasi dan komparasi algoritma optimasi rute distribusi Makan Bergizi Gratis di Surabaya Timur">
+    <meta
+      name="description"
+      content="Dashboard visualisasi dan komparasi algoritma optimasi rute distribusi Makan Bergizi Gratis di Surabaya Timur"
+    />
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800;900&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H"
-          crossorigin="anonymous"/>
-    
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H"
+      crossorigin="anonymous"
+    />
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <!-- Header -->
     <header class="app-header">
-        <div class="header-left">
-            <span class="header-icon">🍱</span>
-            <div>
-                <h1 class="header-title">VRP MBG Surabaya Timur</h1>
-                <p class="header-subtitle">Optimasi Rute Distribusi Makan Bergizi Gratis — 85 Sekolah, 47 SPPG</p>
-            </div>
+      <div class="header-left">
+        <span class="header-icon">🍱</span>
+        <div>
+          <h1 class="header-title">VRP MBG Surabaya Timur</h1>
+          <p class="header-subtitle">
+            Optimasi Rute Distribusi Makan Bergizi Gratis — 85 Sekolah, 47 SPPG
+          </p>
         </div>
-        <div class="header-right">
-            <div class="algo-tabs" id="algo-tabs">
-                <!-- Diisi oleh JS -->
-            </div>
+      </div>
+      <div class="header-right">
+        <div class="algo-tabs" id="algo-tabs">
+          <!-- Diisi oleh JS -->
         </div>
+          <button
+          id="theme-toggle"
+          class="theme-toggle-btn"
+          title="Toggle light/dark mode"
+        >
+          🌙
+        </button>
+      </div>
     </header>
 
     <!-- Main Layout -->
     <div class="app-body">
-
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <section class="sidebar-section">
-                <h3 class="sidebar-section-title">📊 Ringkasan Global</h3>
-                <div id="summary-cards" class="summary-grid">
-                    <div class="summary-card">
-                        <div class="summary-icon">🛣️</div>
-                        <div class="summary-info">
-                            <span class="summary-label">Total Jarak</span>
-                            <span class="summary-value" id="val-distance">—</span>
-                            <span class="summary-unit">kilometer</span>
-                        </div>
-                    </div>
-                    <div class="summary-card">
-                        <div class="summary-icon">⏱️</div>
-                        <div class="summary-info">
-                            <span class="summary-label">Waktu Operasional Terlama</span>
-                            <span class="summary-value" id="val-time">—</span>
-                            <span class="summary-unit">menit (1 SPPG)</span>
-                        </div>
-                    </div>
-                    <div class="summary-card">
-                        <div class="summary-icon">🚚</div>
-                        <div class="summary-info">
-                            <span class="summary-label">Total Mobil / SPPG</span>
-                            <span class="summary-value" id="val-vehicles">—</span>
-                            <span class="summary-unit">unit</span>
-                        </div>
-                    </div>
-                    <div class="summary-card">
-                        <div class="summary-icon">✅</div>
-                        <div class="summary-info">
-                            <span class="summary-label">Status Feasible</span>
-                            <span class="summary-value" id="val-feasible">—</span>
-                            <span class="summary-unit">semua rute ≤ 180 menit</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="sidebar-section">
-                <h3 class="sidebar-section-title">🔍 Filter Rute per SPPG</h3>
-                <p class="sidebar-hint">Pilih SPPG untuk melihat detail rute pada peta</p>
-                <div class="select-wrapper">
-                    <select id="sppg-select" disabled>
-                        <option value="all">Semua Cluster SPPG</option>
-                    </select>
-                </div>
-            </section>
-
-            <section class="sidebar-section" id="route-detail-panel" style="display:none;">
-                <h3 class="sidebar-section-title">🗺️ Detail Rute</h3>
-                <div id="route-detail-content"></div>
-            </section>
-
-            <section class="sidebar-section">
-                <h3 class="sidebar-section-title">ℹ️ Keterangan Peta</h3>
-                <div class="legend-list">
-                    <div class="legend-row"><span class="legend-dot depot"></span><span>SPPG (Titik Depot)</span></div>
-                    <div class="legend-row"><span class="legend-dot school"></span><span>Sekolah (Tujuan)</span></div>
-                    <div class="legend-row"><span class="legend-dot refill"></span><span>Titik Refill Muatan</span></div>
-                    <div class="legend-row"><span class="legend-line"></span><span>Jalur Rute Pengiriman</span></div>
-                </div>
-            </section>
-        </aside>
-
-        <!-- MAIN CONTENT -->
-        <main class="main-content">
-
-            <!-- TAB NAVIGATION -->
-            <nav class="tab-nav">
-                <button class="tab-btn active" data-tab="map-tab" id="btn-map">🗺️ Visualisasi Rute</button>
-                <button class="tab-btn" data-tab="compare-tab" id="btn-compare">📈 Komparasi Algoritma</button>
-                <button class="tab-btn" data-tab="table-tab" id="btn-table">📋 Detail per SPPG</button>
-                <button class="tab-btn" data-tab="history-tab" id="btn-history">📜 History Eksperimen</button>
-            </nav>
-
-            <!-- TAB: Map -->
-            <div class="tab-panel active" id="map-tab">
-                <div class="panel-header">
-                    <div>
-                        <h2 class="panel-title">Peta Rute Distribusi</h2>
-                        <p class="panel-desc">Setiap warna mewakili satu cluster SPPG. Klik pada rute atau marker untuk detail.</p>
-                    </div>
-                </div>
-                <div id="map" class="map-container"></div>
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <section class="sidebar-section">
+          <h3 class="sidebar-section-title">📊 Ringkasan Global</h3>
+          <div id="summary-cards" class="summary-grid">
+            <div class="summary-card">
+              <div class="summary-icon">🛣️</div>
+              <div class="summary-info">
+                <span class="summary-label">Total Jarak</span>
+                <span class="summary-value" id="val-distance">—</span>
+                <span class="summary-unit">kilometer</span>
+              </div>
             </div>
-
-            <!-- TAB: Compare -->
-            <div class="tab-panel" id="compare-tab">
-                <div class="panel-header">
-                    <div>
-                        <h2 class="panel-title">Komparasi Performa Algoritma</h2>
-                        <p class="panel-desc">Perbandingan SA, GA, PSO, dan ACO berdasarkan metrik utama optimasi.</p>
-                    </div>
-                </div>
-
-                <!-- Comparison Header Cards -->
-                <div class="compare-cards" id="compare-cards">
-                    <!-- Diisi oleh JS -->
-                </div>
-
-                <!-- Charts Grid -->
-                <div class="charts-grid">
-                    <div class="chart-card">
-                        <div class="chart-card-header">
-                            <h3>Total Jarak Tempuh <span class="unit-badge">km</span></h3>
-                            <p>Jumlah total jarak yang ditempuh semua mobil dari semua SPPG. Semakin kecil semakin baik.</p>
-                        </div>
-                        <div class="chart-wrapper">
-                            <canvas id="chart-distance"></canvas>
-                        </div>
-                    </div>
-                    <div class="chart-card">
-                        <div class="chart-card-header">
-                            <h3>Waktu Operasional Terlama <span class="unit-badge">menit</span></h3>
-                            <p>Durasi operasional terlama dari seluruh SPPG. Batas maksimal adalah <strong>180 menit</strong>.</p>
-                        </div>
-                        <div class="chart-wrapper">
-                            <canvas id="chart-time"></canvas>
-                        </div>
-                    </div>
-                    <div class="chart-card">
-                        <div class="chart-card-header">
-                            <h3>Runtime Algoritma <span class="unit-badge">detik</span></h3>
-                            <p>Waktu komputasi yang dibutuhkan algoritma untuk menyelesaikan semua 47 cluster.</p>
-                        </div>
-                        <div class="chart-wrapper">
-                            <canvas id="chart-runtime"></canvas>
-                        </div>
-                    </div>
-                    <div class="chart-card">
-                        <div class="chart-card-header">
-                            <h3>Distribusi Jarak per SPPG <span class="unit-badge">km</span></h3>
-                            <p>Sebaran jarak tiap cluster SPPG untuk algoritma yang sedang dipilih.</p>
-                        </div>
-                        <div class="chart-wrapper">
-                            <canvas id="chart-dist-per-sppg"></canvas>
-                        </div>
-                    </div>
-                </div>
+            <div class="summary-card">
+              <div class="summary-icon">⏱️</div>
+              <div class="summary-info">
+                <span class="summary-label">Waktu Operasional Terlama</span>
+                <span class="summary-value" id="val-time">—</span>
+                <span class="summary-unit">menit (1 SPPG)</span>
+              </div>
             </div>
-
-            <!-- TAB: History -->
-            <div class="tab-panel" id="history-tab">
-                <div class="panel-header">
-                    <div>
-                        <h2 class="panel-title">History Eksperimen</h2>
-                        <p class="panel-desc" id="history-meta">—</p>
-                    </div>
-                </div>
-                <div id="history-content" class="history-grid"></div>
-
-                <!-- Convergence chart -->
-                <div id="convergence-section" class="convergence-section" style="display:none">
-                    <div class="chart-card" style="margin:0 1.25rem 1.5rem">
-                        <div class="chart-card-header">
-                            <h3>Grafik Konvergensi <span class="unit-badge">rata-rata 10 run</span></h3>
-                            <p>Total jarak semua SPPG (km) per iterasi — menunjukkan seberapa cepat tiap algoritma menemukan solusi optimal.</p>
-                        </div>
-                        <div class="chart-wrapper" style="height:280px">
-                            <canvas id="chart-convergence"></canvas>
-                        </div>
-                    </div>
-                </div>
+            <div class="summary-card">
+              <div class="summary-icon">🚚</div>
+              <div class="summary-info">
+                <span class="summary-label">Total Mobil / SPPG</span>
+                <span class="summary-value" id="val-vehicles">—</span>
+                <span class="summary-unit">unit</span>
+              </div>
             </div>
-
-            <!-- TAB: Table -->
-            <div class="tab-panel" id="table-tab">
-                <div class="panel-header">
-                    <div>
-                        <h2 class="panel-title">Detail Hasil per SPPG</h2>
-                        <p class="panel-desc">Tabel lengkap hasil optimasi rute untuk setiap cluster SPPG.</p>
-                    </div>
-                    <div class="table-controls">
-                        <input type="text" id="table-search" placeholder="Cari nama SPPG..." class="search-input">
-                    </div>
-                </div>
-                <div class="table-wrapper">
-                    <table id="sppg-table" class="data-table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Nama SPPG</th>
-                                <th>Jarak (km) ↑</th>
-                                <th>Waktu (menit) ↑</th>
-                                <th>Berangkat</th>
-                                <th>Kembali</th>
-                                <th>Jumlah Sekolah</th>
-                                <th>Ada Refill</th>
-                                <th>Feasible</th>
-                            </tr>
-                        </thead>
-                        <tbody id="sppg-table-body">
-                        </tbody>
-                    </table>
-                </div>
+            <div class="summary-card">
+              <div class="summary-icon">✅</div>
+              <div class="summary-info">
+                <span class="summary-label">Status Feasible</span>
+                <span class="summary-value" id="val-feasible">—</span>
+                <span class="summary-unit">semua rute ≤ 180 menit</span>
+              </div>
             </div>
+          </div>
+        </section>
 
-        </main>
+        <section class="sidebar-section">
+          <h3 class="sidebar-section-title">🔍 Filter Rute per SPPG</h3>
+          <p class="sidebar-hint">
+            Pilih SPPG untuk melihat detail rute pada peta
+          </p>
+          <div class="select-wrapper">
+            <select id="sppg-select" disabled>
+              <option value="all">Semua Cluster SPPG</option>
+            </select>
+          </div>
+        </section>
+
+        <section
+          class="sidebar-section"
+          id="route-detail-panel"
+          style="display: none"
+        >
+          <h3 class="sidebar-section-title">🗺️ Detail Rute</h3>
+          <div id="route-detail-content"></div>
+        </section>
+
+        <section class="sidebar-section">
+          <h3 class="sidebar-section-title">ℹ️ Keterangan Peta</h3>
+          <div class="legend-list">
+            <div class="legend-row">
+              <span class="legend-dot depot"></span
+              ><span>SPPG (Titik Depot)</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-dot school"></span
+              ><span>Sekolah (Tujuan)</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-dot refill"></span
+              ><span>Titik Refill Muatan</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-line"></span
+              ><span>Jalur Rute Pengiriman</span>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <!-- TAB NAVIGATION -->
+        <nav class="tab-nav">
+          <button class="tab-btn active" data-tab="map-tab" id="btn-map">
+            🗺️ Visualisasi Rute
+          </button>
+          <button class="tab-btn" data-tab="compare-tab" id="btn-compare">
+            📈 Komparasi Algoritma
+          </button>
+          <button class="tab-btn" data-tab="table-tab" id="btn-table">
+            📋 Detail per SPPG
+          </button>
+          <button class="tab-btn" data-tab="history-tab" id="btn-history">
+            📜 History Eksperimen
+          </button>
+        </nav>
+
+        <!-- TAB: Map -->
+        <div class="tab-panel active" id="map-tab">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">Peta Rute Distribusi</h2>
+              <p class="panel-desc">
+                Setiap warna mewakili satu cluster SPPG. Klik pada rute atau
+                marker untuk detail.
+              </p>
+            </div>
+          </div>
+          <div id="map" class="map-container"></div>
+        </div>
+
+        <!-- TAB: Compare -->
+        <div class="tab-panel" id="compare-tab">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">Komparasi Performa Algoritma</h2>
+              <p class="panel-desc">
+                Perbandingan SA, GA, PSO, dan ACO berdasarkan metrik utama
+                optimasi.
+              </p>
+            </div>
+          </div>
+
+          <!-- Comparison Header Cards -->
+          <div class="compare-cards" id="compare-cards">
+            <!-- Diisi oleh JS -->
+          </div>
+
+          <!-- Charts Grid -->
+          <div class="charts-grid">
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>Total Jarak Tempuh <span class="unit-badge">km</span></h3>
+                <p>
+                  Jumlah total jarak yang ditempuh semua mobil dari semua SPPG.
+                  Semakin kecil semakin baik.
+                </p>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="chart-distance"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>
+                  Waktu Operasional Terlama
+                  <span class="unit-badge">menit</span>
+                </h3>
+                <p>
+                  Durasi operasional terlama dari seluruh SPPG. Batas maksimal
+                  adalah <strong>180 menit</strong>.
+                </p>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="chart-time"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>Runtime Algoritma <span class="unit-badge">detik</span></h3>
+                <p>
+                  Waktu komputasi yang dibutuhkan algoritma untuk menyelesaikan
+                  semua 47 cluster.
+                </p>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="chart-runtime"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>
+                  Distribusi Jarak per SPPG <span class="unit-badge">km</span>
+                </h3>
+                <p>
+                  Sebaran jarak tiap cluster SPPG untuk algoritma yang sedang
+                  dipilih.
+                </p>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="chart-dist-per-sppg"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: History -->
+        <div class="tab-panel" id="history-tab">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">History Eksperimen</h2>
+              <p class="panel-desc" id="history-meta">—</p>
+            </div>
+          </div>
+          <div id="history-content" class="history-grid"></div>
+
+          <!-- Convergence chart -->
+          <div
+            id="convergence-section"
+            class="convergence-section"
+            style="display: none"
+          >
+            <div class="chart-card" style="margin: 0 1.25rem 1.5rem">
+              <div class="chart-card-header">
+                <h3>
+                  Grafik Konvergensi
+                  <span class="unit-badge">rata-rata 10 run</span>
+                </h3>
+                <p>
+                  Total jarak semua SPPG (km) per iterasi — menunjukkan seberapa
+                  cepat tiap algoritma menemukan solusi optimal.
+                </p>
+              </div>
+              <div class="chart-wrapper" style="height: 280px">
+                <canvas id="chart-convergence"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Table -->
+        <div class="tab-panel" id="table-tab">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">Detail Hasil per SPPG</h2>
+              <p class="panel-desc">
+                Tabel lengkap hasil optimasi rute untuk setiap cluster SPPG.
+              </p>
+            </div>
+            <div class="table-controls">
+              <input
+                type="text"
+                id="table-search"
+                placeholder="Cari nama SPPG..."
+                class="search-input"
+              />
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table id="sppg-table" class="data-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nama SPPG</th>
+                  <th>Jarak (km) ↑</th>
+                  <th>Waktu (menit) ↑</th>
+                  <th>Berangkat</th>
+                  <th>Kembali</th>
+                  <th>Jumlah Sekolah</th>
+                  <th>Ada Refill</th>
+                  <th>Feasible</th>
+                </tr>
+              </thead>
+              <tbody id="sppg-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
     </div>
 
     <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-            integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH"
-            crossorigin="anonymous"></script>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH"
+      crossorigin="anonymous"
+    ></script>
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
-            integrity="sha384-e6nUZLBkQ86NJ6TVVKAeSaK8jWa3NhkYWZFomE39AvDbQWeie9PlQqM3pmYW5d1g"
-            crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
+      integrity="sha384-e6nUZLBkQ86NJ6TVVKAeSaK8jWa3NhkYWZFomE39AvDbQWeie9PlQqM3pmYW5d1g"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Custom Logic -->
     <script src="js/data_loader.js"></script>
@@ -254,5 +338,5 @@
     <script src="js/map.js"></script>
     <script src="js/history.js"></script>
     <script src="js/app.js"></script>
-</body>
+  </body>
 </html>
