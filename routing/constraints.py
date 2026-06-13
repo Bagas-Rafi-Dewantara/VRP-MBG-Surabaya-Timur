@@ -13,9 +13,9 @@ def minutes_to_time_str(base_time_str, minutes_added):
 def distance_to_minutes(distance_km):
     """
     Asumsi mobil boks:
-    25 km/jam
+    40 km/jam
     """
-    return (distance_km / 25) * 60
+    return (distance_km / 40) * 60
 
 
 # ==========================================
@@ -33,6 +33,8 @@ def evaluate_solution(
     max_cap = config["max_capacity"]
     max_time = config["max_time_minutes"]
     service_time = config["service_time_per_school"]
+    loading_in_time = config.get("loading_in_time", 20)
+    loading_out_time = config.get("loading_out_time", 20)
 
     remaining_demand = {
         i: schools[i]["demand"]
@@ -40,7 +42,7 @@ def evaluate_solution(
     }
 
     total_distance_global = 0.0
-    time_spent = 0.0
+    time_spent = loading_in_time  # muat barang di SPPG sebelum berangkat
 
     prev_matrix_idx = 0
     current_load = 0
@@ -78,20 +80,21 @@ def evaluate_solution(
                 total_distance_global += travel_dist_to_sppg
                 time_spent += travel_time_to_sppg
 
+                arrival_refill = time_spent
+                time_spent += loading_in_time  # muat ulang di SPPG
+
                 current_route_nodes.append({
                     "event": "REFILL",
                     "location": sppg_name,
                     "arrival_time": minutes_to_time_str(
                         "08:00",
-                        time_spent
+                        arrival_refill
                     ),
                     "departure_time": minutes_to_time_str(
                         "08:00",
-                        time_spent + 10
+                        time_spent
                     )
                 })
-
-                time_spent += 10
 
                 reload_count += 1
 
@@ -159,10 +162,17 @@ def evaluate_solution(
         total_distance_global += travel_dist_to_depot
         time_spent += travel_time_to_depot
 
+    arrival_depot = time_spent
+    time_spent += loading_out_time  # bongkar muatan di SPPG setelah kembali
+
     current_route_nodes.append({
         "event": "RETURN_DEPOT",
         "location": sppg_name,
         "arrival_time": minutes_to_time_str(
+            "08:00",
+            arrival_depot
+        ),
+        "finish_time": minutes_to_time_str(
             "08:00",
             time_spent
         )
@@ -210,7 +220,7 @@ def evaluate_solution(
             round(time_spent, 2),
 
         "departure_time":
-            "08:00",
+            minutes_to_time_str("08:00", loading_in_time),
 
         "return_time":
             minutes_to_time_str(

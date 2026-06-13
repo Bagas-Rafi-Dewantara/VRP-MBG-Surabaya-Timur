@@ -1,4 +1,5 @@
 const algorithmFiles = ['sa', 'ga', 'pso', 'aco'];
+let historyData = null;
 
 const algorithmMeta = {
     'sa':  { name: 'Simulated Annealing', abbr: 'SA',  cssClass: 'alg-sa',  tabClass: 'active-sa'  },
@@ -29,6 +30,24 @@ async function loadAllData() {
     });
     await Promise.all(promises);
     return routingData;
+}
+
+async function loadHistoryData() {
+    try {
+        const response = await fetch('../routing/results/history.json');
+        if (response.ok) {
+            historyData = await response.json();
+        } else {
+            console.warn('history.json not found — run routing/run_experiments.py first');
+        }
+    } catch (e) {
+        console.warn('Could not load history.json:', e);
+    }
+    return historyData;
+}
+
+function getHistoryData() {
+    return historyData;
 }
 
 function getAlgorithmData(alg) {

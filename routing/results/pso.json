@@ -1,8 +1,9 @@
 {
-    "algorithm": "Particle Swarm Optimization (Optuna Tuned)",
+    "algorithm": "Particle Swarm Opt.",
     "global_summary": {
         "total_distance_km": 438.46,
-        "total_time_minutes": 103.76,
+        "total_time_minutes": 125.48,
+        "total_algorithm_runtime_seconds": 1.23,
         "total_mobil": 47,
         "feasible": true
     },
@@ -10,476 +11,570 @@
         {
             "sppg": "SPPG Kota Surabaya Gubeng Baratajaya",
             "distance_km": 11.42,
-            "time_spent_minutes": 47.41,
-            "departure_time": "08:00",
-            "return_time": "08:47",
+            "time_spent_minutes": 77.13,
+            "departure_time": "08:20",
+            "return_time": "09:17",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.298931103836,
-                    112.758879574098
-                ],
-                [
-                    -7.2834351,
-                    112.7598779
-                ],
-                [
-                    -7.269058,
-                    112.7705012
-                ],
-                [
-                    -7.298931103836,
-                    112.758879574098
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Baratajaya",
+                    "lat": -7.298931103836,
+                    "lng": 112.758879574098
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kertajaya",
+                    "lat": -7.2834351,
+                    "lng": 112.7598779
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Mojo Vi Nomor 225",
+                    "lat": -7.269058,
+                    "lng": 112.7705012
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Baratajaya",
+                    "lat": -7.298931103836,
+                    "lng": 112.758879574098
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Kertajaya",
                     "drop_tray": 421,
-                    "arrival_time": "08:05",
-                    "departure_time": "08:15"
-                },
-                {
-                    "school": "Sd Negeri Mojo Vi Nomor 225",
-                    "drop_tray": 418,
                     "arrival_time": "08:23",
                     "departure_time": "08:33"
                 },
                 {
+                    "school": "Sd Negeri Mojo Vi Nomor 225",
+                    "drop_tray": 418,
+                    "arrival_time": "08:38",
+                    "departure_time": "08:48"
+                },
+                {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Gubeng Baratajaya",
-                    "arrival_time": "08:47"
+                    "arrival_time": "08:57",
+                    "finish_time": "09:17"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Baratajaya 2",
             "distance_km": 8.25,
-            "time_spent_minutes": 39.81,
-            "departure_time": "08:00",
-            "return_time": "08:39",
+            "time_spent_minutes": 72.38,
+            "departure_time": "08:20",
+            "return_time": "09:12",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.2943,
-                    112.7602
-                ],
-                [
-                    -7.2832467,
-                    112.7518648
-                ],
-                [
-                    -7.269412,
-                    112.7535019
-                ],
-                [
-                    -7.2943,
-                    112.7602
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Baratajaya 2",
+                    "lat": -7.2943,
+                    "lng": 112.7602
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kertajaya Iv",
+                    "lat": -7.2832467,
+                    "lng": 112.7518648
+                },
+                {
+                    "type": "school",
+                    "name": "Sekolah Dasar Negeri Gubeng Iii - 206",
+                    "lat": -7.269412,
+                    "lng": 112.7535019
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Baratajaya 2",
+                    "lat": -7.2943,
+                    "lng": 112.7602
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Kertajaya Iv",
                     "drop_tray": 442,
-                    "arrival_time": "08:05",
-                    "departure_time": "08:15"
+                    "arrival_time": "08:23",
+                    "departure_time": "08:33"
                 },
                 {
                     "school": "Sekolah Dasar Negeri Gubeng Iii - 206",
                     "drop_tray": 402,
-                    "arrival_time": "08:20",
-                    "departure_time": "08:30"
+                    "arrival_time": "08:36",
+                    "departure_time": "08:46"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Gubeng Baratajaya 2",
-                    "arrival_time": "08:39"
+                    "arrival_time": "08:52",
+                    "finish_time": "09:12"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Baratajaya 3",
             "distance_km": 7.54,
-            "time_spent_minutes": 38.09,
-            "departure_time": "08:00",
-            "return_time": "08:38",
+            "time_spent_minutes": 71.31,
+            "departure_time": "08:20",
+            "return_time": "09:11",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.2972536,
-                    112.758372
-                ],
-                [
-                    -7.2796928,
-                    112.7596454
-                ],
-                [
-                    -7.284033,
-                    112.7517944
-                ],
-                [
-                    -7.2972536,
-                    112.758372
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Baratajaya 3",
+                    "lat": -7.2972536,
+                    "lng": 112.758372
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kertajaya I Nomor 2017",
+                    "lat": -7.2796928,
+                    "lng": 112.7596454
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kertajaya Ix Nomor 215",
+                    "lat": -7.284033,
+                    "lng": 112.7517944
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Baratajaya 3",
+                    "lat": -7.2972536,
+                    "lng": 112.758372
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Kertajaya I Nomor 2017",
                     "drop_tray": 417,
-                    "arrival_time": "08:06",
-                    "departure_time": "08:16"
+                    "arrival_time": "08:24",
+                    "departure_time": "08:34"
                 },
                 {
                     "school": "Sd Negeri Kertajaya Ix Nomor 215",
                     "drop_tray": 424,
-                    "arrival_time": "08:21",
-                    "departure_time": "08:31"
+                    "arrival_time": "08:37",
+                    "departure_time": "08:47"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Gubeng Baratajaya 3",
-                    "arrival_time": "08:38"
+                    "arrival_time": "08:51",
+                    "finish_time": "09:11"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Gubeng",
             "distance_km": 2.82,
-            "time_spent_minutes": 16.78,
-            "departure_time": "08:00",
-            "return_time": "08:16",
+            "time_spent_minutes": 54.24,
+            "departure_time": "08:20",
+            "return_time": "08:54",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.271241199817,
-                    112.751257658355
-                ],
-                [
-                    -7.2659374,
-                    112.7558135
-                ],
-                [
-                    -7.271241199817,
-                    112.751257658355
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Gubeng",
+                    "lat": -7.271241199817,
+                    "lng": 112.751257658355
+                },
+                {
+                    "type": "school",
+                    "name": "Smpn 29 Surabaya",
+                    "lat": -7.2659374,
+                    "lng": 112.7558135
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Gubeng",
+                    "lat": -7.271241199817,
+                    "lng": 112.751257658355
+                }
             ],
             "route": [
                 {
                     "school": "Smpn 29 Surabaya",
                     "drop_tray": 1045,
-                    "arrival_time": "08:02",
-                    "departure_time": "08:12"
+                    "arrival_time": "08:21",
+                    "departure_time": "08:31"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Gubeng Gubeng",
-                    "arrival_time": "08:16"
+                    "arrival_time": "08:34",
+                    "finish_time": "08:54"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Mojo",
             "distance_km": 10.33,
-            "time_spent_minutes": 44.79,
-            "departure_time": "08:00",
-            "return_time": "08:44",
+            "time_spent_minutes": 75.49,
+            "departure_time": "08:20",
+            "return_time": "09:15",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.267169019797,
-                    112.766468968599
-                ],
-                [
-                    -7.263804,
-                    112.7635538
-                ],
-                [
-                    -7.2802469,
-                    112.7539416
-                ],
-                [
-                    -7.267169019797,
-                    112.766468968599
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Mojo",
+                    "lat": -7.267169019797,
+                    "lng": 112.766468968599
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Pacar Kembang Iv",
+                    "lat": -7.263804,
+                    "lng": 112.7635538
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kertajaya V Nomor 211",
+                    "lat": -7.2802469,
+                    "lng": 112.7539416
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Mojo",
+                    "lat": -7.267169019797,
+                    "lng": 112.766468968599
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Pacar Kembang Iv",
                     "drop_tray": 446,
-                    "arrival_time": "08:05",
-                    "departure_time": "08:15"
+                    "arrival_time": "08:23",
+                    "departure_time": "08:33"
                 },
                 {
                     "school": "Sd Negeri Kertajaya V Nomor 211",
                     "drop_tray": 400,
-                    "arrival_time": "08:25",
-                    "departure_time": "08:35"
+                    "arrival_time": "08:39",
+                    "departure_time": "08:49"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Gubeng Mojo",
-                    "arrival_time": "08:44"
+                    "arrival_time": "08:55",
+                    "finish_time": "09:15"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Mojo 2",
             "distance_km": 7.72,
-            "time_spent_minutes": 38.54,
-            "departure_time": "08:00",
-            "return_time": "08:38",
+            "time_spent_minutes": 71.59,
+            "departure_time": "08:20",
+            "return_time": "09:11",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.274488307198,
-                    112.772301935019
-                ],
-                [
-                    -7.2708142,
-                    112.7629625
-                ],
-                [
-                    -7.2756469,
-                    112.760769
-                ],
-                [
-                    -7.274488307198,
-                    112.772301935019
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Mojo 2",
+                    "lat": -7.274488307198,
+                    "lng": 112.772301935019
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Mojo Viii Nomor 227",
+                    "lat": -7.2708142,
+                    "lng": 112.7629625
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Airlangga Iii Nomor 200",
+                    "lat": -7.2756469,
+                    "lng": 112.760769
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Mojo 2",
+                    "lat": -7.274488307198,
+                    "lng": 112.772301935019
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Mojo Viii Nomor 227",
                     "drop_tray": 414,
-                    "arrival_time": "08:07",
-                    "departure_time": "08:17"
+                    "arrival_time": "08:24",
+                    "departure_time": "08:34"
                 },
                 {
                     "school": "Sd Negeri Airlangga Iii Nomor 200",
                     "drop_tray": 439,
-                    "arrival_time": "08:21",
-                    "departure_time": "08:31"
+                    "arrival_time": "08:37",
+                    "departure_time": "08:47"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Gubeng Mojo 2",
-                    "arrival_time": "08:38"
+                    "arrival_time": "08:51",
+                    "finish_time": "09:11"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Mojo 3",
             "distance_km": 10.17,
-            "time_spent_minutes": 44.42,
-            "departure_time": "08:00",
-            "return_time": "08:44",
+            "time_spent_minutes": 75.26,
+            "departure_time": "08:20",
+            "return_time": "09:15",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.269682854887,
-                    112.771483393251
-                ],
-                [
-                    -7.2724586,
-                    112.7541806
-                ],
-                [
-                    -7.2674335,
-                    112.754024
-                ],
-                [
-                    -7.269682854887,
-                    112.771483393251
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Mojo 3",
+                    "lat": -7.269682854887,
+                    "lng": 112.771483393251
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Gubeng I",
+                    "lat": -7.2724586,
+                    "lng": 112.7541806
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Pacar Keling X",
+                    "lat": -7.2674335,
+                    "lng": 112.754024
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Mojo 3",
+                    "lat": -7.269682854887,
+                    "lng": 112.771483393251
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Gubeng I",
                     "drop_tray": 416,
-                    "arrival_time": "08:08",
-                    "departure_time": "08:18"
+                    "arrival_time": "08:25",
+                    "departure_time": "08:35"
                 },
                 {
                     "school": "Sd Negeri Pacar Keling X",
                     "drop_tray": 436,
-                    "arrival_time": "08:24",
-                    "departure_time": "08:34"
+                    "arrival_time": "08:38",
+                    "departure_time": "08:48"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Gubeng Mojo 3",
-                    "arrival_time": "08:44"
+                    "arrival_time": "08:55",
+                    "finish_time": "09:15"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Mojo 4",
             "distance_km": 4.84,
-            "time_spent_minutes": 41.62,
-            "departure_time": "08:00",
-            "return_time": "08:41",
+            "time_spent_minutes": 87.26,
+            "departure_time": "08:20",
+            "return_time": "09:27",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.267972089941,
-                    112.768710792423
-                ],
-                [
-                    -7.2651282,
-                    112.7691311
-                ],
-                [
-                    -7.2651282,
-                    112.7691311
-                ],
-                [
-                    -7.267972089941,
-                    112.768710792423
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Mojo 4",
+                    "lat": -7.267972089941,
+                    "lng": 112.768710792423
+                },
+                {
+                    "type": "school",
+                    "name": "Smk Negeri 5 Surabaya",
+                    "lat": -7.2651282,
+                    "lng": 112.7691311
+                },
+                {
+                    "type": "school",
+                    "name": "Smk Negeri 5 Surabaya",
+                    "lat": -7.2651282,
+                    "lng": 112.7691311
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Mojo 4",
+                    "lat": -7.267972089941,
+                    "lng": 112.768710792423
+                }
             ],
             "route": [
                 {
                     "school": "Smk Negeri 5 Surabaya",
                     "drop_tray": 1050,
-                    "arrival_time": "08:03",
-                    "departure_time": "08:13"
+                    "arrival_time": "08:22",
+                    "departure_time": "08:32"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Gubeng Mojo 4",
-                    "arrival_time": "08:15",
-                    "departure_time": "08:25"
+                    "arrival_time": "08:33",
+                    "departure_time": "08:53"
                 },
                 {
                     "school": "Smk Negeri 5 Surabaya",
                     "drop_tray": 97,
-                    "arrival_time": "08:29",
-                    "departure_time": "08:39"
+                    "arrival_time": "08:55",
+                    "departure_time": "09:05"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Gubeng Mojo 4",
-                    "arrival_time": "08:41"
+                    "arrival_time": "09:07",
+                    "finish_time": "09:27"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Gubeng Pucang Sewu",
             "distance_km": 8.01,
-            "time_spent_minutes": 29.22,
-            "departure_time": "08:00",
-            "return_time": "08:29",
+            "time_spent_minutes": 62.01,
+            "departure_time": "08:20",
+            "return_time": "09:02",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.291520585907,
-                    112.751491178177
-                ],
-                [
-                    -7.273867,
-                    112.7485632
-                ],
-                [
-                    -7.291520585907,
-                    112.751491178177
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Pucang Sewu",
+                    "lat": -7.291520585907,
+                    "lng": 112.751491178177
+                },
+                {
+                    "type": "school",
+                    "name": "Smp Negeri 6 Surabaya",
+                    "lat": -7.273867,
+                    "lng": 112.7485632
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gubeng Pucang Sewu",
+                    "lat": -7.291520585907,
+                    "lng": 112.751491178177
+                }
             ],
             "route": [
                 {
                     "school": "Smp Negeri 6 Surabaya",
                     "drop_tray": 1006,
-                    "arrival_time": "08:08",
-                    "departure_time": "08:18"
+                    "arrival_time": "08:25",
+                    "departure_time": "08:35"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Gubeng Pucang Sewu",
-                    "arrival_time": "08:29"
+                    "arrival_time": "08:42",
+                    "finish_time": "09:02"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar",
             "distance_km": 12.53,
-            "time_spent_minutes": 60.06,
-            "departure_time": "08:00",
-            "return_time": "09:00",
+            "time_spent_minutes": 98.79,
+            "departure_time": "08:20",
+            "return_time": "09:38",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.3334,
-                    112.7838
-                ],
-                [
-                    -7.3417855,
-                    112.7947526
-                ],
-                [
-                    -7.3417855,
-                    112.7947526
-                ],
-                [
-                    -7.3334,
-                    112.7838
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar",
+                    "lat": -7.3334,
+                    "lng": 112.7838
+                },
+                {
+                    "type": "school",
+                    "name": "Smpn 62 Surabaya",
+                    "lat": -7.3417855,
+                    "lng": 112.7947526
+                },
+                {
+                    "type": "school",
+                    "name": "Smpn 62 Surabaya",
+                    "lat": -7.3417855,
+                    "lng": 112.7947526
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar",
+                    "lat": -7.3334,
+                    "lng": 112.7838
+                }
             ],
             "route": [
                 {
                     "school": "Smpn 62 Surabaya",
                     "drop_tray": 1050,
-                    "arrival_time": "08:07",
-                    "departure_time": "08:17"
+                    "arrival_time": "08:24",
+                    "departure_time": "08:34"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar",
-                    "arrival_time": "08:25",
-                    "departure_time": "08:35"
+                    "arrival_time": "08:39",
+                    "departure_time": "08:59"
                 },
                 {
                     "school": "Smpn 62 Surabaya",
                     "drop_tray": 6,
-                    "arrival_time": "08:42",
-                    "departure_time": "08:52"
+                    "arrival_time": "09:04",
+                    "departure_time": "09:14"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar",
-                    "arrival_time": "09:00"
+                    "arrival_time": "09:18",
+                    "finish_time": "09:38"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar 2",
             "distance_km": 34.9,
-            "time_spent_minutes": 103.76,
-            "departure_time": "08:00",
-            "return_time": "09:43",
+            "time_spent_minutes": 112.35,
+            "departure_time": "08:20",
+            "return_time": "09:52",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.24917,
-                    112.75083
-                ],
-                [
-                    -7.3371773,
-                    112.8036513
-                ],
-                [
-                    -7.3332211,
-                    112.7834048
-                ],
-                [
-                    -7.24917,
-                    112.75083
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar 2",
+                    "lat": -7.24917,
+                    "lng": 112.75083
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Gununganyar Tambak No 628",
+                    "lat": -7.3371773,
+                    "lng": 112.8036513
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Gunung Anyar 273",
+                    "lat": -7.3332211,
+                    "lng": 112.7834048
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar 2",
+                    "lat": -7.24917,
+                    "lng": 112.75083
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Gununganyar Tambak No 628",
                     "drop_tray": 446,
-                    "arrival_time": "08:41",
-                    "departure_time": "08:51"
+                    "arrival_time": "08:45",
+                    "departure_time": "08:55"
                 },
                 {
                     "school": "Sd Negeri Gunung Anyar 273",
@@ -490,1823 +585,2162 @@
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Gunung Anyar Gunung Anyar 2",
-                    "arrival_time": "09:43"
+                    "arrival_time": "09:32",
+                    "finish_time": "09:52"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Gunung Anyar Rungkut Menanggal",
             "distance_km": 1.87,
-            "time_spent_minutes": 14.49,
-            "departure_time": "08:00",
-            "return_time": "08:14",
+            "time_spent_minutes": 52.81,
+            "departure_time": "08:20",
+            "return_time": "08:52",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.338715017465,
-                    112.771717967825
-                ],
-                [
-                    -7.3364419,
-                    112.7775149
-                ],
-                [
-                    -7.338715017465,
-                    112.771717967825
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gunung Anyar Rungkut Menanggal",
+                    "lat": -7.338715017465,
+                    "lng": 112.771717967825
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Rungkut Menanggal Ii",
+                    "lat": -7.3364419,
+                    "lng": 112.7775149
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Gunung Anyar Rungkut Menanggal",
+                    "lat": -7.338715017465,
+                    "lng": 112.771717967825
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Rungkut Menanggal Ii",
                     "drop_tray": 449,
-                    "arrival_time": "08:02",
-                    "departure_time": "08:12"
+                    "arrival_time": "08:21",
+                    "departure_time": "08:31"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Gunung Anyar Rungkut Menanggal",
-                    "arrival_time": "08:14"
+                    "arrival_time": "08:32",
+                    "finish_time": "08:52"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Kalisari",
             "distance_km": 2.97,
-            "time_spent_minutes": 17.12,
-            "departure_time": "08:00",
-            "return_time": "08:17",
+            "time_spent_minutes": 54.45,
+            "departure_time": "08:20",
+            "return_time": "08:54",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.267039016479,
-                    112.798691016062
-                ],
-                [
-                    -7.2612227,
-                    112.796486
-                ],
-                [
-                    -7.267039016479,
-                    112.798691016062
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Mulyorejo Kalisari",
+                    "lat": -7.267039016479,
+                    "lng": 112.798691016062
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kalisari I",
+                    "lat": -7.2612227,
+                    "lng": 112.796486
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Mulyorejo Kalisari",
+                    "lat": -7.267039016479,
+                    "lng": 112.798691016062
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Kalisari I",
                     "drop_tray": 437,
-                    "arrival_time": "08:03",
-                    "departure_time": "08:13"
+                    "arrival_time": "08:22",
+                    "departure_time": "08:32"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Mulyorejo Kalisari",
-                    "arrival_time": "08:17"
+                    "arrival_time": "08:34",
+                    "finish_time": "08:54"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Kejawan Putih Tambak 3",
             "distance_km": 1.02,
-            "time_spent_minutes": 12.46,
-            "departure_time": "08:00",
-            "return_time": "08:12",
+            "time_spent_minutes": 51.54,
+            "departure_time": "08:20",
+            "return_time": "08:51",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.2813,
-                    112.8021
-                ],
-                [
-                    -7.2773006,
-                    112.802061
-                ],
-                [
-                    -7.2813,
-                    112.8021
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Mulyorejo Kejawan Putih Tambak 3",
+                    "lat": -7.2813,
+                    "lng": 112.8021
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kejawen Putih 1",
+                    "lat": -7.2773006,
+                    "lng": 112.802061
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Mulyorejo Kejawan Putih Tambak 3",
+                    "lat": -7.2813,
+                    "lng": 112.8021
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Kejawen Putih 1",
                     "drop_tray": 440,
-                    "arrival_time": "08:01",
-                    "departure_time": "08:11"
+                    "arrival_time": "08:20",
+                    "departure_time": "08:30"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Mulyorejo Kejawan Putih Tambak 3",
-                    "arrival_time": "08:12"
+                    "arrival_time": "08:31",
+                    "finish_time": "08:51"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Mulyorejo",
             "distance_km": 3.36,
-            "time_spent_minutes": 18.06,
-            "departure_time": "08:00",
-            "return_time": "08:18",
+            "time_spent_minutes": 55.04,
+            "departure_time": "08:20",
+            "return_time": "08:55",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.260168999089,
-                    112.781760996572
-                ],
-                [
-                    -7.2571061,
-                    112.779005
-                ],
-                [
-                    -7.260168999089,
-                    112.781760996572
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Mulyorejo Mulyorejo",
+                    "lat": -7.260168999089,
+                    "lng": 112.781760996572
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kalijudan Ii",
+                    "lat": -7.2571061,
+                    "lng": 112.779005
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Mulyorejo Mulyorejo",
+                    "lat": -7.260168999089,
+                    "lng": 112.781760996572
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Kalijudan Ii",
                     "drop_tray": 432,
-                    "arrival_time": "08:02",
-                    "departure_time": "08:12"
+                    "arrival_time": "08:21",
+                    "departure_time": "08:31"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Mulyorejo Mulyorejo",
-                    "arrival_time": "08:18"
+                    "arrival_time": "08:35",
+                    "finish_time": "08:55"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Mulyorejo 2",
             "distance_km": 4.67,
-            "time_spent_minutes": 41.2,
-            "departure_time": "08:00",
-            "return_time": "08:41",
+            "time_spent_minutes": 87.0,
+            "departure_time": "08:20",
+            "return_time": "09:26",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.266020349492,
-                    112.782801261253
-                ],
-                [
-                    -7.2637184,
-                    112.7852997
-                ],
-                [
-                    -7.2637184,
-                    112.7852997
-                ],
-                [
-                    -7.266020349492,
-                    112.782801261253
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Mulyorejo Mulyorejo 2",
+                    "lat": -7.266020349492,
+                    "lng": 112.782801261253
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Mulyorejo 1 Dan Smp Negeri 45 Surabaya",
+                    "lat": -7.2637184,
+                    "lng": 112.7852997
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Mulyorejo 1 Dan Smp Negeri 45 Surabaya",
+                    "lat": -7.2637184,
+                    "lng": 112.7852997
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Mulyorejo Mulyorejo 2",
+                    "lat": -7.266020349492,
+                    "lng": 112.782801261253
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Mulyorejo 1 Dan Smp Negeri 45 Surabaya",
                     "drop_tray": 1050,
-                    "arrival_time": "08:02",
-                    "departure_time": "08:12"
+                    "arrival_time": "08:21",
+                    "departure_time": "08:31"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Mulyorejo Mulyorejo 2",
-                    "arrival_time": "08:15",
-                    "departure_time": "08:25"
+                    "arrival_time": "08:33",
+                    "departure_time": "08:53"
                 },
                 {
                     "school": "Sd Negeri Mulyorejo 1 Dan Smp Negeri 45 Surabaya",
                     "drop_tray": 32,
-                    "arrival_time": "08:27",
-                    "departure_time": "08:37"
+                    "arrival_time": "08:54",
+                    "departure_time": "09:04"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Mulyorejo Mulyorejo 2",
-                    "arrival_time": "08:41"
+                    "arrival_time": "09:06",
+                    "finish_time": "09:26"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Mulyorejo Mulyorejo 3",
             "distance_km": 13.86,
-            "time_spent_minutes": 53.26,
-            "departure_time": "08:00",
-            "return_time": "08:53",
+            "time_spent_minutes": 80.79,
+            "departure_time": "08:20",
+            "return_time": "09:20",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.271760216268,
-                    112.785855092526
-                ],
-                [
-                    -7.2595864,
-                    112.7910639
-                ],
-                [
-                    -7.2689121,
-                    112.7994734
-                ],
-                [
-                    -7.271760216268,
-                    112.785855092526
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Mulyorejo Mulyorejo 3",
+                    "lat": -7.271760216268,
+                    "lng": 112.785855092526
+                },
+                {
+                    "type": "school",
+                    "name": "Sdn Sutorejo 1-240",
+                    "lat": -7.2595864,
+                    "lng": 112.7910639
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kalisari Ii",
+                    "lat": -7.2689121,
+                    "lng": 112.7994734
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Mulyorejo Mulyorejo 3",
+                    "lat": -7.271760216268,
+                    "lng": 112.785855092526
+                }
             ],
             "route": [
                 {
                     "school": "Sdn Sutorejo 1-240",
                     "drop_tray": 401,
-                    "arrival_time": "08:12",
-                    "departure_time": "08:22"
+                    "arrival_time": "08:28",
+                    "departure_time": "08:38"
                 },
                 {
                     "school": "Sd Negeri Kalisari Ii",
                     "drop_tray": 420,
-                    "arrival_time": "08:34",
-                    "departure_time": "08:44"
+                    "arrival_time": "08:45",
+                    "departure_time": "08:55"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Mulyorejo Mulyorejo 3",
-                    "arrival_time": "08:53"
+                    "arrival_time": "09:00",
+                    "finish_time": "09:20"
+                }
+            ]
+        },
+                {
+            "sppg": "SPPG Kota Surabaya Rungkut",
+            "distance_km": 10.63,
+            "time_spent_minutes": 105.94,
+            "departure_time": "08:20",
+            "return_time": "09:45",
+            "feasible_time": true,
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut",
+                    "lat": -7.3223,
+                    "lng": 112.7822
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Medokan Ayu Ii",
+                    "lat": -7.3280093,
+                    "lng": 112.7911258
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Rungkut Kidul Ii - 581",
+                    "lat": -7.3280981,
+                    "lng": 112.7780877
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kalirungkut I No. 264",
+                    "lat": -7.3221935,
+                    "lng": 112.7703674
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut",
+                    "lat": -7.3223,
+                    "lng": 112.7822
+                }
+            ],
+            "route": [
+                {
+                    "school": "Sd Negeri Medokan Ayu Ii",
+                    "drop_tray": 447,
+                    "arrival_time": "08:23",
+                    "departure_time": "08:33"
+                },
+                {
+                    "school": "Sd Negeri Rungkut Kidul Ii - 581",
+                    "drop_tray": 434,
+                    "arrival_time": "08:36",
+                    "departure_time": "08:46"
+                },
+                {
+                    "event": "REFILL",
+                    "location": "SPPG Kota Surabaya Rungkut",
+                    "arrival_time": "08:50",
+                    "departure_time": "09:10"
+                },
+                {
+                    "school": "Sd Negeri Kalirungkut I No. 264",
+                    "drop_tray": 436,
+                    "arrival_time": "09:13",
+                    "departure_time": "09:23"
+                },
+                {
+                    "event": "RETURN_DEPOT",
+                    "location": "SPPG Kota Surabaya Rungkut",
+                    "arrival_time": "09:25",
+                    "finish_time": "09:45"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Kalirungkut",
             "distance_km": 10.69,
-            "time_spent_minutes": 55.65,
-            "departure_time": "08:00",
-            "return_time": "08:55",
+            "time_spent_minutes": 96.03,
+            "departure_time": "08:20",
+            "return_time": "09:36",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.324757330693,
-                    112.773091979959
-                ],
-                [
-                    -7.3152241,
-                    112.7656165
-                ],
-                [
-                    -7.3152241,
-                    112.7656165
-                ],
-                [
-                    -7.324757330693,
-                    112.773091979959
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Kalirungkut",
+                    "lat": -7.324757330693,
+                    "lng": 112.773091979959
+                },
+                {
+                    "type": "school",
+                    "name": "Sma Negeri 14 Surabaya",
+                    "lat": -7.3152241,
+                    "lng": 112.7656165
+                },
+                {
+                    "type": "school",
+                    "name": "Sma Negeri 14 Surabaya",
+                    "lat": -7.3152241,
+                    "lng": 112.7656165
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Kalirungkut",
+                    "lat": -7.324757330693,
+                    "lng": 112.773091979959
+                }
             ],
             "route": [
                 {
                     "school": "Sma Negeri 14 Surabaya",
                     "drop_tray": 1050,
-                    "arrival_time": "08:07",
-                    "departure_time": "08:17"
+                    "arrival_time": "08:24",
+                    "departure_time": "08:34"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Rungkut Kalirungkut",
-                    "arrival_time": "08:22",
-                    "departure_time": "08:32"
+                    "arrival_time": "08:38",
+                    "departure_time": "08:58"
                 },
                 {
                     "school": "Sma Negeri 14 Surabaya",
                     "drop_tray": 65,
-                    "arrival_time": "08:40",
-                    "departure_time": "08:50"
+                    "arrival_time": "09:02",
+                    "departure_time": "09:12"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Rungkut Kalirungkut",
-                    "arrival_time": "08:55"
+                    "arrival_time": "09:16",
+                    "finish_time": "09:36"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Kalirungkut 2",
             "distance_km": 8.32,
-            "time_spent_minutes": 59.98,
-            "departure_time": "08:00",
-            "return_time": "08:59",
+            "time_spent_minutes": 102.49,
+            "departure_time": "08:20",
+            "return_time": "09:42",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.324187880067,
-                    112.779434766983
-                ],
-                [
-                    -7.3274602,
-                    112.7728435
-                ],
-                [
-                    -7.3274602,
-                    112.7728435
-                ],
-                [
-                    -7.3300049,
-                    112.7709265
-                ],
-                [
-                    -7.324187880067,
-                    112.779434766983
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Kalirungkut 2",
+                    "lat": -7.324187880067,
+                    "lng": 112.779434766983
+                },
+                {
+                    "type": "school",
+                    "name": "Smp Negeri 35",
+                    "lat": -7.3274602,
+                    "lng": 112.7728435
+                },
+                {
+                    "type": "school",
+                    "name": "Smp Negeri 35",
+                    "lat": -7.3274602,
+                    "lng": 112.7728435
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Rungkut Kidul I/267",
+                    "lat": -7.3300049,
+                    "lng": 112.7709265
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Kalirungkut 2",
+                    "lat": -7.324187880067,
+                    "lng": 112.779434766983
+                }
             ],
             "route": [
                 {
                     "school": "Smp Negeri 35",
                     "drop_tray": 1050,
-                    "arrival_time": "08:04",
-                    "departure_time": "08:14"
+                    "arrival_time": "08:22",
+                    "departure_time": "08:32"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Rungkut Kalirungkut 2",
-                    "arrival_time": "08:19",
-                    "departure_time": "08:29"
+                    "arrival_time": "08:35",
+                    "departure_time": "08:55"
                 },
                 {
                     "school": "Smp Negeri 35",
                     "drop_tray": 44,
-                    "arrival_time": "08:33",
-                    "departure_time": "08:43"
+                    "arrival_time": "08:58",
+                    "departure_time": "09:08"
                 },
                 {
                     "school": "Sd Negeri Rungkut Kidul I/267",
                     "drop_tray": 406,
-                    "arrival_time": "08:45",
-                    "departure_time": "08:55"
+                    "arrival_time": "09:09",
+                    "departure_time": "09:19"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Rungkut Kalirungkut 2",
-                    "arrival_time": "08:59"
+                    "arrival_time": "09:22",
+                    "finish_time": "09:42"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Kedung Baruk",
             "distance_km": 2.8,
-            "time_spent_minutes": 36.72,
-            "departure_time": "08:00",
-            "return_time": "08:36",
+            "time_spent_minutes": 84.2,
+            "departure_time": "08:20",
+            "return_time": "09:24",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.3201097,
-                    112.7792538
-                ],
-                [
-                    -7.3199654,
-                    112.7775606
-                ],
-                [
-                    -7.3262744,
-                    112.7784362
-                ],
-                [
-                    -7.3201097,
-                    112.7792538
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Kedung Baruk",
+                    "lat": -7.3201097,
+                    "lng": 112.7792538
+                },
+                {
+                    "type": "school",
+                    "name": "Smp Negeri 23 Surabaya",
+                    "lat": -7.3199654,
+                    "lng": 112.7775606
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kalirungkut Iv",
+                    "lat": -7.3262744,
+                    "lng": 112.7784362
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Kedung Baruk",
+                    "lat": -7.3201097,
+                    "lng": 112.7792538
+                }
             ],
             "route": [
                 {
                     "school": "Smp Negeri 23 Surabaya",
                     "drop_tray": 1014,
-                    "arrival_time": "08:00",
-                    "departure_time": "08:10"
+                    "arrival_time": "08:20",
+                    "departure_time": "08:30"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Rungkut Kedung Baruk",
-                    "arrival_time": "08:11",
-                    "departure_time": "08:21"
+                    "arrival_time": "08:30",
+                    "departure_time": "08:50"
                 },
                 {
                     "school": "Sd Negeri Kalirungkut Iv",
                     "drop_tray": 413,
-                    "arrival_time": "08:24",
-                    "departure_time": "08:34"
+                    "arrival_time": "08:52",
+                    "departure_time": "09:02"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Rungkut Kedung Baruk",
-                    "arrival_time": "08:36"
+                    "arrival_time": "09:04",
+                    "finish_time": "09:24"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Medokan Ayu",
             "distance_km": 7.46,
-            "time_spent_minutes": 47.89,
-            "departure_time": "08:00",
-            "return_time": "08:47",
+            "time_spent_minutes": 91.18,
+            "departure_time": "08:20",
+            "return_time": "09:31",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.319832846885,
-                    112.794419568801
-                ],
-                [
-                    -7.3090269,
-                    112.7984608
-                ],
-                [
-                    -7.3090269,
-                    112.7984608
-                ],
-                [
-                    -7.319832846885,
-                    112.794419568801
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Medokan Ayu",
+                    "lat": -7.319832846885,
+                    "lng": 112.794419568801
+                },
+                {
+                    "type": "school",
+                    "name": "Ma Negeri Surabaya",
+                    "lat": -7.3090269,
+                    "lng": 112.7984608
+                },
+                {
+                    "type": "school",
+                    "name": "Ma Negeri Surabaya",
+                    "lat": -7.3090269,
+                    "lng": 112.7984608
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Medokan Ayu",
+                    "lat": -7.319832846885,
+                    "lng": 112.794419568801
+                }
             ],
             "route": [
                 {
                     "school": "Ma Negeri Surabaya",
                     "drop_tray": 1050,
-                    "arrival_time": "08:04",
-                    "departure_time": "08:14"
+                    "arrival_time": "08:22",
+                    "departure_time": "08:32"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Rungkut Medokan Ayu",
-                    "arrival_time": "08:18",
-                    "departure_time": "08:28"
+                    "arrival_time": "08:35",
+                    "departure_time": "08:55"
                 },
                 {
                     "school": "Ma Negeri Surabaya",
                     "drop_tray": 143,
-                    "arrival_time": "08:33",
-                    "departure_time": "08:43"
+                    "arrival_time": "08:58",
+                    "departure_time": "09:08"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Rungkut Medokan Ayu",
-                    "arrival_time": "08:47"
+                    "arrival_time": "09:11",
+                    "finish_time": "09:31"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Medokan Ayu 2",
             "distance_km": 11.98,
-            "time_spent_minutes": 68.74,
-            "departure_time": "08:00",
-            "return_time": "09:08",
+            "time_spent_minutes": 107.96,
+            "departure_time": "08:20",
+            "return_time": "09:47",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.327093299165,
-                    112.792632576447
-                ],
-                [
-                    -7.3247345,
-                    112.7961373
-                ],
-                [
-                    -7.3247345,
-                    112.7961373
-                ],
-                [
-                    -7.3121226,
-                    112.7759586
-                ],
-                [
-                    -7.327093299165,
-                    112.792632576447
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Medokan Ayu 2",
+                    "lat": -7.327093299165,
+                    "lng": 112.792632576447
+                },
+                {
+                    "type": "school",
+                    "name": "Madrasah Tsanawiyah Negeri 3 Surabaya",
+                    "lat": -7.3247345,
+                    "lng": 112.7961373
+                },
+                {
+                    "type": "school",
+                    "name": "Madrasah Tsanawiyah Negeri 3 Surabaya",
+                    "lat": -7.3247345,
+                    "lng": 112.7961373
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kedung Baruk I / 275",
+                    "lat": -7.3121226,
+                    "lng": 112.7759586
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Medokan Ayu 2",
+                    "lat": -7.327093299165,
+                    "lng": 112.792632576447
+                }
             ],
             "route": [
                 {
                     "school": "Madrasah Tsanawiyah Negeri 3 Surabaya",
                     "drop_tray": 1050,
-                    "arrival_time": "08:02",
-                    "departure_time": "08:12"
+                    "arrival_time": "08:21",
+                    "departure_time": "08:31"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Rungkut Medokan Ayu 2",
-                    "arrival_time": "08:14",
-                    "departure_time": "08:24"
+                    "arrival_time": "08:32",
+                    "departure_time": "08:52"
                 },
                 {
                     "school": "Madrasah Tsanawiyah Negeri 3 Surabaya",
                     "drop_tray": 31,
-                    "arrival_time": "08:26",
-                    "departure_time": "08:36"
+                    "arrival_time": "08:54",
+                    "departure_time": "09:04"
                 },
                 {
                     "school": "Sd Negeri Kedung Baruk I / 275",
                     "drop_tray": 407,
-                    "arrival_time": "08:47",
-                    "departure_time": "08:57"
+                    "arrival_time": "09:10",
+                    "departure_time": "09:20"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Rungkut Medokan Ayu 2",
-                    "arrival_time": "09:08"
+                    "arrival_time": "09:27",
+                    "finish_time": "09:47"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Penjaringansari",
             "distance_km": 6.85,
-            "time_spent_minutes": 56.44,
-            "departure_time": "08:00",
-            "return_time": "08:56",
+            "time_spent_minutes": 100.27,
+            "departure_time": "08:20",
+            "return_time": "09:40",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.322549008449,
-                    112.789185015852
-                ],
-                [
-                    -7.3251369,
-                    112.796495
-                ],
-                [
-                    -7.3251369,
-                    112.796495
-                ],
-                [
-                    -7.3295115,
-                    112.7948318
-                ],
-                [
-                    -7.322549008449,
-                    112.789185015852
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Penjaringansari",
+                    "lat": -7.322549008449,
+                    "lng": 112.789185015852
+                },
+                {
+                    "type": "school",
+                    "name": "Madrasah Tsanawiyah Negeri 3 Kota Surabaya",
+                    "lat": -7.3251369,
+                    "lng": 112.796495
+                },
+                {
+                    "type": "school",
+                    "name": "Madrasah Tsanawiyah Negeri 3 Kota Surabaya",
+                    "lat": -7.3251369,
+                    "lng": 112.796495
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Medokan Ayu I",
+                    "lat": -7.3295115,
+                    "lng": 112.7948318
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Penjaringansari",
+                    "lat": -7.322549008449,
+                    "lng": 112.789185015852
+                }
             ],
             "route": [
                 {
                     "school": "Madrasah Tsanawiyah Negeri 3 Kota Surabaya",
                     "drop_tray": 1050,
-                    "arrival_time": "08:04",
-                    "departure_time": "08:14"
+                    "arrival_time": "08:22",
+                    "departure_time": "08:32"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Rungkut Penjaringansari",
-                    "arrival_time": "08:17",
-                    "departure_time": "08:27"
+                    "arrival_time": "08:34",
+                    "departure_time": "08:54"
                 },
                 {
                     "school": "Madrasah Tsanawiyah Negeri 3 Kota Surabaya",
                     "drop_tray": 20,
-                    "arrival_time": "08:31",
-                    "departure_time": "08:41"
+                    "arrival_time": "08:57",
+                    "departure_time": "09:07"
                 },
                 {
                     "school": "Sd Negeri Medokan Ayu I",
                     "drop_tray": 410,
-                    "arrival_time": "08:43",
-                    "departure_time": "08:53"
+                    "arrival_time": "09:08",
+                    "departure_time": "09:18"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Rungkut Penjaringansari",
-                    "arrival_time": "08:56"
+                    "arrival_time": "09:20",
+                    "finish_time": "09:40"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Penjaringansari 3",
             "distance_km": 16.06,
-            "time_spent_minutes": 78.53,
-            "departure_time": "08:00",
-            "return_time": "09:18",
+            "time_spent_minutes": 114.08,
+            "departure_time": "08:20",
+            "return_time": "09:54",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.3223,
-                    112.7822
-                ],
-                [
-                    -7.3190313,
-                    112.7866784
-                ],
-                [
-                    -7.3113677,
-                    112.7968442
-                ],
-                [
-                    -7.323502,
-                    112.765009
-                ],
-                [
-                    -7.3223,
-                    112.7822
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Penjaringansari 3",
+                    "lat": -7.3223,
+                    "lng": 112.7822
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Penjaringan Sari Ii",
+                    "lat": -7.3190313,
+                    "lng": 112.7866784
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Wonorejo Nomor 274",
+                    "lat": -7.3113677,
+                    "lng": 112.7968442
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kendang Sari Iv Nomor 279",
+                    "lat": -7.323502,
+                    "lng": 112.765009
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Penjaringansari 3",
+                    "lat": -7.3223,
+                    "lng": 112.7822
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Penjaringan Sari Ii",
                     "drop_tray": 426,
-                    "arrival_time": "08:02",
-                    "departure_time": "08:12"
+                    "arrival_time": "08:21",
+                    "departure_time": "08:31"
                 },
                 {
                     "school": "Sd Negeri Wonorejo Nomor 274",
                     "drop_tray": 443,
-                    "arrival_time": "08:18",
-                    "departure_time": "08:28"
+                    "arrival_time": "08:35",
+                    "departure_time": "08:45"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Rungkut Penjaringansari 3",
-                    "arrival_time": "08:36",
-                    "departure_time": "08:46"
+                    "arrival_time": "08:50",
+                    "departure_time": "09:10"
                 },
                 {
                     "school": "Sd Negeri Kendang Sari Iv Nomor 279",
                     "drop_tray": 445,
-                    "arrival_time": "08:59",
-                    "departure_time": "09:09"
+                    "arrival_time": "09:18",
+                    "departure_time": "09:28"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Rungkut Penjaringansari 3",
-                    "arrival_time": "09:18"
+                    "arrival_time": "09:34",
+                    "finish_time": "09:54"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Penjaringansari 4",
             "distance_km": 15.51,
-            "time_spent_minutes": 77.23,
-            "departure_time": "08:00",
-            "return_time": "09:17",
+            "time_spent_minutes": 113.27,
+            "departure_time": "08:20",
+            "return_time": "09:53",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.319335511136,
-                    112.783792498932
-                ],
-                [
-                    -7.3187182,
-                    112.763671
-                ],
-                [
-                    -7.3246549,
-                    112.7968495
-                ],
-                [
-                    -7.3151706,
-                    112.7838036
-                ],
-                [
-                    -7.319335511136,
-                    112.783792498932
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Penjaringansari 4",
+                    "lat": -7.319335511136,
+                    "lng": 112.783792498932
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kendang Sari Iii",
+                    "lat": -7.3187182,
+                    "lng": 112.763671
+                },
+                {
+                    "type": "school",
+                    "name": "Mi Negeri Medokan Ayu",
+                    "lat": -7.3246549,
+                    "lng": 112.7968495
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Penjaringan I / 271",
+                    "lat": -7.3151706,
+                    "lng": 112.7838036
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Penjaringansari 4",
+                    "lat": -7.319335511136,
+                    "lng": 112.783792498932
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Kendang Sari Iii",
                     "drop_tray": 437,
-                    "arrival_time": "08:11",
-                    "departure_time": "08:21"
+                    "arrival_time": "08:27",
+                    "departure_time": "08:37"
                 },
                 {
                     "school": "Mi Negeri Medokan Ayu",
                     "drop_tray": 446,
-                    "arrival_time": "08:38",
-                    "departure_time": "08:48"
+                    "arrival_time": "08:47",
+                    "departure_time": "08:57"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Rungkut Penjaringansari 4",
-                    "arrival_time": "08:53",
-                    "departure_time": "09:03"
+                    "arrival_time": "09:00",
+                    "departure_time": "09:20"
                 },
                 {
                     "school": "Sd Negeri Penjaringan I / 271",
                     "drop_tray": 434,
-                    "arrival_time": "09:05",
-                    "departure_time": "09:15"
+                    "arrival_time": "09:22",
+                    "departure_time": "09:32"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Rungkut Penjaringansari 4",
-                    "arrival_time": "09:17"
+                    "arrival_time": "09:33",
+                    "finish_time": "09:53"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Rungkut Rungkut Kidul",
             "distance_km": 3.95,
-            "time_spent_minutes": 39.48,
-            "departure_time": "08:00",
-            "return_time": "08:39",
+            "time_spent_minutes": 85.93,
+            "departure_time": "08:20",
+            "return_time": "09:25",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.327642020456,
-                    112.772012004988
-                ],
-                [
-                    -7.3275132,
-                    112.7749979
-                ],
-                [
-                    -7.3275132,
-                    112.7749979
-                ],
-                [
-                    -7.327642020456,
-                    112.772012004988
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Rungkut Kidul",
+                    "lat": -7.327642020456,
+                    "lng": 112.772012004988
+                },
+                {
+                    "type": "school",
+                    "name": "Sma Negeri 17",
+                    "lat": -7.3275132,
+                    "lng": 112.7749979
+                },
+                {
+                    "type": "school",
+                    "name": "Sma Negeri 17",
+                    "lat": -7.3275132,
+                    "lng": 112.7749979
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Rungkut Rungkut Kidul",
+                    "lat": -7.327642020456,
+                    "lng": 112.772012004988
+                }
             ],
             "route": [
                 {
                     "school": "Sma Negeri 17",
                     "drop_tray": 1050,
-                    "arrival_time": "08:00",
-                    "departure_time": "08:10"
+                    "arrival_time": "08:20",
+                    "departure_time": "08:30"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Rungkut Rungkut Kidul",
-                    "arrival_time": "08:14",
-                    "departure_time": "08:24"
+                    "arrival_time": "08:32",
+                    "departure_time": "08:52"
                 },
                 {
                     "school": "Sma Negeri 17",
                     "drop_tray": 68,
-                    "arrival_time": "08:25",
-                    "departure_time": "08:35"
+                    "arrival_time": "08:53",
+                    "departure_time": "09:03"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Rungkut Rungkut Kidul",
-                    "arrival_time": "08:39"
+                    "arrival_time": "09:05",
+                    "finish_time": "09:25"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Klampis Ngasem",
             "distance_km": 9.78,
-            "time_spent_minutes": 63.47,
-            "departure_time": "08:00",
-            "return_time": "09:03",
+            "time_spent_minutes": 104.67,
+            "departure_time": "08:20",
+            "return_time": "09:44",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.290615382274,
-                    112.774984814588
-                ],
-                [
-                    -7.3003136,
-                    112.7795773
-                ],
-                [
-                    -7.3023832,
-                    112.7694342
-                ],
-                [
-                    -7.2885451,
-                    112.7659991
-                ],
-                [
-                    -7.290615382274,
-                    112.774984814588
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Klampis Ngasem",
+                    "lat": -7.290615382274,
+                    "lng": 112.774984814588
+                },
+                {
+                    "type": "school",
+                    "name": "Sdn Semolowaru 2/262",
+                    "lat": -7.3003136,
+                    "lng": 112.7795773
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Nginden Jangkungan 2 No 611",
+                    "lat": -7.3023832,
+                    "lng": 112.7694342
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Menur Pumpungan",
+                    "lat": -7.2885451,
+                    "lng": 112.7659991
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Klampis Ngasem",
+                    "lat": -7.290615382274,
+                    "lng": 112.774984814588
+                }
             ],
             "route": [
                 {
                     "school": "Sdn Semolowaru 2/262",
                     "drop_tray": 447,
-                    "arrival_time": "08:04",
-                    "departure_time": "08:14"
+                    "arrival_time": "08:22",
+                    "departure_time": "08:32"
                 },
                 {
                     "school": "Sd Negeri Nginden Jangkungan 2 No 611",
                     "drop_tray": 428,
-                    "arrival_time": "08:17",
-                    "departure_time": "08:27"
+                    "arrival_time": "08:34",
+                    "departure_time": "08:44"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Sukolilo Klampis Ngasem",
-                    "arrival_time": "08:37",
-                    "departure_time": "08:47"
+                    "arrival_time": "08:51",
+                    "departure_time": "09:11"
                 },
                 {
                     "school": "Sd Negeri Menur Pumpungan",
                     "drop_tray": 413,
-                    "arrival_time": "08:50",
-                    "departure_time": "09:00"
+                    "arrival_time": "09:12",
+                    "departure_time": "09:22"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Sukolilo Klampis Ngasem",
-                    "arrival_time": "09:03"
+                    "arrival_time": "09:24",
+                    "finish_time": "09:44"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Klampis Ngasem 2",
             "distance_km": 10.37,
-            "time_spent_minutes": 64.9,
-            "departure_time": "08:00",
-            "return_time": "09:04",
+            "time_spent_minutes": 105.56,
+            "departure_time": "08:20",
+            "return_time": "09:45",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.289840993243,
-                    112.775878624869
-                ],
-                [
-                    -7.2971207,
-                    112.7644104
-                ],
-                [
-                    -7.2993116,
-                    112.7648496
-                ],
-                [
-                    -7.2849156,
-                    112.7739343
-                ],
-                [
-                    -7.289840993243,
-                    112.775878624869
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Klampis Ngasem 2",
+                    "lat": -7.289840993243,
+                    "lng": 112.775878624869
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Menur Pumpungan V",
+                    "lat": -7.2971207,
+                    "lng": 112.7644104
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Menur Pumpungan 4",
+                    "lat": -7.2993116,
+                    "lng": 112.7648496
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Manyar Sabrangan 3",
+                    "lat": -7.2849156,
+                    "lng": 112.7739343
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Klampis Ngasem 2",
+                    "lat": -7.289840993243,
+                    "lng": 112.775878624869
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Menur Pumpungan V",
                     "drop_tray": 414,
-                    "arrival_time": "08:06",
-                    "departure_time": "08:16"
+                    "arrival_time": "08:23",
+                    "departure_time": "08:33"
                 },
                 {
                     "school": "Sd Negeri Menur Pumpungan 4",
                     "drop_tray": 423,
-                    "arrival_time": "08:17",
-                    "departure_time": "08:27"
+                    "arrival_time": "08:34",
+                    "departure_time": "08:44"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Sukolilo Klampis Ngasem 2",
-                    "arrival_time": "08:35",
-                    "departure_time": "08:45"
+                    "arrival_time": "08:49",
+                    "departure_time": "09:09"
                 },
                 {
                     "school": "Sd Negeri Manyar Sabrangan 3",
                     "drop_tray": 449,
-                    "arrival_time": "08:49",
-                    "departure_time": "08:59"
+                    "arrival_time": "09:12",
+                    "departure_time": "09:22"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Sukolilo Klampis Ngasem 2",
-                    "arrival_time": "09:04"
+                    "arrival_time": "09:25",
+                    "finish_time": "09:45"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Medokan Semampir",
             "distance_km": 10.35,
-            "time_spent_minutes": 54.83,
-            "departure_time": "08:00",
-            "return_time": "08:54",
+            "time_spent_minutes": 95.52,
+            "departure_time": "08:20",
+            "return_time": "09:35",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.304322979089,
-                    112.793195672703
-                ],
-                [
-                    -7.2933984,
-                    112.800167
-                ],
-                [
-                    -7.2933984,
-                    112.800167
-                ],
-                [
-                    -7.304322979089,
-                    112.793195672703
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Medokan Semampir",
+                    "lat": -7.304322979089,
+                    "lng": 112.793195672703
+                },
+                {
+                    "type": "school",
+                    "name": "Smk Negeri 10 Surabaya",
+                    "lat": -7.2933984,
+                    "lng": 112.800167
+                },
+                {
+                    "type": "school",
+                    "name": "Smk Negeri 10 Surabaya",
+                    "lat": -7.2933984,
+                    "lng": 112.800167
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Medokan Semampir",
+                    "lat": -7.304322979089,
+                    "lng": 112.793195672703
+                }
             ],
             "route": [
                 {
                     "school": "Smk Negeri 10 Surabaya",
                     "drop_tray": 1050,
-                    "arrival_time": "08:06",
-                    "departure_time": "08:16"
+                    "arrival_time": "08:23",
+                    "departure_time": "08:33"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Sukolilo Medokan Semampir",
-                    "arrival_time": "08:22",
-                    "departure_time": "08:32"
+                    "arrival_time": "08:37",
+                    "departure_time": "08:57"
                 },
                 {
                     "school": "Smk Negeri 10 Surabaya",
                     "drop_tray": 90,
-                    "arrival_time": "08:38",
-                    "departure_time": "08:48"
+                    "arrival_time": "09:01",
+                    "departure_time": "09:11"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Sukolilo Medokan Semampir",
-                    "arrival_time": "08:54"
+                    "arrival_time": "09:15",
+                    "finish_time": "09:35"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Menur Pumpungan",
             "distance_km": 14.36,
-            "time_spent_minutes": 74.45,
-            "departure_time": "08:00",
-            "return_time": "09:14",
+            "time_spent_minutes": 111.53,
+            "departure_time": "08:20",
+            "return_time": "09:51",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.297736689121,
-                    112.768613897622
-                ],
-                [
-                    -7.3049728,
-                    112.7822079
-                ],
-                [
-                    -7.3037702,
-                    112.7756995
-                ],
-                [
-                    -7.2851985,
-                    112.7737939
-                ],
-                [
-                    -7.297736689121,
-                    112.768613897622
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Menur Pumpungan",
+                    "lat": -7.297736689121,
+                    "lng": 112.768613897622
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Medokan Semampir 1",
+                    "lat": -7.3049728,
+                    "lng": 112.7822079
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Semolowaru 4/614",
+                    "lat": -7.3037702,
+                    "lng": 112.7756995
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Klampis Ngasem 5",
+                    "lat": -7.2851985,
+                    "lng": 112.7737939
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Menur Pumpungan",
+                    "lat": -7.297736689121,
+                    "lng": 112.768613897622
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Medokan Semampir 1",
                     "drop_tray": 432,
-                    "arrival_time": "08:05",
-                    "departure_time": "08:15"
+                    "arrival_time": "08:23",
+                    "departure_time": "08:33"
                 },
                 {
                     "school": "Sd Negeri Semolowaru 4/614",
                     "drop_tray": 420,
-                    "arrival_time": "08:20",
-                    "departure_time": "08:30"
-                },
-                {
-                    "event": "REFILL",
-                    "location": "SPPG Kota Surabaya Sukolilo Menur Pumpungan",
                     "arrival_time": "08:36",
                     "departure_time": "08:46"
                 },
                 {
+                    "event": "REFILL",
+                    "location": "SPPG Kota Surabaya Sukolilo Menur Pumpungan",
+                    "arrival_time": "08:50",
+                    "departure_time": "09:10"
+                },
+                {
                     "school": "Sd Negeri Klampis Ngasem 5",
                     "drop_tray": 430,
-                    "arrival_time": "08:55",
-                    "departure_time": "09:05"
+                    "arrival_time": "09:15",
+                    "departure_time": "09:25"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Sukolilo Menur Pumpungan",
-                    "arrival_time": "09:14"
+                    "arrival_time": "09:31",
+                    "finish_time": "09:51"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan",
             "distance_km": 20.77,
-            "time_spent_minutes": 89.86,
-            "departure_time": "08:00",
-            "return_time": "09:29",
+            "time_spent_minutes": 121.16,
+            "departure_time": "08:20",
+            "return_time": "10:01",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.3033426,
-                    112.7664091
-                ],
-                [
-                    -7.3080955,
-                    112.7863865
-                ],
-                [
-                    -7.3080955,
-                    112.7863865
-                ],
-                [
-                    -7.2810928,
-                    112.7714031
-                ],
-                [
-                    -7.3033426,
-                    112.7664091
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan",
+                    "lat": -7.3033426,
+                    "lng": 112.7664091
+                },
+                {
+                    "type": "school",
+                    "name": "Mts Negeri 1 Surabaya",
+                    "lat": -7.3080955,
+                    "lng": 112.7863865
+                },
+                {
+                    "type": "school",
+                    "name": "Mts Negeri 1 Surabaya",
+                    "lat": -7.3080955,
+                    "lng": 112.7863865
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Klampis Ngasem 3",
+                    "lat": -7.2810928,
+                    "lng": 112.7714031
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan",
+                    "lat": -7.3033426,
+                    "lng": 112.7664091
+                }
             ],
             "route": [
                 {
                     "school": "Mts Negeri 1 Surabaya",
                     "drop_tray": 1050,
-                    "arrival_time": "08:08",
-                    "departure_time": "08:18"
+                    "arrival_time": "08:25",
+                    "departure_time": "08:35"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan",
-                    "arrival_time": "08:27",
-                    "departure_time": "08:37"
+                    "arrival_time": "08:41",
+                    "departure_time": "09:01"
                 },
                 {
                     "school": "Mts Negeri 1 Surabaya",
                     "drop_tray": 16,
-                    "arrival_time": "08:46",
-                    "departure_time": "08:56"
+                    "arrival_time": "09:06",
+                    "departure_time": "09:16"
                 },
                 {
                     "school": "Sd Negeri Klampis Ngasem 3",
                     "drop_tray": 408,
-                    "arrival_time": "09:09",
-                    "departure_time": "09:19"
+                    "arrival_time": "09:24",
+                    "departure_time": "09:34"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan",
-                    "arrival_time": "09:29"
+                    "arrival_time": "09:41",
+                    "finish_time": "10:01"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan 2",
             "distance_km": 16.01,
-            "time_spent_minutes": 68.42,
-            "departure_time": "08:00",
-            "return_time": "09:08",
+            "time_spent_minutes": 104.01,
+            "departure_time": "08:20",
+            "return_time": "09:44",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.305555862695,
-                    112.772618832255
-                ],
-                [
-                    -7.3071326,
-                    112.7892382
-                ],
-                [
-                    -7.3071326,
-                    112.7892382
-                ],
-                [
-                    -7.305555862695,
-                    112.772618832255
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan 2",
+                    "lat": -7.305555862695,
+                    "lng": 112.772618832255
+                },
+                {
+                    "type": "school",
+                    "name": "Sma Negeri 20 Surabaya",
+                    "lat": -7.3071326,
+                    "lng": 112.7892382
+                },
+                {
+                    "type": "school",
+                    "name": "Sma Negeri 20 Surabaya",
+                    "lat": -7.3071326,
+                    "lng": 112.7892382
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan 2",
+                    "lat": -7.305555862695,
+                    "lng": 112.772618832255
+                }
             ],
             "route": [
                 {
                     "school": "Sma Negeri 20 Surabaya",
                     "drop_tray": 1050,
-                    "arrival_time": "08:08",
-                    "departure_time": "08:18"
+                    "arrival_time": "08:25",
+                    "departure_time": "08:35"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan 2",
-                    "arrival_time": "08:29",
-                    "departure_time": "08:39"
+                    "arrival_time": "08:42",
+                    "departure_time": "09:02"
                 },
                 {
                     "school": "Sma Negeri 20 Surabaya",
                     "drop_tray": 59,
-                    "arrival_time": "08:47",
-                    "departure_time": "08:57"
+                    "arrival_time": "09:07",
+                    "departure_time": "09:17"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Sukolilo Nginden Jangkungan 2",
-                    "arrival_time": "09:08"
+                    "arrival_time": "09:24",
+                    "finish_time": "09:44"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Sukolilo Semolowaru",
             "distance_km": 20.78,
-            "time_spent_minutes": 89.87,
-            "departure_time": "08:00",
-            "return_time": "09:29",
+            "time_spent_minutes": 121.17,
+            "departure_time": "08:20",
+            "return_time": "10:01",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.297155257795,
-                    112.775514396032
-                ],
-                [
-                    -7.3070097,
-                    112.7902185
-                ],
-                [
-                    -7.3070097,
-                    112.7902185
-                ],
-                [
-                    -7.289573,
-                    112.7848946
-                ],
-                [
-                    -7.297155257795,
-                    112.775514396032
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Semolowaru",
+                    "lat": -7.297155257795,
+                    "lng": 112.775514396032
+                },
+                {
+                    "type": "school",
+                    "name": "Smp Negeri 30 Surabaya",
+                    "lat": -7.3070097,
+                    "lng": 112.7902185
+                },
+                {
+                    "type": "school",
+                    "name": "Smp Negeri 30 Surabaya",
+                    "lat": -7.3070097,
+                    "lng": 112.7902185
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Keputih 245",
+                    "lat": -7.289573,
+                    "lng": 112.7848946
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Sukolilo Semolowaru",
+                    "lat": -7.297155257795,
+                    "lng": 112.775514396032
+                }
             ],
             "route": [
                 {
                     "school": "Smp Negeri 30 Surabaya",
                     "drop_tray": 1050,
-                    "arrival_time": "08:11",
-                    "departure_time": "08:21"
+                    "arrival_time": "08:27",
+                    "departure_time": "08:37"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Sukolilo Semolowaru",
-                    "arrival_time": "08:33",
-                    "departure_time": "08:43"
+                    "arrival_time": "08:44",
+                    "departure_time": "09:04"
                 },
                 {
                     "school": "Smp Negeri 30 Surabaya",
                     "drop_tray": 27,
-                    "arrival_time": "08:55",
-                    "departure_time": "09:05"
+                    "arrival_time": "09:12",
+                    "departure_time": "09:22"
                 },
                 {
                     "school": "Sd Negeri Keputih 245",
                     "drop_tray": 403,
-                    "arrival_time": "09:15",
-                    "departure_time": "09:25"
+                    "arrival_time": "09:28",
+                    "departure_time": "09:38"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Sukolilo Semolowaru",
-                    "arrival_time": "09:29"
+                    "arrival_time": "09:41",
+                    "finish_time": "10:01"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Gading",
             "distance_km": 3.99,
-            "time_spent_minutes": 19.57,
-            "departure_time": "08:00",
-            "return_time": "08:19",
+            "time_spent_minutes": 55.98,
+            "departure_time": "08:20",
+            "return_time": "08:55",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.2461338,
-                    112.7729803
-                ],
-                [
-                    -7.251375,
-                    112.7741626
-                ],
-                [
-                    -7.2461338,
-                    112.7729803
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Gading",
+                    "lat": -7.2461338,
+                    "lng": 112.7729803
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Ploso V",
+                    "lat": -7.251375,
+                    "lng": 112.7741626
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Gading",
+                    "lat": -7.2461338,
+                    "lng": 112.7729803
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Ploso V",
                     "drop_tray": 444,
-                    "arrival_time": "08:06",
-                    "departure_time": "08:16"
+                    "arrival_time": "08:24",
+                    "departure_time": "08:34"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tambaksari Gading",
-                    "arrival_time": "08:19"
+                    "arrival_time": "08:35",
+                    "finish_time": "08:55"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Gading 2",
             "distance_km": 5.72,
-            "time_spent_minutes": 23.74,
-            "departure_time": "08:00",
-            "return_time": "08:23",
+            "time_spent_minutes": 58.59,
+            "departure_time": "08:20",
+            "return_time": "08:58",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.246559386722,
-                    112.774114689219
-                ],
-                [
-                    -7.2479587,
-                    112.7789512
-                ],
-                [
-                    -7.246559386722,
-                    112.774114689219
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Gading 2",
+                    "lat": -7.246559386722,
+                    "lng": 112.774114689219
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Gading Iii",
+                    "lat": -7.2479587,
+                    "lng": 112.7789512
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Gading 2",
+                    "lat": -7.246559386722,
+                    "lng": 112.774114689219
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Gading Iii",
                     "drop_tray": 450,
-                    "arrival_time": "08:03",
-                    "departure_time": "08:13"
+                    "arrival_time": "08:22",
+                    "departure_time": "08:32"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tambaksari Gading 2",
-                    "arrival_time": "08:23"
+                    "arrival_time": "08:38",
+                    "finish_time": "08:58"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkeling 1",
             "distance_km": 3.65,
-            "time_spent_minutes": 28.77,
-            "departure_time": "08:00",
-            "return_time": "08:28",
+            "time_spent_minutes": 65.48,
+            "departure_time": "08:20",
+            "return_time": "09:05",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.258704010052,
-                    112.755940627659
-                ],
-                [
-                    -7.2508246,
-                    112.7546594
-                ],
-                [
-                    -7.258024,
-                    112.7550497
-                ],
-                [
-                    -7.258704010052,
-                    112.755940627659
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Pacarkeling 1",
+                    "lat": -7.258704010052,
+                    "lng": 112.755940627659
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Tambaksari Iii",
+                    "lat": -7.2508246,
+                    "lng": 112.7546594
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Pacar Keling 5-6-7-8",
+                    "lat": -7.258024,
+                    "lng": 112.7550497
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Pacarkeling 1",
+                    "lat": -7.258704010052,
+                    "lng": 112.755940627659
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Tambaksari Iii",
                     "drop_tray": 437,
-                    "arrival_time": "08:05",
-                    "departure_time": "08:15"
+                    "arrival_time": "08:23",
+                    "departure_time": "08:33"
                 },
                 {
                     "school": "Sd Negeri Pacar Keling 5-6-7-8",
                     "drop_tray": 406,
-                    "arrival_time": "08:18",
-                    "departure_time": "08:28"
+                    "arrival_time": "08:35",
+                    "departure_time": "08:45"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tambaksari Pacarkeling 1",
-                    "arrival_time": "08:28"
+                    "arrival_time": "08:45",
+                    "finish_time": "09:05"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkeling 2",
             "distance_km": 8.98,
-            "time_spent_minutes": 41.54,
-            "departure_time": "08:00",
-            "return_time": "08:41",
+            "time_spent_minutes": 73.46,
+            "departure_time": "08:20",
+            "return_time": "09:13",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.2620423175,
-                    112.753547988877
-                ],
-                [
-                    -7.2588341,
-                    112.7604435
-                ],
-                [
-                    -7.2406834,
-                    112.7627247
-                ],
-                [
-                    -7.2620423175,
-                    112.753547988877
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Pacarkeling 2",
+                    "lat": -7.2620423175,
+                    "lng": 112.753547988877
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Pacar Keling 1",
+                    "lat": -7.2588341,
+                    "lng": 112.7604435
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Gading V & Viii",
+                    "lat": -7.2406834,
+                    "lng": 112.7627247
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Pacarkeling 2",
+                    "lat": -7.2620423175,
+                    "lng": 112.753547988877
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Pacar Keling 1",
                     "drop_tray": 415,
-                    "arrival_time": "08:02",
-                    "departure_time": "08:12"
-                },
-                {
-                    "school": "Sd Negeri Gading V & Viii",
-                    "drop_tray": 412,
                     "arrival_time": "08:21",
                     "departure_time": "08:31"
                 },
                 {
+                    "school": "Sd Negeri Gading V & Viii",
+                    "drop_tray": 412,
+                    "arrival_time": "08:37",
+                    "departure_time": "08:47"
+                },
+                {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tambaksari Pacarkeling 2",
-                    "arrival_time": "08:41"
+                    "arrival_time": "08:53",
+                    "finish_time": "09:13"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkeling 3",
             "distance_km": 5.99,
-            "time_spent_minutes": 34.38,
-            "departure_time": "08:00",
-            "return_time": "08:34",
+            "time_spent_minutes": 68.99,
+            "departure_time": "08:20",
+            "return_time": "09:08",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.258436417793,
-                    112.757119626159
-                ],
-                [
-                    -7.2451932,
-                    112.7695033
-                ],
-                [
-                    -7.2562786,
-                    112.765432
-                ],
-                [
-                    -7.258436417793,
-                    112.757119626159
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Pacarkeling 3",
+                    "lat": -7.258436417793,
+                    "lng": 112.757119626159
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Gading 1",
+                    "lat": -7.2451932,
+                    "lng": 112.7695033
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Pacarkembang",
+                    "lat": -7.2562786,
+                    "lng": 112.765432
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Pacarkeling 3",
+                    "lat": -7.258436417793,
+                    "lng": 112.757119626159
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Gading 1",
                     "drop_tray": 400,
-                    "arrival_time": "08:06",
-                    "departure_time": "08:16"
+                    "arrival_time": "08:23",
+                    "departure_time": "08:33"
                 },
                 {
                     "school": "Sd Negeri Pacarkembang",
                     "drop_tray": 438,
-                    "arrival_time": "08:21",
-                    "departure_time": "08:31"
+                    "arrival_time": "08:36",
+                    "departure_time": "08:46"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tambaksari Pacarkeling 3",
-                    "arrival_time": "08:34"
+                    "arrival_time": "08:48",
+                    "finish_time": "09:08"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkembang",
             "distance_km": 2.19,
-            "time_spent_minutes": 15.25,
-            "departure_time": "08:00",
-            "return_time": "08:15",
+            "time_spent_minutes": 53.28,
+            "departure_time": "08:20",
+            "return_time": "08:53",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.257147993547,
-                    112.764616987093
-                ],
-                [
-                    -7.2500157,
-                    112.7653516
-                ],
-                [
-                    -7.257147993547,
-                    112.764616987093
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Pacarkembang",
+                    "lat": -7.257147993547,
+                    "lng": 112.764616987093
+                },
+                {
+                    "type": "school",
+                    "name": "Smp Negeri 9 Surabaya",
+                    "lat": -7.2500157,
+                    "lng": 112.7653516
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Pacarkembang",
+                    "lat": -7.257147993547,
+                    "lng": 112.764616987093
+                }
             ],
             "route": [
                 {
                     "school": "Smp Negeri 9 Surabaya",
                     "drop_tray": 1040,
-                    "arrival_time": "08:02",
-                    "departure_time": "08:12"
+                    "arrival_time": "08:21",
+                    "departure_time": "08:31"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tambaksari Pacarkembang",
-                    "arrival_time": "08:15"
+                    "arrival_time": "08:33",
+                    "finish_time": "08:53"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkembang 2",
             "distance_km": 11.06,
-            "time_spent_minutes": 46.55,
-            "departure_time": "08:00",
-            "return_time": "08:46",
+            "time_spent_minutes": 76.59,
+            "departure_time": "08:20",
+            "return_time": "09:16",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.262476620852,
-                    112.771433905126
-                ],
-                [
-                    -7.2518029,
-                    112.7636384
-                ],
-                [
-                    -7.2424409,
-                    112.765306
-                ],
-                [
-                    -7.262476620852,
-                    112.771433905126
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Pacarkembang 2",
+                    "lat": -7.262476620852,
+                    "lng": 112.771433905126
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Ploso I",
+                    "lat": -7.2518029,
+                    "lng": 112.7636384
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Gading Vii & Ix",
+                    "lat": -7.2424409,
+                    "lng": 112.765306
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Pacarkembang 2",
+                    "lat": -7.262476620852,
+                    "lng": 112.771433905126
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Ploso I",
                     "drop_tray": 410,
-                    "arrival_time": "08:09",
-                    "departure_time": "08:19"
+                    "arrival_time": "08:25",
+                    "departure_time": "08:35"
                 },
                 {
                     "school": "Sd Negeri Gading Vii & Ix",
                     "drop_tray": 426,
-                    "arrival_time": "08:26",
-                    "departure_time": "08:36"
+                    "arrival_time": "08:40",
+                    "departure_time": "08:50"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tambaksari Pacarkembang 2",
-                    "arrival_time": "08:46"
+                    "arrival_time": "08:56",
+                    "finish_time": "09:16"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Pacarkembang 3",
             "distance_km": 11.07,
-            "time_spent_minutes": 46.56,
-            "departure_time": "08:00",
-            "return_time": "08:46",
+            "time_spent_minutes": 76.6,
+            "departure_time": "08:20",
+            "return_time": "09:16",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.264657228205,
-                    112.761639111473
-                ],
-                [
-                    -7.2422649,
-                    112.7711971
-                ],
-                [
-                    -7.2514442,
-                    112.7709145
-                ],
-                [
-                    -7.264657228205,
-                    112.761639111473
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Pacarkembang 3",
+                    "lat": -7.264657228205,
+                    "lng": 112.761639111473
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Gading Iv",
+                    "lat": -7.2422649,
+                    "lng": 112.7711971
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Ploso Iii",
+                    "lat": -7.2514442,
+                    "lng": 112.7709145
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Pacarkembang 3",
+                    "lat": -7.264657228205,
+                    "lng": 112.761639111473
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Gading Iv",
                     "drop_tray": 411,
-                    "arrival_time": "08:13",
-                    "departure_time": "08:23"
-                },
-                {
-                    "school": "Sd Negeri Ploso Iii",
-                    "drop_tray": 423,
                     "arrival_time": "08:28",
                     "departure_time": "08:38"
                 },
                 {
+                    "school": "Sd Negeri Ploso Iii",
+                    "drop_tray": 423,
+                    "arrival_time": "08:41",
+                    "departure_time": "08:51"
+                },
+                {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tambaksari Pacarkembang 3",
-                    "arrival_time": "08:46"
+                    "arrival_time": "08:56",
+                    "finish_time": "09:16"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Tambaksari 1",
             "distance_km": 5.41,
-            "time_spent_minutes": 32.99,
-            "departure_time": "08:00",
-            "return_time": "08:32",
+            "time_spent_minutes": 68.12,
+            "departure_time": "08:20",
+            "return_time": "09:08",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.260056094853,
-                    112.756706817428
-                ],
-                [
-                    -7.2484974,
-                    112.7595601
-                ],
-                [
-                    -7.2515303,
-                    112.7538699
-                ],
-                [
-                    -7.260056094853,
-                    112.756706817428
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Tambaksari 1",
+                    "lat": -7.260056094853,
+                    "lng": 112.756706817428
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Rangkah I, Sd Negeri Rangkah Iv",
+                    "lat": -7.2484974,
+                    "lng": 112.7595601
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Tambaksari I",
+                    "lat": -7.2515303,
+                    "lng": 112.7538699
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Tambaksari 1",
+                    "lat": -7.260056094853,
+                    "lng": 112.756706817428
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Rangkah I, Sd Negeri Rangkah Iv",
                     "drop_tray": 428,
-                    "arrival_time": "08:07",
-                    "departure_time": "08:17"
+                    "arrival_time": "08:24",
+                    "departure_time": "08:34"
                 },
                 {
                     "school": "Sd Negeri Tambaksari I",
                     "drop_tray": 407,
-                    "arrival_time": "08:19",
-                    "departure_time": "08:29"
+                    "arrival_time": "08:35",
+                    "departure_time": "08:45"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tambaksari Tambaksari 1",
-                    "arrival_time": "08:32"
+                    "arrival_time": "08:48",
+                    "finish_time": "09:08"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tambaksari Tambaksari 2",
             "distance_km": 2.98,
-            "time_spent_minutes": 17.14,
-            "departure_time": "08:00",
-            "return_time": "08:17",
+            "time_spent_minutes": 54.46,
+            "departure_time": "08:20",
+            "return_time": "08:54",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.254102680485,
-                    112.755204528922
-                ],
-                [
-                    -7.2488259,
-                    112.7600892
-                ],
-                [
-                    -7.254102680485,
-                    112.755204528922
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Tambaksari 2",
+                    "lat": -7.254102680485,
+                    "lng": 112.755204528922
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Rangkah Vi, Sd Negeri Rangkah Vii",
+                    "lat": -7.2488259,
+                    "lng": 112.7600892
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tambaksari Tambaksari 2",
+                    "lat": -7.254102680485,
+                    "lng": 112.755204528922
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Rangkah Vi, Sd Negeri Rangkah Vii",
                     "drop_tray": 445,
-                    "arrival_time": "08:03",
-                    "departure_time": "08:13"
+                    "arrival_time": "08:22",
+                    "departure_time": "08:32"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tambaksari Tambaksari 2",
-                    "arrival_time": "08:17"
+                    "arrival_time": "08:34",
+                    "finish_time": "08:54"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tenggilis Mejoyo Kendangsari",
             "distance_km": 16.99,
-            "time_spent_minutes": 90.77,
-            "departure_time": "08:00",
-            "return_time": "09:30",
+            "time_spent_minutes": 125.48,
+            "departure_time": "08:20",
+            "return_time": "10:05",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.3268,
-                    112.75
-                ],
-                [
-                    -7.3131164,
-                    112.7581571
-                ],
-                [
-                    -7.3213213,
-                    112.7522139
-                ],
-                [
-                    -7.3352442,
-                    112.7472824
-                ],
-                [
-                    -7.3211228,
-                    112.7523806
-                ],
-                [
-                    -7.3268,
-                    112.75
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tenggilis Mejoyo Kendangsari",
+                    "lat": -7.3268,
+                    "lng": 112.75
+                },
+                {
+                    "type": "school",
+                    "name": "Sdn Tenggilis Mejoyo 1",
+                    "lat": -7.3131164,
+                    "lng": 112.7581571
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kendangsari 1",
+                    "lat": -7.3213213,
+                    "lng": 112.7522139
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kutisari 2",
+                    "lat": -7.3352442,
+                    "lng": 112.7472824
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kendangsari 5",
+                    "lat": -7.3211228,
+                    "lng": 112.7523806
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tenggilis Mejoyo Kendangsari",
+                    "lat": -7.3268,
+                    "lng": 112.75
+                }
             ],
             "route": [
                 {
                     "school": "Sdn Tenggilis Mejoyo 1",
                     "drop_tray": 450,
-                    "arrival_time": "08:12",
-                    "departure_time": "08:22"
-                },
-                {
-                    "school": "Sd Negeri Kendangsari 1",
-                    "drop_tray": 424,
                     "arrival_time": "08:27",
                     "departure_time": "08:37"
                 },
                 {
+                    "school": "Sd Negeri Kendangsari 1",
+                    "drop_tray": 424,
+                    "arrival_time": "08:41",
+                    "departure_time": "08:51"
+                },
+                {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Tenggilis Mejoyo Kendangsari",
-                    "arrival_time": "08:43",
-                    "departure_time": "08:53"
+                    "arrival_time": "08:54",
+                    "departure_time": "09:14"
                 },
                 {
                     "school": "Sd Negeri Kutisari 2",
                     "drop_tray": 443,
-                    "arrival_time": "08:57",
-                    "departure_time": "09:07"
+                    "arrival_time": "09:17",
+                    "departure_time": "09:27"
                 },
                 {
                     "school": "Sd Negeri Kendangsari 5",
                     "drop_tray": 450,
-                    "arrival_time": "09:15",
-                    "departure_time": "09:25"
+                    "arrival_time": "09:31",
+                    "departure_time": "09:41"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tenggilis Mejoyo Kendangsari",
-                    "arrival_time": "09:30"
+                    "arrival_time": "09:45",
+                    "finish_time": "10:05"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tenggilis Mejoyo Panjang Jiwo",
             "distance_km": 8.39,
-            "time_spent_minutes": 60.14,
-            "departure_time": "08:00",
-            "return_time": "09:00",
+            "time_spent_minutes": 102.59,
+            "departure_time": "08:20",
+            "return_time": "09:42",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.310744690388,
-                    112.759053415041
-                ],
-                [
-                    -7.3099429,
-                    112.7596512
-                ],
-                [
-                    -7.3099429,
-                    112.7596512
-                ],
-                [
-                    -7.3087431,
-                    112.76159
-                ],
-                [
-                    -7.310744690388,
-                    112.759053415041
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tenggilis Mejoyo Panjang Jiwo",
+                    "lat": -7.310744690388,
+                    "lng": 112.759053415041
+                },
+                {
+                    "type": "school",
+                    "name": "Sma Negeri 16 Surabaya",
+                    "lat": -7.3099429,
+                    "lng": 112.7596512
+                },
+                {
+                    "type": "school",
+                    "name": "Sma Negeri 16 Surabaya",
+                    "lat": -7.3099429,
+                    "lng": 112.7596512
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Panjang Jiwo 1 No.265",
+                    "lat": -7.3087431,
+                    "lng": 112.76159
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tenggilis Mejoyo Panjang Jiwo",
+                    "lat": -7.310744690388,
+                    "lng": 112.759053415041
+                }
             ],
             "route": [
                 {
                     "school": "Sma Negeri 16 Surabaya",
                     "drop_tray": 1050,
-                    "arrival_time": "08:05",
-                    "departure_time": "08:15"
+                    "arrival_time": "08:23",
+                    "departure_time": "08:33"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Tenggilis Mejoyo Panjang Jiwo",
-                    "arrival_time": "08:17",
-                    "departure_time": "08:27"
+                    "arrival_time": "08:34",
+                    "departure_time": "08:54"
                 },
                 {
                     "school": "Sma Negeri 16 Surabaya",
                     "drop_tray": 92,
-                    "arrival_time": "08:32",
-                    "departure_time": "08:42"
+                    "arrival_time": "08:57",
+                    "departure_time": "09:07"
                 },
                 {
                     "school": "Sd Negeri Panjang Jiwo 1 No.265",
                     "drop_tray": 434,
-                    "arrival_time": "08:47",
-                    "departure_time": "08:57"
+                    "arrival_time": "09:10",
+                    "departure_time": "09:20"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tenggilis Mejoyo Panjang Jiwo",
-                    "arrival_time": "09:00"
+                    "arrival_time": "09:22",
+                    "finish_time": "09:42"
                 }
             ]
         },
         {
             "sppg": "SPPG Kota Surabaya Tenggilis Mejoyo Tenggilis Mejoyo",
             "distance_km": 9.09,
-            "time_spent_minutes": 61.82,
-            "departure_time": "08:00",
-            "return_time": "09:01",
+            "time_spent_minutes": 103.64,
+            "departure_time": "08:20",
+            "return_time": "09:43",
             "feasible_time": true,
-            "polyline": [
-                [
-                    -7.312176990002,
-                    112.756075995395
-                ],
-                [
-                    -7.3157546,
-                    112.7543289
-                ],
-                [
-                    -7.3227346,
-                    112.7507928
-                ],
-                [
-                    -7.3099125,
-                    112.7603895
-                ],
-                [
-                    -7.312176990002,
-                    112.756075995395
-                ]
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tenggilis Mejoyo Tenggilis Mejoyo",
+                    "lat": -7.312176990002,
+                    "lng": 112.756075995395
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Tenggilis Mejoyo 1",
+                    "lat": -7.3157546,
+                    "lng": 112.7543289
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kendangsari 2",
+                    "lat": -7.3227346,
+                    "lng": 112.7507928
+                },
+                {
+                    "type": "school",
+                    "name": "Smp Negeri 39 Surabaya",
+                    "lat": -7.3099125,
+                    "lng": 112.7603895
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya Tenggilis Mejoyo Tenggilis Mejoyo",
+                    "lat": -7.312176990002,
+                    "lng": 112.756075995395
+                }
             ],
             "route": [
                 {
                     "school": "Sd Negeri Tenggilis Mejoyo 1",
                     "drop_tray": 439,
-                    "arrival_time": "08:02",
-                    "departure_time": "08:12"
+                    "arrival_time": "08:21",
+                    "departure_time": "08:31"
                 },
                 {
                     "school": "Sd Negeri Kendangsari 2",
                     "drop_tray": 418,
-                    "arrival_time": "08:15",
-                    "departure_time": "08:25"
+                    "arrival_time": "08:33",
+                    "departure_time": "08:43"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Tenggilis Mejoyo Tenggilis Mejoyo",
-                    "arrival_time": "08:31",
-                    "departure_time": "08:41"
+                    "arrival_time": "08:47",
+                    "departure_time": "09:07"
                 },
                 {
                     "school": "Smp Negeri 39 Surabaya",
                     "drop_tray": 1002,
-                    "arrival_time": "08:46",
-                    "departure_time": "08:56"
+                    "arrival_time": "09:10",
+                    "departure_time": "09:20"
                 },
                 {
                     "event": "RETURN_DEPOT",
                     "location": "SPPG Kota Surabaya Tenggilis Mejoyo Tenggilis Mejoyo",
-                    "arrival_time": "09:01"
-                }
-            ]
-        },
-        {
-            "sppg": "SPPG Kota Surabaya - Rungkut",
-            "distance_km": 10.63,
-            "time_spent_minutes": 65.5,
-            "departure_time": "08:00",
-            "return_time": "09:05",
-            "feasible_time": true,
-            "polyline": [
-                [
-                    -7.3223,
-                    112.7822
-                ],
-                [
-                    -7.3280093,
-                    112.7911258
-                ],
-                [
-                    -7.3280981,
-                    112.7780877
-                ],
-                [
-                    -7.3221935,
-                    112.7703674
-                ],
-                [
-                    -7.3223,
-                    112.7822
-                ]
-            ],
-            "route": [
-                {
-                    "school": "Sd Negeri Medokan Ayu Ii",
-                    "drop_tray": 447,
-                    "arrival_time": "08:05",
-                    "departure_time": "08:15"
-                },
-                {
-                    "school": "Sd Negeri Rungkut Kidul Ii - 581",
-                    "drop_tray": 434,
-                    "arrival_time": "08:20",
-                    "departure_time": "08:30"
-                },
-                {
-                    "event": "REFILL",
-                    "location": "SPPG Kota Surabaya - Rungkut",
-                    "arrival_time": "08:36",
-                    "departure_time": "08:46"
-                },
-                {
-                    "school": "Sd Negeri Kalirungkut I No. 264",
-                    "drop_tray": 436,
-                    "arrival_time": "08:51",
-                    "departure_time": "09:01"
-                },
-                {
-                    "event": "RETURN_DEPOT",
-                    "location": "SPPG Kota Surabaya - Rungkut",
-                    "arrival_time": "09:05"
+                    "arrival_time": "09:23",
+                    "finish_time": "09:43"
                 }
             ]
         }

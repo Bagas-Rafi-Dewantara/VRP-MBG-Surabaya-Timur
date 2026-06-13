@@ -1,6 +1,10 @@
 let map = null;
 let routeLayerGroup = null;
 let currentAlgData = null;
+let tileLayer = null;
+
+const TILE_DARK  = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+const TILE_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
 
 let currentTheme = "dark";
 let currentBaseLayer = null;
@@ -48,40 +52,19 @@ function initMap() {
         zoomControl: true
     });
 
-    currentBaseLayer =
-        createBaseLayer("dark");
-
-    currentBaseLayer.addTo(map);
-
-    routeLayerGroup =
-        L.layerGroup().addTo(map);
+    tileLayer = L.tileLayer(TILE_DARK, {
+        attribution: '© OpenStreetMap © CARTO',
+        subdomains: 'abcd',
+        maxZoom: 20,
+    }).addTo(map);
 
 }
 
-function toggleMapTheme() {
-
-    console.log("BEFORE:", currentTheme);
-
-    if (currentBaseLayer) {
-        map.removeLayer(currentBaseLayer);
-    }
-
-    currentTheme =
-        currentTheme === "dark"
-            ? "light"
-            : "dark";
-
-    currentBaseLayer =
-        createBaseLayer(currentTheme);
-
-    currentBaseLayer.addTo(map);
-
+function updateMapTile(theme) {
+    if (!map || !tileLayer) return;
+    tileLayer.setUrl(theme === 'light' ? TILE_LIGHT : TILE_DARK);
 }
 
-/**
- * Re-render map for the given algData, optionally filtered to one SPPG.
- * Also updates the sidebar route-detail panel if a single SPPG is selected.
- */
 function updateMap(algData, sppgFilter) {
     if (!map || !routeLayerGroup || !algData) return;
 
@@ -91,180 +74,93 @@ function updateMap(algData, sppgFilter) {
     const sppgList =
         sppgFilter === 'all'
             ? algData.results_per_sppg
-            : algData.results_per_sppg.filter(
-                s => s.sppg === sppgFilter
-            );
+            : algData.results_per_sppg.filter(s => s.sppg === sppgFilter);
 
     const bounds = L.latLngBounds();
-
     let colorIdx = 0;
 
     sppgList.forEach((sppgData) => {
-
-        const color =
-            CLUSTER_PALETTE[
-                colorIdx % CLUSTER_PALETTE.length
-            ];
-
+        const color = CLUSTER_PALETTE[colorIdx % CLUSTER_PALETTE.length];
         colorIdx++;
 
-        if (
-            !sppgData.route_order ||
-            sppgData.route_order.length < 2
-        ) {
-            return;
-        }
+        if (!sppgData.route_order || sppgData.route_order.length < 2) return;
 
-        const shortName =
-            sppgData.sppg.replace(
-                "SPPG Kota Surabaya ",
-                ""
-            );
+        const shortName   = sppgData.sppg.replace("SPPG Kota Surabaya ", "");
+        const schoolCount = countSchools(sppgData);
+        const coords      = sppgData.route_order.map(p => `${p.lng},${p.lat}`).join(";");
 
-        const schoolCount =
-            countSchools(sppgData);
-
-        const coords =
-            sppgData.route_order
-                .map(
-                    p => `${p.lng},${p.lat}`
-                )
-                .join(";");
-
-        // MARKER DEPOT
-
+        // ── MARKER DEPOT ────────────────────────────────────────────
         const depotLatLng = [
             sppgData.route_order[0].lat,
-            sppgData.route_order[0].lng
+            sppgData.route_order[0].lng,
         ];
 
-        L.marker(
-            depotLatLng,
-            {
-                icon: makeCircleIcon(
-                    "#f43f5e",
-                    18,
-                    true
-                )
-            }
-        )
-        .addTo(routeLayerGroup)
-        .bindPopup(`
-            <strong>🏭 SPPG (Depot)</strong><br>
-            ${shortName}<br><br>
+        L.marker(depotLatLng, { icon: makeCircleIcon("#f43f5e", 14, true) })
+            .addTo(routeLayerGroup)
+            .bindPopup(`
+                <strong>🏭 SPPG (Depot)</strong><br>
+                ${shortName}<br>
+                <hr style="border-color:rgba(99,147,255,0.2);margin:6px 0">
+                📦 ${schoolCount} sekolah<br>
+                🛣️ ${sppgData.distance_km.toFixed(2)} km<br>
+                ⏱️ ${sppgData.time_spent_minutes.toFixed(1)} menit<br>
+                🕗 ${sppgData.departure_time} — ${sppgData.return_time}
+            `, { maxWidth: 240 });
 
-            📦 ${schoolCount} sekolah<br>
-            🛣️ ${sppgData.distance_km.toFixed(2)} km<br>
-            ⏱️ ${sppgData.time_spent_minutes.toFixed(1)} menit<br>
-            🕗 ${sppgData.departure_time} - ${sppgData.return_time}
-        `);
+        // ── MARKER SEKOLAH ──────────────────────────────────────────
+        const totalSchools = sppgData.route_order.length - 2; // exclude depot awal & akhir
 
-        // MARKER SEKOLAH
+        sppgData.route_order.slice(1, -1).forEach((point, i) => {
 
-        sppgData.route_order
-            .slice(1, -1)
-            .forEach((point, i) => {
+            // Cocokkan dengan data detail di route[] untuk dapat waktu & tray
+            const routeDetail = sppgData.route.find(r => r.school === point.name);
+            const tray      = routeDetail?.drop_tray      ?? '—';
 
-                L.marker(
-                    [point.lat, point.lng],
-                    {
-                        icon: makeCircleIcon(
-                            color,
-                            12
-                        )
-                    }
-                )
+            const popupHtml = `
+                <strong>🏫 ${point.name}</strong><br>
+                <hr style="border-color:rgba(99,147,255,0.2);margin:6px 0">
+                📍 Urutan ke-<b>${i + 1}</b> dari <b>${totalSchools}</b> sekolah<br>
+                🏭 SPPG: <b>${sppgData.sppg.replace('SPPG Kota Surabaya ', '')}</b>
+                📦 Drop: <b>${tray} tray</b>
+            `;
+
+            L.marker([point.lat, point.lng], { icon: makeCircleIcon(color, 9) })
                 .addTo(routeLayerGroup)
-                .bindPopup(`
-                    <strong>${point.name}</strong><br>
-                    Urutan ${i + 1}
-                `);
-
-            });
-
-        // ROUTE OSRM
-
-        fetch(
-            `https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`
-        )
-        .then(res => res.json())
-        .then(data => {
-
-            if (
-                !data.routes ||
-                !data.routes.length
-            ) {
-                return;
-            }
-
-            const geometry =
-                data.routes[0]
-                    .geometry
-                    .coordinates;
-
-            const latlngs =
-                geometry.map(
-                    coord => [
-                        coord[1],
-                        coord[0]
-                    ]
-                );
-
-            L.polyline(
-                latlngs,
-                {
-                    color: "#ffffff",
-                    weight: 10,
-                    opacity: 0.25
-                }
-            ).addTo(routeLayerGroup);
-
-            const polyline = L.polyline(latlngs, {
-                color,
-                weight: 4,
-                opacity: 0.9,
-                className: "animated-route"
-            }).addTo(routeLayerGroup);
-
-            polyline.bindTooltip(
-                `<strong>${shortName}</strong><br>${schoolCount} sekolah · ${sppgData.distance_km.toFixed(2)} km`
-            );
-
-            polyline.on(
-                'click',
-                () => showRouteDetail(sppgData)
-            );
-
-            bounds.extend(
-                polyline.getBounds()
-            );
-
-            map.fitBounds(
-                bounds,
-                {
-                    padding: [30, 30],
-                    maxZoom: 15
-                }
-            );
-
-        })
-        .catch(err => {
-            console.error(
-                "OSRM error:",
-                err
-            );
+                .bindPopup(popupHtml, { maxWidth: 240 });
         });
 
+        // ── ROUTE OSRM ──────────────────────────────────────────────
+        fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
+            .then(res => res.json())
+            .then(data => {
+                if (!data.routes || !data.routes.length) return;
+
+                const latlngs = data.routes[0].geometry.coordinates.map(
+                    coord => [coord[1], coord[0]]
+                );
+
+                const polyline = L.polyline(latlngs, {
+                    color,
+                    weight: 4,
+                    opacity: 0.9,
+                }).addTo(routeLayerGroup);
+
+                polyline.bindTooltip(
+                    `<strong>${shortName}</strong><br>${schoolCount} sekolah · ${sppgData.distance_km.toFixed(2)} km`
+                );
+
+                polyline.on('click', () => showRouteDetail(sppgData));
+
+                bounds.extend(polyline.getBounds());
+                map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
+            })
+            .catch(err => console.error("OSRM error:", err));
     });
 
-    updateRouteDetail(
-        sppgFilter,
-        algData
-    );
+    updateRouteDetail(sppgFilter, algData);
 }
 
 function showRouteDetail(sppgData) {
-    // Switch SPPG select to that SPPG, which will trigger updateRouteDetail
     const select = document.getElementById('sppg-select');
     if (select) {
         select.value = sppgData.sppg;
@@ -273,7 +169,7 @@ function showRouteDetail(sppgData) {
 }
 
 function updateRouteDetail(sppgFilter, algData) {
-    const panel = document.getElementById('route-detail-panel');
+    const panel   = document.getElementById('route-detail-panel');
     const content = document.getElementById('route-detail-content');
     if (!panel || !content) return;
 
@@ -288,8 +184,7 @@ function updateRouteDetail(sppgFilter, algData) {
     panel.style.display = '';
     content.innerHTML = '';
 
-    const steps = sppgData.route;
-    steps.forEach(step => {
+    sppgData.route.forEach(step => {
         const div = document.createElement('div');
 
         if (step.school) {
@@ -298,23 +193,33 @@ function updateRouteDetail(sppgFilter, algData) {
                 <span class="route-step-icon">🏫</span>
                 <div class="route-step-info">
                     <div class="route-step-name">${step.school}</div>
-                    <div class="route-step-meta">${step.arrival_time} tiba · ${step.departure_time} berangkat · ${step.drop_tray} tray</div>
+                    <div class="route-step-meta">
+                        ${step.arrival_time} tiba · ${step.departure_time} berangkat · ${step.drop_tray} tray
+                    </div>
                 </div>`;
+
         } else if (step.event === 'REFILL') {
             div.className = 'route-step refill-step';
             div.innerHTML = `
                 <span class="route-step-icon">🔄</span>
                 <div class="route-step-info">
                     <div class="route-step-name">Refill Muatan</div>
-                    <div class="route-step-meta">${step.arrival_time} tiba · ${step.departure_time} berangkat</div>
+                    <div class="route-step-meta">
+                        ${step.arrival_time} tiba · ${step.departure_time} berangkat
+                    </div>
                 </div>`;
+
         } else if (step.event === 'RETURN_DEPOT') {
             div.className = 'route-step return-step';
             div.innerHTML = `
                 <span class="route-step-icon">🏁</span>
                 <div class="route-step-info">
                     <div class="route-step-name">Kembali ke SPPG</div>
-                    <div class="route-step-meta">Tiba: ${step.arrival_time}</div>
+                    <div class="route-step-meta">${
+                        step.finish_time
+                            ? `Tiba: ${step.arrival_time} · Selesai bongkar: ${step.finish_time}`
+                            : `Tiba: ${step.arrival_time}`
+                    }</div>
                 </div>`;
         }
 

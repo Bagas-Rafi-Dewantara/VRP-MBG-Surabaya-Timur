@@ -54,26 +54,27 @@ class SimulatedAnnealingVRP:
         best_fitness = current_fitness
         
         if self.num_schools < 2:
-            return best_sol, best_eval
+            return best_sol, best_eval, []
             
         temp = self.initial_temp
-        
+        convergence = []
+
         # 2. Looping SA
         while temp > self.stopping_temp:
             for _ in range(self.max_iter_per_temp):
                 neighbor_sol = self.get_neighbor(current_sol)
-                
+
                 # TAMBAHKAN PARAMETER sppg_name DI UJUNG SINI JUGA
                 neighbor_eval = evaluate_solution(neighbor_sol, self.schools, self.distance_matrix, self.time_matrix, self.config, sppg_name=self.instance["sppg_name"])
                 neighbor_fitness = neighbor_eval["fitness"]
-                
+
                 delta_energy = neighbor_fitness - current_fitness
-                
+
                 if delta_energy < 0:
                     current_sol = neighbor_sol
                     current_fitness = neighbor_fitness
                     current_eval = neighbor_eval
-                    
+
                     if neighbor_fitness < best_fitness:
                         best_sol = neighbor_sol.copy()
                         best_fitness = neighbor_fitness
@@ -84,25 +85,26 @@ class SimulatedAnnealingVRP:
                         current_sol = neighbor_sol
                         current_fitness = neighbor_fitness
                         current_eval = neighbor_eval
-            
-            self.convergence_history.append(best_fitness)
+
             temp *= self.cooling_rate
-            
-        best_eval["convergence"] = self.convergence_history
-        return best_sol, best_eval
+            convergence.append(best_eval["total_distance_km"])
+
+        return best_sol, best_eval, convergence
 
 def run_optimization(instance_data):
     """
-    Menjalankan Simulated Annealing yang sudah di-tuning agar cepat (Fast-SA)
+    SA dengan ~50 iterasi total:
+    max_iter_per_temp=1, stopping_temp=0.5 → ~50 temperature steps × 1 iter = ~50 evaluasi
     """
     sa = SimulatedAnnealingVRP(
         instance_data=instance_data,
-        initial_temp=50,        # Diturunkan dari 1500 ke 100 (sudah cukup untuk VRP skala kecil)
-        cooling_rate=0.90,        # Dipercepat penurunannya dari 0.98 ke 0.90
-        max_iter_per_temp=50,     # Dikurangi dari 100 ke 30 iterasi per langkah suhu
-        stopping_temp=0.1         # Dinaikkan dari 0.01 ke 0.1
+        initial_temp=100,
+        cooling_rate=0.90,
+        max_iter_per_temp=1,
+        stopping_temp=0.5
     )
-    best_seq, details = sa.run()
+    best_seq, details, convergence = sa.run()
+    details["convergence"] = convergence
     return details
 
 if __name__ == "__main__":

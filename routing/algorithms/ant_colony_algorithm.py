@@ -34,7 +34,7 @@ class AntColonyVRP:
         if self.num_schools < 2:
             best_sol = [0] if self.num_schools == 1 else []
             best_eval = evaluate_solution(best_sol, self.schools, self.distance_matrix, self.time_matrix, self.config, sppg_name=self.instance["sppg_name"])
-            return best_sol, best_eval
+            return best_sol, best_eval, []
 
         # 2. Inisialisasi Pheromone (Tau) dan Visibilitas (Eta) secara linier
         pheromone = [[1.0 for _ in range(self.num_schools)] for _ in range(self.num_schools)]
@@ -59,6 +59,7 @@ class AntColonyVRP:
         best_sol = []
         best_eval = None
         best_fitness = float('inf')
+        convergence = []
 
         # 3. Looping Utama ACO
         for _ in range(self.iterations):
@@ -123,52 +124,23 @@ class AntColonyVRP:
                     ke = seq[step + 1]
                     pheromone[dari][ke] += deposit
 
-        return best_sol, best_eval
+            convergence.append(best_eval["total_distance_km"])
+
+        return best_sol, best_eval, convergence
 
 def run_optimization(instance_data):
-    print("      Melakukan Hyperparameter Tuning dengan Optuna...")
-
-    # Blok wajib Optuna untuk mencari parameter terbaik
-    def objective(trial):
-        # Batasan ruang pencarian parameter
-        a = trial.suggest_float('alpha', 0.5, 3.0)
-        b = trial.suggest_float('beta', 1.0, 5.0)
-        e = trial.suggest_float('evap_rate', 0.1, 0.9)
-
-        # Iterasi kecil untuk proses evaluasi agar cepat
-        aco_tune = AntColonyVRP(
-            instance_data=instance_data,
-            num_ants=10,       
-            iterations=15,     
-            alpha=a,         
-            beta=b,          
-            evap_rate=e,     
-            q=1000             
-        )
-        
-        _, details = aco_tune.run()
-        return details["total_distance_km"]
-
-    # Eksekusi pencarian Optuna
-    study = optuna.create_study(direction="minimize")
-    study.optimize(objective, n_trials=15) # Mencoba 15 kombinasi
-
-    best_params = study.best_params
-    print(f"      [Tuned] Params terbaik: Alpha={round(best_params['alpha'], 2)}, Beta={round(best_params['beta'], 2)}, Evap={round(best_params['evap_rate'], 2)}")
-    
-    # Menjalankan ACO final secara penuh dengan parameter terbaik hasil tuning
-    aco_final = AntColonyVRP(
+    aco = AntColonyVRP(
         instance_data=instance_data,
-        num_ants=25,       # Jumlah semut dinaikkan untuk hasil final
-        iterations=50,     # Jumlah iterasi dinaikkan untuk konvergensi maksimal
-        alpha=best_params['alpha'],
-        beta=best_params['beta'],
-        evap_rate=best_params['evap_rate'],
-        q=1000
+        num_ants=25,
+        iterations=50,
+        alpha=1.0,
+        beta=2.0,
+        evap_rate=0.5,
+        q=1000,
     )
-    
-    _, final_details = aco_final.run()
-    return final_details
+    _, details, convergence = aco.run()
+    details["convergence"] = convergence
+    return details
 
 if __name__ == "__main__":
     import time # Pastikan modul time di-import
@@ -225,48 +197,34 @@ if __name__ == "__main__":
             print(f"      [Runtime] Algoritma selesai dalam {runtime_detik} detik")
             
             rute_sppg = details["single_route_data"]
-            polyline = []
-
-            polyline.append([
-                instance_data["depot"]["lat"],
-                instance_data["depot"]["lng"]
-            ])
-
+            route_order = [{"type": "depot", "name": sppg_name, "lat": instance_data["depot"]["lat"], "lng": instance_data["depot"]["lng"]}]
             for stop in rute_sppg["route"]:
                 if "school" in stop:
                     nama_sekolah = stop["school"].split(" (")[0]
                     for s in instance_data["schools"]:
                         if s["nama_sekolah"] == nama_sekolah:
-                            polyline.append([
-                                s["lat"],
-                                s["lng"]
-                            ])
+                            route_order.append({"type": "school", "name": s["nama_sekolah"], "lat": s["lat"], "lng": s["lng"]})
                             break
+            route_order.append({"type": "depot", "name": sppg_name, "lat": instance_data["depot"]["lat"], "lng": instance_data["depot"]["lng"]})
 
-            polyline.append([
-                instance_data["depot"]["lat"],
-                instance_data["depot"]["lng"]
-            ])
             all_times.append(rute_sppg["time_spent_minutes"])
-            
-            # Tambahkan runtime SPPG ini ke total global
+
             final_output["global_summary"]["total_distance_km"] += details["total_distance_km"]
-            final_output["global_summary"]["total_mobil"] += 1 
+            final_output["global_summary"]["total_mobil"] += 1
             final_output["global_summary"]["total_algorithm_runtime_seconds"] += runtime_detik
-            
+
             if not details["is_feasible"]:
                 final_output["global_summary"]["feasible"] = False
-            
-            # 4. SIMPAN RUNTIME KE DALAM ARRAY JSON PER SPPG
+
             final_output["results_per_sppg"].append({
                 "sppg": sppg_name,
-                "algorithm_runtime_seconds": runtime_detik, # Tersimpan di JSON
+                "algorithm_runtime_seconds": runtime_detik,
                 "distance_km": rute_sppg["distance_km"],
                 "time_spent_minutes": rute_sppg["time_spent_minutes"],
                 "departure_time": rute_sppg["departure_time"],
                 "return_time": rute_sppg["return_time"],
                 "feasible_time": rute_sppg["feasible_time"],
-                "polyline": polyline,
+                "route_order": route_order,
                 "route": rute_sppg["route"]
             })
 
