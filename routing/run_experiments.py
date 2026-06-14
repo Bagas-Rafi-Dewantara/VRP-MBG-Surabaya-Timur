@@ -9,6 +9,7 @@ import sys
 import json
 import time
 import glob
+import math
 from datetime import datetime
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -45,6 +46,24 @@ def build_route_order(sppg_name, route, depot, schools):
     ro.append({"type": "depot", "name": sppg_name,
                "lat": depot["lat"], "lng": depot["lng"]})
     return ro
+
+
+def _running_best(conv):
+    """Convert convergence list to running-minimum (best-so-far) list."""
+    result = []
+    best = float('inf')
+    for v in conv:
+        best = min(best, v)
+        result.append(round(best, 4))
+    return result
+
+
+def _std_dev(values):
+    n = len(values)
+    if n < 2:
+        return 0.0
+    mean = sum(values) / n
+    return round(math.sqrt(sum((x - mean) ** 2 for x in values) / (n - 1)), 2)
 
 
 def _aggregate_convergence(per_sppg_curves):
@@ -166,12 +185,14 @@ def main():
         best_summary = None
         best_sppg = None
         all_convergences = []
+        all_best_convergences = []
 
         for r in range(1, N_RUNS + 1):
             print(f"  Run {r}/{N_RUNS}...", end=" ", flush=True)
             summary, sppg_data, conv_total = run_once(alg_key, run_fn, instances, r)
             runs_summary.append(summary)
             all_convergences.append(conv_total)
+            all_best_convergences.append(_running_best(conv_total))
 
             print(f"{summary['total_distance_km']:.2f} km | "
                   f"{summary['total_time_minutes']:.2f} mnt | "
@@ -192,6 +213,12 @@ def main():
             "runtime_seconds":   round(sum(runtimes) / N_RUNS, 2),
         }
 
+        std_dev = {
+            "total_distance_km": _std_dev(distances),
+            "total_time_minutes": _std_dev(times),
+            "runtime_seconds": _std_dev(runtimes),
+        }
+
         # Average convergence curve across all 10 runs
         max_len = max((len(c) for c in all_convergences if c), default=0)
         conv_avg = []
@@ -204,7 +231,9 @@ def main():
             "runs": runs_summary,
             "best": best_summary,
             "average": average,
+            "std_dev": std_dev,
             "convergence_per_run": all_convergences,
+            "convergence_best_per_run": all_best_convergences,
             "convergence_average": conv_avg,
         }
 
