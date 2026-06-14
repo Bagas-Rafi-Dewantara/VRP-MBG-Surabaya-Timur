@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // --- Initialize map & charts (need DOM ready) ---
   initMap();
   initCharts();
+  lucide.createIcons();
   updateMapTile(savedTheme);
 
   // --- Load all data (algorithm JSONs + history) in parallel ---

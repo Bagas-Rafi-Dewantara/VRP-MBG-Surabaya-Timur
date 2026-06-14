@@ -57,10 +57,15 @@
       <!-- SIDEBAR -->
       <aside class="sidebar">
         <section class="sidebar-section">
-          <h3 class="sidebar-section-title">📊 Ringkasan Global</h3>
+          <h3 class="sidebar-section-title">
+            <i data-lucide="layout-dashboard"></i>
+            Ringkasan Global
+          </h3>
           <div id="summary-cards" class="summary-grid">
             <div class="summary-card">
-              <div class="summary-icon">🛣️</div>
+              <div class="summary-icon">
+                <i data-lucide="route"></i>
+              </div>
               <div class="summary-info">
                 <span class="summary-label">Total Jarak</span>
                 <span class="summary-value" id="val-distance">—</span>
@@ -68,7 +73,9 @@
               </div>
             </div>
             <div class="summary-card">
-              <div class="summary-icon">⏱️</div>
+              <div class="summary-icon">
+                <i data-lucide="clock"></i>
+              </div>
               <div class="summary-info">
                 <span class="summary-label">Waktu Operasional Terlama</span>
                 <span class="summary-value" id="val-time">—</span>
@@ -76,7 +83,9 @@
               </div>
             </div>
             <div class="summary-card">
-              <div class="summary-icon">🚚</div>
+              <div class="summary-icon">
+                  <i data-lucide="truck"></i>
+              </div>
               <div class="summary-info">
                 <span class="summary-label">Total Mobil / SPPG</span>
                 <span class="summary-value" id="val-vehicles">—</span>
@@ -84,7 +93,9 @@
               </div>
             </div>
             <div class="summary-card">
-              <div class="summary-icon">✅</div>
+              <div class="summary-icon">
+                <i data-lucide="check-circle"></i>
+              </div>
               <div class="summary-info">
                 <span class="summary-label">Status Feasible</span>
                 <span class="summary-value" id="val-feasible">—</span>
@@ -95,7 +106,10 @@
         </section>
 
         <section class="sidebar-section">
-          <h3 class="sidebar-section-title">🔍 Filter Rute per SPPG</h3>
+          <h3 class="sidebar-section-title">
+            <i data-lucide="filter"></i>
+            Filter Rute per SPPG
+          </h3>
           <p class="sidebar-hint">
             Pilih SPPG untuk melihat detail rute pada peta
           </p>
@@ -111,28 +125,34 @@
           id="route-detail-panel"
           style="display: none"
         >
-          <h3 class="sidebar-section-title">🗺️ Detail Rute</h3>
+          <h3 class="sidebar-section-title">
+              <i data-lucide="route"></i>
+              Detail Rute
+          </h3>
           <div id="route-detail-content"></div>
         </section>
 
         <section class="sidebar-section">
-          <h3 class="sidebar-section-title">ℹ️ Keterangan Peta</h3>
+          <h3 class="sidebar-section-title">
+              <i data-lucide="info"></i>
+              Keterangan Peta
+          </h3>
           <div class="legend-list">
             <div class="legend-row">
-              <span class="legend-dot depot"></span
-              ><span>SPPG (Titik Depot)</span>
+              <span class="legend-dot depot"></span>
+              <span>SPPG (Depot)</span>
+          </div>
+            <div class="legend-row">
+              <span class="legend-dot school"></span>
+              <span>Sekolah (Tujuan)</span>
             </div>
             <div class="legend-row">
-              <span class="legend-dot school"></span
-              ><span>Sekolah (Tujuan)</span>
+              <span class="legend-dot refill"></span>
+              <span>Titik Refill Muatan</span>
             </div>
             <div class="legend-row">
-              <span class="legend-dot refill"></span
-              ><span>Titik Refill Muatan</span>
-            </div>
-            <div class="legend-row">
-              <span class="legend-line"></span
-              ><span>Jalur Rute Pengiriman</span>
+              <span class="legend-line"></span>
+              <span>Jalur Rute Pengiriman</span>
             </div>
           </div>
         </section>
@@ -142,17 +162,21 @@
       <main class="main-content">
         <!-- TAB NAVIGATION -->
         <nav class="tab-nav">
-          <button class="tab-btn active" data-tab="map-tab" id="btn-map">
-            🗺️ Visualisasi Rute
+          <button class="tab-btn active" data-tab="map-tab">
+              <i data-lucide="map"></i>
+              Visualisasi Rute
           </button>
           <button class="tab-btn" data-tab="compare-tab" id="btn-compare">
-            📈 Komparasi Algoritma
+            <i data-lucide="bar-chart-2"></i>
+            Komparasi Algoritma
           </button>
           <button class="tab-btn" data-tab="table-tab" id="btn-table">
-            📋 Detail per SPPG
+            <i data-lucide="table"></i>
+            Detail per SPPG
           </button>
           <button class="tab-btn" data-tab="history-tab" id="btn-history">
-            📜 History Eksperimen
+            <i data-lucide="clock"></i>
+            History Eksperimen
           </button>
         </nav>
 
@@ -320,6 +344,7 @@
     </div>
 
     <!-- Leaflet JS -->
+  
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
       integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH"
@@ -331,12 +356,15 @@
       integrity="sha384-e6nUZLBkQ86NJ6TVVKAeSaK8jWa3NhkYWZFomE39AvDbQWeie9PlQqM3pmYW5d1g"
       crossorigin="anonymous"
     ></script>
-
+    <script src="https://unpkg.com/leaflet-polylinedecorator@1.6.0/dist/leaflet.polylineDecorator.js"></script>
     <!-- Custom Logic -->
     <script src="js/data_loader.js"></script>
     <script src="js/charts.js"></script>
     <script src="js/map.js"></script>
     <script src="js/history.js"></script>
     <script src="js/app.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+
   </body>
 </html>

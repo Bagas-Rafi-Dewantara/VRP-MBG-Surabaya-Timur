@@ -132,31 +132,110 @@ function updateMap(algData, sppgFilter) {
         });
 
         // ── ROUTE OSRM ──────────────────────────────────────────────
-        fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
-            .then(res => res.json())
-            .then(data => {
-                if (!data.routes || !data.routes.length) return;
+        // ── ROUTE OSRM ──────────────────────────────────────────────
+    fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
+        .then(res => res.json())
+        .then(data => {
 
-                const latlngs = data.routes[0].geometry.coordinates.map(
+            if (!data.routes || !data.routes.length) return;
+
+            const latlngs =
+                data.routes[0].geometry.coordinates.map(
                     coord => [coord[1], coord[0]]
                 );
 
-                const polyline = L.polyline(latlngs, {
-                    color,
-                    weight: 4,
-                    opacity: 0.9,
+            let polyline;
+
+            // MODE SEMUA CLUSTER
+            if (sppgFilter === "all") {
+
+                // glow belakang
+                L.polyline(latlngs, {
+                    color: color,
+                    weight: 10,
+                    opacity: 0.12
                 }).addTo(routeLayerGroup);
 
-                polyline.bindTooltip(
-                    `<strong>${shortName}</strong><br>${schoolCount} sekolah · ${sppgData.distance_km.toFixed(2)} km`
-                );
+                // route utama
+                polyline = L.polyline(latlngs, {
+                    color: color,
+                    weight: 4,
+                    opacity: 0.9
+                }).addTo(routeLayerGroup);
 
-                polyline.on('click', () => showRouteDetail(sppgData));
+            }
+            else {
+                L.polyline(latlngs, {
+                    color: color,
+                    weight: 16,
+                    opacity: 0.18
+                }).addTo(routeLayerGroup);
 
-                bounds.extend(polyline.getBounds());
-                map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
-            })
-            .catch(err => console.error("OSRM error:", err));
+                // Route utama
+                polyline = L.polyline(latlngs, {
+                    color: color,
+                    weight: 6,
+                    opacity: 1
+                }).addTo(routeLayerGroup);
+
+                const decorator = L.polylineDecorator(polyline, {
+                    patterns: [{
+                        offset: 0,
+                        repeat: 80,
+                        symbol: L.Symbol.arrowHead({
+                            pixelSize: 14,
+                            polygon: true,
+                            pathOptions: {
+                                fillOpacity: 1,
+                                fillColor: color,
+                                color: color,
+                                weight: 0
+                            }
+                        })
+                    }]
+                }).addTo(routeLayerGroup);
+
+                let offset = 0;
+                const animation = setInterval(() => {
+                    offset = (offset + 3) % 80;
+                    decorator.setPatterns([{
+                        offset: offset,
+                        repeat: 80,
+                        symbol: L.Symbol.arrowHead({
+                            pixelSize: 14,
+                            polygon: true,
+                            pathOptions: {
+                                fillOpacity: 1,
+                                fillColor: color,
+                                color: color,
+                                weight: 0
+                            }
+                        })
+                    }]);
+                }, 60);
+            }
+
+            polyline.bindTooltip(
+                `<strong>${shortName}</strong><br>
+                ${schoolCount} sekolah ·
+                ${sppgData.distance_km.toFixed(2)} km`
+            );
+
+            polyline.on("click", () => {
+                showRouteDetail(sppgData);
+            });
+
+            bounds.extend(polyline.getBounds());
+
+            map.fitBounds(bounds, {
+                padding: [30, 30],
+                maxZoom: 15
+            });
+
+        })
+        .catch(err => {
+            console.error("OSRM error:", err);
+        });
     });
 
     updateRouteDetail(sppgFilter, algData);
@@ -192,7 +271,9 @@ function updateRouteDetail(sppgFilter, algData) {
         if (step.school) {
             div.className = 'route-step school-step';
             div.innerHTML = `
-                <span class="route-step-icon">🏫</span>
+                <span class="route-step-icon">
+                    <i data-lucide="school"></i>
+                </span>
                 <div class="route-step-info">
                     <div class="route-step-name">${step.school}</div>
                     <div class="route-step-meta">
@@ -203,7 +284,9 @@ function updateRouteDetail(sppgFilter, algData) {
         } else if (step.event === 'REFILL') {
             div.className = 'route-step refill-step';
             div.innerHTML = `
-                <span class="route-step-icon">🔄</span>
+                <span class="route-step-icon">
+                    <i data-lucide="refresh-cw"></i>
+                </span>
                 <div class="route-step-info">
                     <div class="route-step-name">Refill Muatan</div>
                     <div class="route-step-meta">
@@ -214,7 +297,9 @@ function updateRouteDetail(sppgFilter, algData) {
         } else if (step.event === 'RETURN_DEPOT') {
             div.className = 'route-step return-step';
             div.innerHTML = `
-                <span class="route-step-icon">🏁</span>
+                <span class="route-step-icon">
+                    <i data-lucide="flag"></i>
+                </span>
                 <div class="route-step-info">
                     <div class="route-step-name">Kembali ke SPPG</div>
                     <div class="route-step-meta">${
@@ -226,6 +311,7 @@ function updateRouteDetail(sppgFilter, algData) {
         }
 
         content.appendChild(div);
+        lucide.createIcons();
     });
 }
 
