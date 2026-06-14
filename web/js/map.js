@@ -52,19 +52,27 @@ function initMap() {
         zoomControl: true
     });
 
-    tileLayer = L.tileLayer(TILE_DARK, {
-        attribution: '© OpenStreetMap © CARTO',
-        subdomains: 'abcd',
-        maxZoom: 20,
-    }).addTo(map);
+    currentBaseLayer = createBaseLayer("dark");
+    currentBaseLayer.addTo(map);
 
     routeLayerGroup = L.layerGroup().addTo(map);
 
 }
 
+function toggleMapTheme() {
+    if (currentBaseLayer) {
+        map.removeLayer(currentBaseLayer);
+    }
+
+    currentTheme = currentTheme === "dark" ? "light" : "dark";
+    currentBaseLayer = createBaseLayer(currentTheme);
+    currentBaseLayer.addTo(map);
+}
+
 function updateMapTile(theme) {
-    if (!map || !tileLayer) return;
-    tileLayer.setUrl(theme === 'light' ? TILE_LIGHT : TILE_DARK);
+    if (!map || !currentBaseLayer) return;
+    currentBaseLayer.setUrl(theme === 'light' ? TILE_LIGHT : TILE_DARK);
+    currentTheme = theme;
 }
 
 function updateMap(algData, sppgFilter) {

@@ -84,6 +84,7 @@ function updateComparisonCharts(compData, selectedAlg) {
         180 // draw max time reference line
     );
 
+
     // --- Runtime chart (only if any has runtime data) ---
     const hasRuntime = algs.some(a => compData[a].runtime !== null);
     if (hasRuntime) {

@@ -99,7 +99,7 @@ def run_optimization(instance_data):
         instance_data=instance_data,
         initial_temp=100,
         cooling_rate=0.90,
-        max_iter_per_temp=1,
+        max_iter_per_temp=20,
         stopping_temp=0.5
     )
     best_seq, details, convergence = sa.run()

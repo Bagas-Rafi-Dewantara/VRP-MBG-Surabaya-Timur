@@ -3,7 +3,7 @@
     "global_summary": {
         "total_distance_km": 438.46,
         "total_time_minutes": 125.48,
-        "total_algorithm_runtime_seconds": 3.27,
+        "total_algorithm_runtime_seconds": 10.54,
         "total_mobil": 47,
         "feasible": true
     },
@@ -869,78 +869,6 @@
                     "location": "SPPG Kota Surabaya Mulyorejo Mulyorejo 3",
                     "arrival_time": "09:00",
                     "finish_time": "09:20"
-                }
-            ]
-        },
-                {
-            "sppg": "SPPG Kota Surabaya Rungkut",
-            "distance_km": 10.63,
-            "time_spent_minutes": 105.94,
-            "departure_time": "08:20",
-            "return_time": "09:45",
-            "feasible_time": true,
-            "route_order": [
-                {
-                    "type": "depot",
-                    "name": "SPPG Kota Surabaya Rungkut",
-                    "lat": -7.3223,
-                    "lng": 112.7822
-                },
-                {
-                    "type": "school",
-                    "name": "Sd Negeri Medokan Ayu Ii",
-                    "lat": -7.3280093,
-                    "lng": 112.7911258
-                },
-                {
-                    "type": "school",
-                    "name": "Sd Negeri Rungkut Kidul Ii - 581",
-                    "lat": -7.3280981,
-                    "lng": 112.7780877
-                },
-                {
-                    "type": "school",
-                    "name": "Sd Negeri Kalirungkut I No. 264",
-                    "lat": -7.3221935,
-                    "lng": 112.7703674
-                },
-                {
-                    "type": "depot",
-                    "name": "SPPG Kota Surabaya Rungkut",
-                    "lat": -7.3223,
-                    "lng": 112.7822
-                }
-            ],
-            "route": [
-                {
-                    "school": "Sd Negeri Medokan Ayu Ii",
-                    "drop_tray": 447,
-                    "arrival_time": "08:23",
-                    "departure_time": "08:33"
-                },
-                {
-                    "school": "Sd Negeri Rungkut Kidul Ii - 581",
-                    "drop_tray": 434,
-                    "arrival_time": "08:36",
-                    "departure_time": "08:46"
-                },
-                {
-                    "event": "REFILL",
-                    "location": "SPPG Kota Surabaya Rungkut",
-                    "arrival_time": "08:50",
-                    "departure_time": "09:10"
-                },
-                {
-                    "school": "Sd Negeri Kalirungkut I No. 264",
-                    "drop_tray": 436,
-                    "arrival_time": "09:13",
-                    "departure_time": "09:23"
-                },
-                {
-                    "event": "RETURN_DEPOT",
-                    "location": "SPPG Kota Surabaya Rungkut",
-                    "arrival_time": "09:25",
-                    "finish_time": "09:45"
                 }
             ]
         },
@@ -2741,6 +2669,78 @@
                     "location": "SPPG Kota Surabaya Tenggilis Mejoyo Tenggilis Mejoyo",
                     "arrival_time": "09:23",
                     "finish_time": "09:43"
+                }
+            ]
+        },
+        {
+            "sppg": "SPPG Kota Surabaya - Rungkut",
+            "distance_km": 10.63,
+            "time_spent_minutes": 105.94,
+            "departure_time": "08:20",
+            "return_time": "09:45",
+            "feasible_time": true,
+            "route_order": [
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya - Rungkut",
+                    "lat": -7.3223,
+                    "lng": 112.7822
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Medokan Ayu Ii",
+                    "lat": -7.3280093,
+                    "lng": 112.7911258
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Rungkut Kidul Ii - 581",
+                    "lat": -7.3280981,
+                    "lng": 112.7780877
+                },
+                {
+                    "type": "school",
+                    "name": "Sd Negeri Kalirungkut I No. 264",
+                    "lat": -7.3221935,
+                    "lng": 112.7703674
+                },
+                {
+                    "type": "depot",
+                    "name": "SPPG Kota Surabaya - Rungkut",
+                    "lat": -7.3223,
+                    "lng": 112.7822
+                }
+            ],
+            "route": [
+                {
+                    "school": "Sd Negeri Medokan Ayu Ii",
+                    "drop_tray": 447,
+                    "arrival_time": "08:23",
+                    "departure_time": "08:33"
+                },
+                {
+                    "school": "Sd Negeri Rungkut Kidul Ii - 581",
+                    "drop_tray": 434,
+                    "arrival_time": "08:36",
+                    "departure_time": "08:46"
+                },
+                {
+                    "event": "REFILL",
+                    "location": "SPPG Kota Surabaya - Rungkut",
+                    "arrival_time": "08:50",
+                    "departure_time": "09:10"
+                },
+                {
+                    "school": "Sd Negeri Kalirungkut I No. 264",
+                    "drop_tray": 436,
+                    "arrival_time": "09:13",
+                    "departure_time": "09:23"
+                },
+                {
+                    "event": "RETURN_DEPOT",
+                    "location": "SPPG Kota Surabaya - Rungkut",
+                    "arrival_time": "09:25",
+                    "finish_time": "09:45"
                 }
             ]
         }

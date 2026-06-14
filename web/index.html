@@ -289,14 +289,13 @@
               <div class="chart-card-header">
                 <h3>
                   Grafik Konvergensi
-                  <span class="unit-badge">rata-rata 10 run</span>
+                  <span class="unit-badge">Run #—</span>
                 </h3>
                 <p>
-                  Total jarak semua SPPG (km) per iterasi — menunjukkan seberapa
-                  cepat tiap algoritma menemukan solusi optimal.
+                  Total jarak (km) per iterasi. "Current" adalah solusi iterasi saat ini, "Best" adalah solusi terbaik yang pernah ditemukan.
                 </p>
               </div>
-              <div class="chart-wrapper" style="height: 280px">
+              <div class="chart-wrapper" style="height: 300px">
                 <canvas id="chart-convergence"></canvas>
               </div>
             </div>
@@ -357,6 +356,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://unpkg.com/leaflet-polylinedecorator@1.6.0/dist/leaflet.polylineDecorator.js"></script>
+
     <!-- Custom Logic -->
     <script src="js/data_loader.js"></script>
     <script src="js/charts.js"></script>
