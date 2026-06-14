@@ -136,9 +136,8 @@ if __name__ == "__main__":
             "total_time_minutes": 0.0,
             "total_algorithm_runtime_seconds": 0.0,
             "total_mobil": 0,
-            "total_algorithm_runtime_seconds": 0.0,
             "feasible": True
-        
+
         },
         "convergence": [],
         "results_per_sppg": []
@@ -156,6 +155,8 @@ if __name__ == "__main__":
             waktu_mulai_algo = time.time()
             # Jalankan optimasi SA Fast-Tuning
             details = run_optimization(instance_data)
+            # Hentikan timer tepat setelah algoritma (jangan ikut hitung build route_order)
+            runtime_detik = time.time() - waktu_mulai_algo
             if not final_output["convergence"]:
                 final_output["convergence"] = details["convergence"]
             rute_sppg = details["single_route_data"]
@@ -199,12 +200,10 @@ if __name__ == "__main__":
             all_times.append(
                 rute_sppg["time_spent_minutes"]
             )
-            waktu_selesai_algo = time.time()
-            runtime_detik = round(waktu_selesai_algo - waktu_mulai_algo, 2)           
-            
-            # Akumulasikan ke Global Summary
+
+            # Akumulasikan ke Global Summary (runtime mentah, dibulatkan di akhir)
             final_output["global_summary"]["total_distance_km"] += details["total_distance_km"]
-            final_output["global_summary"]["total_algorithm_runtime_seconds"] += runtime_detik   
+            final_output["global_summary"]["total_algorithm_runtime_seconds"] += runtime_detik
             # Asumsi total waktu operasional adalah akumulasi seluruh mobil yang jalan berseri/paralel
             final_output["global_summary"]["total_mobil"] += 1 # 1 SPPG dihandle 1 mobil (atau disesuaikan rute)
             
@@ -231,6 +230,7 @@ if __name__ == "__main__":
                 
         # Pembulatan angka akhir global
         final_output["global_summary"]["total_distance_km"] = round(final_output["global_summary"]["total_distance_km"], 2)
+        final_output["global_summary"]["total_algorithm_runtime_seconds"] = round(final_output["global_summary"]["total_algorithm_runtime_seconds"], 2)
         
         # Simpan hasil akhir kompilasi menjadi sa.json
         output_json_path = os.path.join(results_dir, "sa.json")
