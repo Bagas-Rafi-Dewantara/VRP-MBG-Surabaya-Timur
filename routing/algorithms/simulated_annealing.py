@@ -10,7 +10,7 @@ sys.path.append(os.path.abspath(os.path.join(current_dir, "..")))
 from constraints import evaluate_solution
 
 class SimulatedAnnealingVRP:
-    def __init__(self, instance_data, initial_temp=1000, cooling_rate=0.98, max_iter_per_temp=100, stopping_temp=0.01):
+    def __init__(self, instance_data, initial_temp=500, cooling_rate=0.98, max_iter_per_temp=100, stopping_temp=0.01):
         self.instance = instance_data
         self.schools = instance_data["schools"]
         self.distance_matrix = instance_data["distance_matrix"]
@@ -22,6 +22,7 @@ class SimulatedAnnealingVRP:
         self.cooling_rate = cooling_rate
         self.max_iter_per_temp = max_iter_per_temp
         self.stopping_temp = stopping_temp
+        self.convergence_history = []
 
     def create_initial_solution(self):
         # Membuat solusi awal berupa urutan acak indeks sekolah (0 sampai N-1)
@@ -135,8 +136,11 @@ if __name__ == "__main__":
             "total_time_minutes": 0.0,
             "total_algorithm_runtime_seconds": 0.0,
             "total_mobil": 0,
+            "total_algorithm_runtime_seconds": 0.0,
             "feasible": True
+        
         },
+        "convergence": [],
         "results_per_sppg": []
         }
         
@@ -152,6 +156,8 @@ if __name__ == "__main__":
             waktu_mulai_algo = time.time()
             # Jalankan optimasi SA Fast-Tuning
             details = run_optimization(instance_data)
+            if not final_output["convergence"]:
+                final_output["convergence"] = details["convergence"]
             rute_sppg = details["single_route_data"]
             route_order = []
 
@@ -194,11 +200,11 @@ if __name__ == "__main__":
                 rute_sppg["time_spent_minutes"]
             )
             waktu_selesai_algo = time.time()
-            runtime_detik = round(waktu_selesai_algo - waktu_mulai_algo, 2)
-            final_output["global_summary"]["total_algorithm_runtime_seconds"] += runtime_detik              
+            runtime_detik = round(waktu_selesai_algo - waktu_mulai_algo, 2)           
             
             # Akumulasikan ke Global Summary
             final_output["global_summary"]["total_distance_km"] += details["total_distance_km"]
+            final_output["global_summary"]["total_algorithm_runtime_seconds"] += runtime_detik   
             # Asumsi total waktu operasional adalah akumulasi seluruh mobil yang jalan berseri/paralel
             final_output["global_summary"]["total_mobil"] += 1 # 1 SPPG dihandle 1 mobil (atau disesuaikan rute)
             

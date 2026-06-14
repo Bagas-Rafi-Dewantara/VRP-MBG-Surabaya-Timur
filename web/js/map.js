@@ -6,6 +6,9 @@ let tileLayer = null;
 const TILE_DARK  = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
 const TILE_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
 
+let currentTheme = "dark";
+let currentBaseLayer = null;
+
 const CLUSTER_PALETTE = [
     '#3b82f6','#10b981','#f59e0b','#8b5cf6','#ec4899',
     '#14b8a6','#f97316','#06b6d4','#84cc16','#a855f7',
@@ -26,20 +29,44 @@ function makeCircleIcon(color, size = 12, pulse = false) {
     });
 }
 
+function createBaseLayer(theme) {
+
+    return L.tileLayer(
+        theme === "dark"
+            ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+        {
+            attribution: "© OpenStreetMap © CARTO",
+            subdomains: "abcd",
+            maxZoom: 20
+        }
+    );
+
+}
+
 function initMap() {
-    map = L.map('map', {
+
+    map = L.map("map", {
         center: [-7.29, 112.77],
         zoom: 13,
-        zoomControl: true,
+        zoomControl: true
     });
 
-    tileLayer = L.tileLayer(TILE_DARK, {
-        attribution: '© OpenStreetMap © CARTO',
-        subdomains: 'abcd',
-        maxZoom: 20,
-    }).addTo(map);
+    currentBaseLayer = createBaseLayer("dark");
+    currentBaseLayer.addTo(map);
 
     routeLayerGroup = L.layerGroup().addTo(map);
+
+}
+
+function toggleMapTheme() {
+    if (currentBaseLayer) {
+        map.removeLayer(currentBaseLayer);
+    }
+
+    currentTheme = currentTheme === "dark" ? "light" : "dark";
+    currentBaseLayer = createBaseLayer(currentTheme);
+    currentBaseLayer.addTo(map);
 }
 
 function updateMapTile(theme) {
@@ -109,7 +136,6 @@ function updateMap(algData, sppgFilter) {
             L.marker([point.lat, point.lng], { icon: makeCircleIcon(color, 9) })
                 .addTo(routeLayerGroup)
                 .bindPopup(popupHtml, { maxWidth: 240 });
-        });
 
         // ── ROUTE OSRM ──────────────────────────────────────────────
         fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
@@ -208,3 +234,26 @@ function updateRouteDetail(sppgFilter, algData) {
         content.appendChild(div);
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const toggle =
+        document.getElementById("theme-toggle-btn");
+
+    const label =
+        document.getElementById("theme-label");
+
+    if (!toggle) return;
+
+    toggle.addEventListener("change", () => {
+
+        toggleMapTheme();
+
+        label.innerHTML =
+            currentTheme === "dark"
+                ? "🌙 Dark"
+                : "☀️ Light";
+
+    });
+
+});
