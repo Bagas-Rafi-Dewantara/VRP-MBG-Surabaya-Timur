@@ -70,8 +70,9 @@ function toggleMapTheme() {
 }
 
 function updateMapTile(theme) {
-    if (!map || !tileLayer) return;
-    tileLayer.setUrl(theme === 'light' ? TILE_LIGHT : TILE_DARK);
+    if (!map || !currentBaseLayer) return;
+    currentBaseLayer.setUrl(theme === 'light' ? TILE_LIGHT : TILE_DARK);
+    currentTheme = theme;
 }
 
 function updateMap(algData, sppgFilter) {
@@ -136,6 +137,7 @@ function updateMap(algData, sppgFilter) {
             L.marker([point.lat, point.lng], { icon: makeCircleIcon(color, 9) })
                 .addTo(routeLayerGroup)
                 .bindPopup(popupHtml, { maxWidth: 240 });
+        });
 
         // ── ROUTE OSRM ──────────────────────────────────────────────
         fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
