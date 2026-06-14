@@ -1,5 +1,6 @@
 let _convChart = null;
-let _selectedHistoryRun = null; // null = show best run's convergence by default
+let _selectedHistoryRun = null;
+let _lastRenderedAlg = null; // track algorithm changes to reset run selection
 
 function renderHistoryTab() {
     const container = document.getElementById('history-content');
@@ -35,21 +36,25 @@ function renderHistoryTab() {
         meta.textContent = `${data.n_runs} run × 4 algoritma · Diperbarui: ${updated}`;
     }
 
-    // Use global selected algorithm
+    // FIX #4: resolve algKey once and pass it everywhere (no dual fallback paths)
     const algKey = window.currentAlg || Object.keys(data.algorithms)[0] || 'sa';
 
-    // Card for selected algorithm
+    // FIX #1: reset run selection when algorithm changes
+    if (algKey !== _lastRenderedAlg) {
+        _selectedHistoryRun = null;
+        _lastRenderedAlg = algKey;
+    }
+
     const algData = data.algorithms[algKey];
     if (algData) {
-        // Default selected run = best run
         if (_selectedHistoryRun === null) {
             _selectedHistoryRun = algData.best.run;
         }
         container.appendChild(_buildAlgCard(algData, algKey));
     }
 
-    // Convergence section
-    _renderConvergenceSection(data);
+    // FIX #4: pass algKey as parameter instead of re-reading window.currentAlg
+    _renderConvergenceSection(data, algKey);
 }
 
 
@@ -104,11 +109,12 @@ function _buildAlgCard(algData, algKey) {
     algData.runs.forEach(r => {
         const tr = document.createElement('tr');
         tr.style.cursor = 'pointer';
-        // if (r.run === bestRun) tr.classList.add('history-row-best'); // Removed special highlight
+        // FIX #2: restore best-run row highlight
+        if (r.run === bestRun) tr.classList.add('history-row-best');
         if (r.run === _selectedHistoryRun) tr.classList.add('history-row-selected');
 
         const tdRun = document.createElement('td');
-        tdRun.textContent = String(r.run); // Removed trophy
+        tdRun.textContent = r.run === bestRun ? `🏆 ${r.run}` : String(r.run);
 
         const tdDist = document.createElement('td');
         tdDist.className = 'td-num';
@@ -132,12 +138,10 @@ function _buildAlgCard(algData, algKey) {
 
         tr.addEventListener('click', () => {
             _selectedHistoryRun = r.run;
-            // Update selected row highlight without full re-render
             tbody.querySelectorAll('tr').forEach(row => row.classList.remove('history-row-selected'));
             tr.classList.add('history-row-selected');
-            // Update convergence chart only
-            const data = getHistoryData();
-            if (data) _renderConvergenceSection(data);
+            const freshData = getHistoryData();
+            if (freshData) _renderConvergenceSection(freshData, algKey);
         });
 
         tbody.appendChild(tr);
@@ -154,7 +158,7 @@ function _buildAlgCard(algData, algKey) {
     if (algData.std_dev) {
         const sdRow = document.createElement('tr');
         sdRow.className = 'history-row-stddev';
-        _appendSummaryRow(sdRow, 'Std. Dev', algData.std_dev.total_distance_km, algData.std_dev.total_time_minutes, algData.std_dev.runtime_seconds, '—');
+        _appendSummaryRow(sdRow, 'Std. Dev (σ)', algData.std_dev.total_distance_km, algData.std_dev.total_time_minutes, algData.std_dev.runtime_seconds, '—');
         tbody.appendChild(sdRow);
     }
 
@@ -186,21 +190,11 @@ function _appendSummaryRow(tr, label, dist, time_, runtime, feasText) {
     tr.append(tdLabel, tdDist, tdTime, tdRuntime, tdFeas);
 }
 
-function _runningBest(conv) {
-    const result = [];
-    let best = Infinity;
-    for (const v of conv) {
-        best = Math.min(best, v);
-        result.push(best);
-    }
-    return result;
-}
-
-function _renderConvergenceSection(data) {
+// FIX #4: algKey passed as parameter; FIX #3: padCurve guards empty arr; FIX #6: order tiers
+function _renderConvergenceSection(data, algKey) {
     const section = document.getElementById('convergence-section');
     if (!section) return;
 
-    const algKey = window.currentAlg || 'sa';
     const algData = data.algorithms[algKey];
     if (!algData) { section.style.display = 'none'; return; }
 
@@ -208,7 +202,6 @@ function _renderConvergenceSection(data) {
     if (!perRunBest.length) { section.style.display = 'none'; return; }
     section.style.display = '';
 
-    // Update convergence chart title
     const unitBadge = section.querySelector('.unit-badge');
     if (unitBadge) unitBadge.textContent = `Semua Run (10 Konvergensi)`;
 
@@ -228,9 +221,11 @@ function _renderConvergenceSection(data) {
         aco: '#8b5cf6',
     }[algKey] || '#3b82f6';
 
+    // FIX #3: guard against empty individual curves
     const padCurve = (arr) => {
+        if (arr.length === 0) return Array(maxLen).fill(0);
         const out = [...arr];
-        while (out.length < maxLen) out.push(out[out.length - 1] ?? 0);
+        while (out.length < maxLen) out.push(out[out.length - 1]);
         return out;
     };
 
@@ -239,11 +234,10 @@ function _renderConvergenceSection(data) {
         const isBest = runNum === algData.best.run;
         const isSelected = runNum === _selectedHistoryRun;
 
-        // Label only the best run explicitly
         const label = isBest ? `Run #${runNum} (Best)` : `Run #${runNum}`;
 
         return {
-            label: label,
+            label,
             data: padCurve(curve),
             borderColor: isBest ? algColor : (isSelected ? algColor : 'rgba(148,163,184,0.3)'),
             backgroundColor: 'transparent',
@@ -251,8 +245,8 @@ function _renderConvergenceSection(data) {
             pointRadius: 0,
             tension: 0.3,
             fill: false,
-            // Ensure only the best run is drawn on top
-            order: isBest ? 0 : 1 
+            // FIX #6: three tiers so selected run always draws above grey non-best runs
+            order: isBest ? 0 : (isSelected ? 1 : 2),
         };
     });
 
@@ -273,13 +267,13 @@ function _renderConvergenceSection(data) {
                 legend: {
                     display: true,
                     position: 'bottom',
-                    labels: { color: '#7b9bc8', font: { size: 10 }, boxWidth: 12 }
+                    labels: { color: '#7b9bc8', font: { size: 10 }, boxWidth: 12 },
                 },
                 tooltip: {
                     callbacks: {
-                        label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)} km`
-                    }
-                }
+                        label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)} km`,
+                    },
+                },
             },
             scales: {
                 x: {
@@ -291,9 +285,8 @@ function _renderConvergenceSection(data) {
                     title: { display: true, text: 'Total Jarak (km)', color: '#4a6080' },
                     ticks: { color: '#4a6080' },
                     grid: { color: 'rgba(99,147,255,0.07)' },
-                }
-            }
-        }
+                },
+            },
+        },
     });
 }
-

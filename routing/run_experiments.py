@@ -63,7 +63,7 @@ def _std_dev(values):
     if n < 2:
         return 0.0
     mean = sum(values) / n
-    return round(math.sqrt(sum((x - mean) ** 2 for x in values) / n), 2)
+    return round(math.sqrt(sum((x - mean) ** 2 for x in values) / (n - 1)), 2)
 
 
 def _aggregate_convergence(per_sppg_curves):
