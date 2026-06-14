@@ -68,9 +68,9 @@ class GeneticAlgorithmVRP:
         if self.n == 0:
             return evaluate_solution([], self.instance["schools"], self.instance["distance_matrix"],
                                      self.instance["time_matrix"], self.instance["constraints"],
-                                     sppg_name=self.instance["sppg_name"])
+                                     sppg_name=self.instance["sppg_name"]), []
         if self.n == 1:
-            return _fitness([0], self.instance)
+            return _fitness([0], self.instance), []
 
         population = [list(range(self.n)) for _ in range(self.population_size)]
         for chrom in population:
@@ -84,6 +84,7 @@ class GeneticAlgorithmVRP:
         best_eval = _fitness(best_seq, self.instance)
 
         no_improve = 0
+        convergence = []
 
         for _ in range(self.max_generations):
             elite_indices = sorted(range(self.population_size), key=lambda i: fitnesses[i])[:self.elite_size]
@@ -115,53 +116,28 @@ class GeneticAlgorithmVRP:
             else:
                 no_improve += 1
                 if no_improve >= self.patience:
+                    convergence.append(best_eval["total_distance_km"])
                     break
 
-        return best_eval
+            convergence.append(best_eval["total_distance_km"])
+
+        return best_eval, convergence
 
 
 def run_optimization(instance_data):
-    print("      Melakukan Hyperparameter Tuning dengan Optuna...")
-
-    def objective(trial):
-        cr = trial.suggest_float("crossover_rate", 0.6, 0.95)
-        mr = trial.suggest_float("mutation_rate", 0.05, 0.3)
-        tk = trial.suggest_int("tournament_k", 2, 5)
-        ps = trial.suggest_int("population_size", 20, 60)
-
-        ga_tune = GeneticAlgorithmVRP(
-            instance_data=instance_data,
-            population_size=ps,
-            max_generations=50,
-            crossover_rate=cr,
-            mutation_rate=mr,
-            tournament_k=tk,
-            elite_size=2,
-            patience=15,
-        )
-        result = ga_tune.run()
-        return result["total_distance_km"]
-
-    study = optuna.create_study(direction="minimize")
-    study.optimize(objective, n_trials=15)
-
-    best = study.best_params
-    print(f"      [Tuned] Params terbaik: CR={round(best['crossover_rate'], 2)}, "
-          f"MR={round(best['mutation_rate'], 2)}, "
-          f"TK={best['tournament_k']}, "
-          f"Pop={best['population_size']}")
-
-    ga_final = GeneticAlgorithmVRP(
+    ga = GeneticAlgorithmVRP(
         instance_data=instance_data,
         population_size=50,
-        max_generations=200,
-        crossover_rate=best["crossover_rate"],
-        mutation_rate=best["mutation_rate"],
-        tournament_k=best["tournament_k"],
+        max_generations=50,
+        crossover_rate=0.85,
+        mutation_rate=0.1,
+        tournament_k=3,
         elite_size=2,
-        patience=30,
+        patience=50,
     )
-    return ga_final.run()
+    result, convergence = ga.run()
+    result["convergence"] = convergence
+    return result
 
 
 if __name__ == "__main__":
@@ -215,15 +191,15 @@ if __name__ == "__main__":
 
             rute_sppg = details["single_route_data"]
 
-            polyline = [[instance_data["depot"]["lat"], instance_data["depot"]["lng"]]]
+            route_order = [{"type": "depot", "name": sppg_name, "lat": instance_data["depot"]["lat"], "lng": instance_data["depot"]["lng"]}]
             for stop in rute_sppg["route"]:
                 if "school" in stop:
                     nama_sekolah = stop["school"].split(" (")[0]
                     for s in instance_data["schools"]:
                         if s["nama_sekolah"] == nama_sekolah:
-                            polyline.append([s["lat"], s["lng"]])
+                            route_order.append({"type": "school", "name": s["nama_sekolah"], "lat": s["lat"], "lng": s["lng"]})
                             break
-            polyline.append([instance_data["depot"]["lat"], instance_data["depot"]["lng"]])
+            route_order.append({"type": "depot", "name": sppg_name, "lat": instance_data["depot"]["lat"], "lng": instance_data["depot"]["lng"]})
 
             all_times.append(rute_sppg["time_spent_minutes"])
             final_output["global_summary"]["total_distance_km"] += details["total_distance_km"]
@@ -241,7 +217,7 @@ if __name__ == "__main__":
                 "departure_time": rute_sppg["departure_time"],
                 "return_time": rute_sppg["return_time"],
                 "feasible_time": rute_sppg["feasible_time"],
-                "polyline": polyline,
+                "route_order": route_order,
                 "route": rute_sppg["route"]
             })
 
