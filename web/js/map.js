@@ -58,6 +58,8 @@ function initMap() {
         maxZoom: 20,
     }).addTo(map);
 
+    routeLayerGroup = L.layerGroup().addTo(map);
+
 }
 
 function updateMapTile(theme) {

@@ -22,7 +22,6 @@ class SimulatedAnnealingVRP:
         self.cooling_rate = cooling_rate
         self.max_iter_per_temp = max_iter_per_temp
         self.stopping_temp = stopping_temp
-        self.convergence_history = []
 
     def create_initial_solution(self):
         # Membuat solusi awal berupa urutan acak indeks sekolah (0 sampai N-1)
@@ -156,8 +155,6 @@ if __name__ == "__main__":
             waktu_mulai_algo = time.time()
             # Jalankan optimasi SA Fast-Tuning
             details = run_optimization(instance_data)
-            if not final_output["convergence"]:
-                final_output["convergence"] = details["convergence"]
             rute_sppg = details["single_route_data"]
             route_order = []
 
