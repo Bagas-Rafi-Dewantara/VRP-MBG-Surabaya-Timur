@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  let currentAlg = loadedAlgs[0];
+  window.currentAlg = loadedAlgs[0];
 
   // --- Build algorithm tab buttons in header ---
   const algoTabsEl = document.getElementById("algo-tabs");
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // When switching to compare tab, re-render charts
       if (targetId === "compare-tab") {
-        renderCompareTab(currentAlg);
+        renderCompareTab(window.currentAlg);
       }
       // When switching to history tab, render history
       if (targetId === "history-tab") {
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // --- SPPG select filter ---
   const sppgSelect = document.getElementById("sppg-select");
   sppgSelect.addEventListener("change", () => {
-    const algData = getAlgorithmData(currentAlg);
+    const algData = getAlgorithmData(window.currentAlg);
     updateMap(algData, sppgSelect.value);
   });
 
@@ -91,14 +91,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // --- Initial render ---
-  selectAlgorithm(currentAlg);
+  selectAlgorithm(window.currentAlg);
 
   // ================================================================
   //  CORE FUNCTIONS
   // ================================================================
 
   function selectAlgorithm(alg) {
-    currentAlg = alg;
+    window.currentAlg = alg;
     const algData = getAlgorithmData(alg);
     if (!algData) return;
 
@@ -137,6 +137,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       renderCompareTab(alg);
     }
 
+    // If history tab is visible, re-render
+    if (document.getElementById("history-tab")?.classList.contains("active")) {
+      renderHistoryTab();
+    }
+
     // Update table
     buildTable(algData);
   }
@@ -149,7 +154,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("val-distance").textContent =
       `${gs.total_distance_km.toFixed(2)}`;
     document.getElementById("val-time").textContent =
-      `${gs.total_time_minutes.toFixed(1)}`;
+      `${gs.total_time_minutes.toFixed(2)}`;
     document.getElementById("val-vehicles").textContent = `${gs.total_mobil}`;
 
     const feasEl = document.getElementById("val-feasible");
@@ -210,7 +215,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <div class="compare-metric-row">
                         <span class="compare-metric-label">Waktu maks.</span>
                         <span class="compare-metric-value">
-                            ${d.time.toFixed(1)} mnt
+                            ${d.time.toFixed(2)} mnt
                             ${isBestTime ? '<span class="badge-best">Terbaik</span>' : ""}
                         </span>
                     </div>
@@ -251,7 +256,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <td class="row-idx">${i + 1}</td>
                 <td>${shortName}</td>
                 <td class="td-num">${s.distance_km.toFixed(2)}</td>
-                <td class="td-num ${s.time_spent_minutes > 120 ? "warn" : "good"}">${s.time_spent_minutes.toFixed(1)}</td>
+                <td class="td-num ${s.time_spent_minutes > 120 ? "warn" : "good"}">${s.time_spent_minutes.toFixed(2)}</td>
                 <td>${s.departure_time}</td>
                 <td>${s.return_time}</td>
                 <td>${schools}</td>
