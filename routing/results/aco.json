@@ -3,7 +3,7 @@
     "global_summary": {
         "total_distance_km": 431.0,
         "total_time_minutes": 165.48,
-        "total_algorithm_runtime_seconds": 1.14,
+        "total_algorithm_runtime_seconds": 3.87,
         "total_mobil": 47,
         "feasible": true
     },
@@ -2532,9 +2532,9 @@
                 },
                 {
                     "type": "school",
-                    "name": "Sd Negeri Kutisari 2",
-                    "lat": -7.3352442,
-                    "lng": 112.7472824
+                    "name": "Sdn Tenggilis Mejoyo 1",
+                    "lat": -7.3131164,
+                    "lng": 112.7581571
                 },
                 {
                     "type": "school",
@@ -2544,9 +2544,9 @@
                 },
                 {
                     "type": "school",
-                    "name": "Sdn Tenggilis Mejoyo 1",
-                    "lat": -7.3131164,
-                    "lng": 112.7581571
+                    "name": "Sd Negeri Kutisari 2",
+                    "lat": -7.3352442,
+                    "lng": 112.7472824
                 },
                 {
                     "type": "school",
@@ -2563,28 +2563,28 @@
             ],
             "route": [
                 {
-                    "school": "Sd Negeri Kutisari 2",
-                    "drop_tray": 443,
-                    "arrival_time": "08:22",
-                    "departure_time": "08:42"
+                    "school": "Sdn Tenggilis Mejoyo 1",
+                    "drop_tray": 450,
+                    "arrival_time": "08:27",
+                    "departure_time": "08:47"
                 },
                 {
                     "school": "Sd Negeri Kendangsari 1",
                     "drop_tray": 424,
-                    "arrival_time": "08:47",
-                    "departure_time": "09:07"
+                    "arrival_time": "08:51",
+                    "departure_time": "09:11"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Tenggilis Mejoyo Kendangsari",
-                    "arrival_time": "09:10",
-                    "departure_time": "09:30"
+                    "arrival_time": "09:14",
+                    "departure_time": "09:34"
                 },
                 {
-                    "school": "Sdn Tenggilis Mejoyo 1",
-                    "drop_tray": 450,
-                    "arrival_time": "09:38",
-                    "departure_time": "09:58"
+                    "school": "Sd Negeri Kutisari 2",
+                    "drop_tray": 443,
+                    "arrival_time": "09:37",
+                    "departure_time": "09:57"
                 },
                 {
                     "school": "Sd Negeri Kendangsari 5",

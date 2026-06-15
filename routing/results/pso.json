@@ -3,7 +3,7 @@
     "global_summary": {
         "total_distance_km": 431.0,
         "total_time_minutes": 165.48,
-        "total_algorithm_runtime_seconds": 4.15,
+        "total_algorithm_runtime_seconds": 2.37,
         "total_mobil": 47,
         "feasible": true
     },

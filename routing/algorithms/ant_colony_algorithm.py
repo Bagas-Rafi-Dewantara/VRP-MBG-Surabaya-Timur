@@ -133,7 +133,7 @@ class AntColonyVRP:
 def run_optimization(instance_data):
     aco = AntColonyVRP(
         instance_data=instance_data,
-        num_ants=6,
+        num_ants=20,
         iterations=50,
         alpha=1.0,
         beta=0.5,
