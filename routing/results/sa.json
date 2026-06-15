@@ -3,7 +3,7 @@
     "global_summary": {
         "total_distance_km": 438.46,
         "total_time_minutes": 125.48,
-        "total_algorithm_runtime_seconds": 0.13,
+        "total_algorithm_runtime_seconds": 1.55,
         "total_mobil": 47,
         "feasible": true
     },
@@ -2673,7 +2673,7 @@
             ]
         },
         {
-            "sppg": "SPPG Kota Surabaya - Rungkut",
+            "sppg": "SPPG Kota Surabaya Rungkut",
             "distance_km": 10.63,
             "time_spent_minutes": 105.94,
             "departure_time": "08:20",
@@ -2682,7 +2682,7 @@
             "route_order": [
                 {
                     "type": "depot",
-                    "name": "SPPG Kota Surabaya - Rungkut",
+                    "name": "SPPG Kota Surabaya Rungkut",
                     "lat": -7.3223,
                     "lng": 112.7822
                 },
@@ -2706,7 +2706,7 @@
                 },
                 {
                     "type": "depot",
-                    "name": "SPPG Kota Surabaya - Rungkut",
+                    "name": "SPPG Kota Surabaya Rungkut",
                     "lat": -7.3223,
                     "lng": 112.7822
                 }
@@ -2726,7 +2726,7 @@
                 },
                 {
                     "event": "REFILL",
-                    "location": "SPPG Kota Surabaya - Rungkut",
+                    "location": "SPPG Kota Surabaya Rungkut",
                     "arrival_time": "08:50",
                     "departure_time": "09:10"
                 },
@@ -2738,7 +2738,7 @@
                 },
                 {
                     "event": "RETURN_DEPOT",
-                    "location": "SPPG Kota Surabaya - Rungkut",
+                    "location": "SPPG Kota Surabaya Rungkut",
                     "arrival_time": "09:25",
                     "finish_time": "09:45"
                 }

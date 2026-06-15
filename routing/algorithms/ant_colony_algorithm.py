@@ -3,18 +3,14 @@ import json
 import random
 import math
 import sys
-import optuna
+import time
 
-# Menyembunyikan log default Optuna agar terminal tetap bersih dan mudah dibaca
-optuna.logging.set_verbosity(optuna.logging.WARNING)
-
-# Memastikan Python bisa mengimpor constraints.py di folder induk
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.abspath(os.path.join(current_dir, "..")))
 from constraints import evaluate_solution
 
 class AntColonyVRP:
-    def __init__(self, instance_data, num_ants=20, iterations=50, alpha=1.0, beta=2.0, evap_rate=0.5, q=1000):
+    def __init__(self, instance_data, num_ants=20, iterations=50, alpha=1.0, beta=2.0, evap_rate=0.5, q=50):
         self.instance = instance_data
         self.schools = instance_data["schools"]
         self.distance_matrix = instance_data["distance_matrix"]
@@ -33,10 +29,14 @@ class AntColonyVRP:
         # 1. Penanganan Kasus Khusus (Sekolah < 2)
         if self.num_schools < 2:
             best_sol = [0] if self.num_schools == 1 else []
-            best_eval = evaluate_solution(best_sol, self.schools, self.distance_matrix, self.time_matrix, self.config, sppg_name=self.instance["sppg_name"])
+            best_eval = evaluate_solution(
+                best_sol, self.schools, self.distance_matrix,
+                self.time_matrix, self.config,
+                sppg_name=self.instance["sppg_name"]
+            )
             return best_sol, best_eval, []
 
-        # 2. Inisialisasi Pheromone (Tau) dan Visibilitas (Eta) secara linier
+        # 2. Inisialisasi Pheromone (Tau) dan Visibilitas (Eta)
         pheromone = [[1.0 for _ in range(self.num_schools)] for _ in range(self.num_schools)]
         eta = [[0.0 for _ in range(self.num_schools)] for _ in range(self.num_schools)]
         
@@ -53,7 +53,6 @@ class AntColonyVRP:
                     a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
                     jarak_km = (2 * math.asin(math.sqrt(a))) * 6371.0
                     
-                    # Semakin dekat jaraknya, visibilitas (eta) semakin besar
                     eta[i][j] = 1.0 / max(jarak_km, 0.001)
 
         best_sol = []
@@ -66,9 +65,10 @@ class AntColonyVRP:
             ant_solutions = []
             
             for ant in range(self.num_ants):
-                # Semut mulai menyusun urutan kunjungan sekolah
                 unvisited = list(range(self.num_schools))
-                current = random.choice(unvisited)
+
+                # Starting node bergiliran agar semua node pasti dicoba
+                current = ant % self.num_schools
                 seq = [current]
                 unvisited.remove(current)
                 
@@ -84,10 +84,10 @@ class AntColonyVRP:
                         probs.append((candidate, skor))
                         total_prob += skor
                         
-                    # Pilih sekolah berdasarkan Roulette Wheel Selection
+                    # Roulette Wheel Selection
                     rand_val = random.uniform(0, total_prob)
                     cumulative = 0.0
-                    next_node = unvisited[-1] 
+                    next_node = unvisited[-1]
                     
                     for candidate, skor in probs:
                         cumulative += skor
@@ -99,24 +99,25 @@ class AntColonyVRP:
                     unvisited.remove(next_node)
                     current = next_node
                     
-                # Evaluasi urutan menggunakan file constraints
-                current_eval = evaluate_solution(seq, self.schools, self.distance_matrix, self.time_matrix, self.config, sppg_name=self.instance["sppg_name"])
+                current_eval = evaluate_solution(
+                    seq, self.schools, self.distance_matrix,
+                    self.time_matrix, self.config,
+                    sppg_name=self.instance["sppg_name"]
+                )
                 current_fitness = current_eval["fitness"]
-                
                 ant_solutions.append((seq, current_fitness))
                 
-                # Update pencapaian terbaik global
                 if current_fitness < best_fitness:
                     best_fitness = current_fitness
                     best_sol = seq.copy()
                     best_eval = current_eval
 
-            # 4. Penguapan Pheromone (Evaporation)
+            # 4. Penguapan Pheromone
             for i in range(self.num_schools):
                 for j in range(self.num_schools):
                     pheromone[i][j] *= (1.0 - self.evap_rate)
                     
-            # 5. Penaburan Pheromone Baru berdasarkan hasil semut iterasi ini
+            # 5. Deposit Pheromone Baru
             for seq, fitness in ant_solutions:
                 deposit = self.q / max(fitness, 1.0)
                 for step in range(len(seq) - 1):
@@ -128,23 +129,23 @@ class AntColonyVRP:
 
         return best_sol, best_eval, convergence
 
+
 def run_optimization(instance_data):
     aco = AntColonyVRP(
         instance_data=instance_data,
-        num_ants=25,
+        num_ants=6,
         iterations=50,
         alpha=1.0,
-        beta=2.0,
-        evap_rate=0.5,
-        q=1000,
+        beta=0.5,
+        evap_rate=0.2,
+        q=100,
     )
     _, details, convergence = aco.run()
     details["convergence"] = convergence
     return details
 
+
 if __name__ == "__main__":
-    import time # Pastikan modul time di-import
-    
     routing_dir = os.path.abspath(os.path.join(current_dir, ".."))
     instances_dir = os.path.join(routing_dir, "dist_matrix")
     results_dir = os.path.join(routing_dir, "results")
@@ -165,12 +166,12 @@ if __name__ == "__main__":
         
         all_times = []
         final_output = {
-            "algorithm": "Ant Colony Optimization (Optuna Tuned)",
+            "algorithm": "Ant Colony Opt.",
             "global_summary": {
                 "total_distance_km": 0.0,
                 "total_time_minutes": 0.0,
                 "total_mobil": 0,
-                "total_algorithm_runtime_seconds": 0.0, # 1. TEMPAT PENYIMPANAN RUNTIME GLOBAL
+                "total_algorithm_runtime_seconds": 0.0,
                 "feasible": True
             },
             "results_per_sppg": []
@@ -185,12 +186,8 @@ if __name__ == "__main__":
             sppg_name = instance_data["sppg_name"]
             print(f"-> Memproses rute ACO untuk: {sppg_name}")
             
-            # 2. MULAI MENGHITUNG WAKTU KOMPUTASI
             waktu_mulai_algo = time.time()
-            
             details = run_optimization(instance_data)
-            
-            # 3. HENTIKAN PENGHITUNGAN & KALKULASI DURASINYA
             waktu_selesai_algo = time.time()
             runtime_detik = round(waktu_selesai_algo - waktu_mulai_algo, 2)
             

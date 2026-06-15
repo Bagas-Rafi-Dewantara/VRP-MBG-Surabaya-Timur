@@ -70,8 +70,8 @@ class PSOParticle:
 
 class ParticleSwarmOptimizationVRP:
     def __init__(self, instance_data: dict, n_particles: int = N_PARTICLES,
-                 max_iter: int = MAX_ITER, w: float = 0.7,
-                 c1: float = 1.5, c2: float = 1.5, patience: int = PATIENCE):
+                max_iter: int = MAX_ITER, w: float = 0.7,
+                c1: float = 1.5, c2: float = 1.5, patience: int = PATIENCE):
         self.instance    = instance_data
         self.n           = len(instance_data["schools"])
         self.n_particles = n_particles

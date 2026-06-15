@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // --- Initialize map & charts (need DOM ready) ---
   initMap();
   initCharts();
+  lucide.createIcons();
   updateMapTile(savedTheme);
 
   // --- Load all data (algorithm JSONs + history) in parallel ---
@@ -117,12 +118,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Populate SPPG dropdown
     sppgSelect.innerHTML = '<option value="all">Semua Cluster SPPG</option>';
-    algData.results_per_sppg.forEach((s) => {
+
+    const sortedSppg = [...algData.results_per_sppg].sort((a, b) => {
+      const nameA = a.sppg.replace("SPPG Kota Surabaya ", "");
+      const nameB = b.sppg.replace("SPPG Kota Surabaya ", "");
+      return nameA.localeCompare(nameB, "id");
+    });
+
+    sortedSppg.forEach((s) => {
       const opt = document.createElement("option");
       opt.value = s.sppg;
       opt.textContent = s.sppg.replace("SPPG Kota Surabaya ", "");
       sppgSelect.appendChild(opt);
     });
+
     sppgSelect.disabled = false;
     sppgSelect.value = "all";
 

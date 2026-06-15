@@ -1,9 +1,9 @@
 {
     "algorithm": "Ant Colony Opt.",
     "global_summary": {
-        "total_distance_km": 438.77,
-        "total_time_minutes": 125.95,
-        "total_algorithm_runtime_seconds": 1.52,
+        "total_distance_km": 438.46,
+        "total_time_minutes": 125.48,
+        "total_algorithm_runtime_seconds": 0.47,
         "total_mobil": 47,
         "feasible": true
     },
@@ -2446,8 +2446,8 @@
         },
         {
             "sppg": "SPPG Kota Surabaya Tenggilis Mejoyo Kendangsari",
-            "distance_km": 17.3,
-            "time_spent_minutes": 125.95,
+            "distance_km": 16.99,
+            "time_spent_minutes": 125.48,
             "departure_time": "08:20",
             "return_time": "10:05",
             "feasible_time": true,
@@ -2460,9 +2460,9 @@
                 },
                 {
                     "type": "school",
-                    "name": "Sd Negeri Kutisari 2",
-                    "lat": -7.3352442,
-                    "lng": 112.7472824
+                    "name": "Sdn Tenggilis Mejoyo 1",
+                    "lat": -7.3131164,
+                    "lng": 112.7581571
                 },
                 {
                     "type": "school",
@@ -2472,15 +2472,15 @@
                 },
                 {
                     "type": "school",
-                    "name": "Sd Negeri Kendangsari 5",
-                    "lat": -7.3211228,
-                    "lng": 112.7523806
+                    "name": "Sd Negeri Kutisari 2",
+                    "lat": -7.3352442,
+                    "lng": 112.7472824
                 },
                 {
                     "type": "school",
-                    "name": "Sdn Tenggilis Mejoyo 1",
-                    "lat": -7.3131164,
-                    "lng": 112.7581571
+                    "name": "Sd Negeri Kendangsari 5",
+                    "lat": -7.3211228,
+                    "lng": 112.7523806
                 },
                 {
                     "type": "depot",
@@ -2491,34 +2491,34 @@
             ],
             "route": [
                 {
-                    "school": "Sd Negeri Kutisari 2",
-                    "drop_tray": 443,
-                    "arrival_time": "08:22",
-                    "departure_time": "08:32"
+                    "school": "Sdn Tenggilis Mejoyo 1",
+                    "drop_tray": 450,
+                    "arrival_time": "08:27",
+                    "departure_time": "08:37"
                 },
                 {
                     "school": "Sd Negeri Kendangsari 1",
                     "drop_tray": 424,
-                    "arrival_time": "08:37",
-                    "departure_time": "08:47"
+                    "arrival_time": "08:41",
+                    "departure_time": "08:51"
                 },
                 {
                     "event": "REFILL",
                     "location": "SPPG Kota Surabaya Tenggilis Mejoyo Kendangsari",
-                    "arrival_time": "08:50",
-                    "departure_time": "09:10"
+                    "arrival_time": "08:54",
+                    "departure_time": "09:14"
+                },
+                {
+                    "school": "Sd Negeri Kutisari 2",
+                    "drop_tray": 443,
+                    "arrival_time": "09:17",
+                    "departure_time": "09:27"
                 },
                 {
                     "school": "Sd Negeri Kendangsari 5",
                     "drop_tray": 450,
-                    "arrival_time": "09:15",
-                    "departure_time": "09:25"
-                },
-                {
-                    "school": "Sdn Tenggilis Mejoyo 1",
-                    "drop_tray": 450,
-                    "arrival_time": "09:28",
-                    "departure_time": "09:38"
+                    "arrival_time": "09:31",
+                    "departure_time": "09:41"
                 },
                 {
                     "event": "RETURN_DEPOT",
@@ -2673,7 +2673,7 @@
             ]
         },
         {
-            "sppg": "SPPG Kota Surabaya - Rungkut",
+            "sppg": "SPPG Kota Surabaya Rungkut",
             "distance_km": 10.63,
             "time_spent_minutes": 105.94,
             "departure_time": "08:20",
@@ -2682,7 +2682,7 @@
             "route_order": [
                 {
                     "type": "depot",
-                    "name": "SPPG Kota Surabaya - Rungkut",
+                    "name": "SPPG Kota Surabaya Rungkut",
                     "lat": -7.3223,
                     "lng": 112.7822
                 },
@@ -2706,7 +2706,7 @@
                 },
                 {
                     "type": "depot",
-                    "name": "SPPG Kota Surabaya - Rungkut",
+                    "name": "SPPG Kota Surabaya Rungkut",
                     "lat": -7.3223,
                     "lng": 112.7822
                 }
@@ -2726,7 +2726,7 @@
                 },
                 {
                     "event": "REFILL",
-                    "location": "SPPG Kota Surabaya - Rungkut",
+                    "location": "SPPG Kota Surabaya Rungkut",
                     "arrival_time": "08:50",
                     "departure_time": "09:10"
                 },
@@ -2738,7 +2738,7 @@
                 },
                 {
                     "event": "RETURN_DEPOT",
-                    "location": "SPPG Kota Surabaya - Rungkut",
+                    "location": "SPPG Kota Surabaya Rungkut",
                     "arrival_time": "09:25",
                     "finish_time": "09:45"
                 }
