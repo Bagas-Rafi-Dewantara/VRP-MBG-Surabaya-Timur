@@ -55,7 +55,7 @@ def build_all_instances(csv_path, output_dir):
             "constraints": {
                 "max_capacity": 1050,           # Batas muatan mobil boks
                 "max_time_minutes": 180,        # Batas waktu 3 jam (08.00 - 11.00)
-                "service_time_per_school": 10,  # Waktu bongkar muat per sekolah (menit)
+                "service_time_per_school": 20,  # Waktu bongkar muat per sekolah (menit)
                 "loading_in_time": 20,          # Waktu muat di SPPG sebelum berangkat / refill (menit)
                 "loading_out_time": 20          # Waktu bongkar di SPPG setelah kembali (menit)
             },

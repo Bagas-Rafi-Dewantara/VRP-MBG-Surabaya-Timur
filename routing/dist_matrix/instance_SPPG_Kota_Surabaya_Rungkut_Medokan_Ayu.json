@@ -7,7 +7,7 @@
     "constraints": {
         "max_capacity": 1050,
         "max_time_minutes": 180,
-        "service_time_per_school": 10,
+        "service_time_per_school": 20,
         "loading_in_time": 20,
         "loading_out_time": 20
     },
@@ -23,20 +23,20 @@
     "distance_matrix": [
         [
             0.0,
-            1.864
+            0.0
         ],
         [
-            1.864,
+            0.0,
             0.0
         ]
     ],
     "time_matrix": [
         [
             0.0,
-            2.7960000000000003
+            0.0
         ],
         [
-            2.7960000000000003,
+            0.0,
             0.0
         ]
     ]
