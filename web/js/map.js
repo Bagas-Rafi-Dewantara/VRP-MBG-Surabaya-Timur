@@ -130,7 +130,7 @@ function updateMap(algData, sppgFilter) {
                 <strong>🏫 ${point.name}</strong><br>
                 <hr style="border-color:rgba(99,147,255,0.2);margin:6px 0">
                 📍 Urutan ke-<b>${i + 1}</b> dari <b>${totalSchools}</b> sekolah<br>
-                🏭 SPPG: <b>${sppgData.sppg.replace('SPPG Kota Surabaya ', '')}</b>
+                🏭 SPPG: <b>${sppgData.sppg.replace('SPPG Kota Surabaya ', '')}</br>
                 📦 Drop: <b>${tray} tray</b>
             `;
 
