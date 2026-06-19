@@ -53,7 +53,7 @@ class AntColonyVRP:
                     a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
                     jarak_km = (2 * math.asin(math.sqrt(a))) * 6371.0
                     
-                    eta[i][j] = 1.0 / max(jarak_km, 0.001)
+                    eta[i][j] = 1.0 / max(self.distance_matrix[i][j], 0.001)
 
         best_sol = []
         best_eval = None

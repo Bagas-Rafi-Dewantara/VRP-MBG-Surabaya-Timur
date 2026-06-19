@@ -52,6 +52,31 @@ function initCharts() {
             options: JSON.parse(JSON.stringify(commonBarOptions)),
         });
     });
+    const ctxConvComp = document.getElementById('chart-compare-convergence');
+    if (ctxConvComp) {
+        chartInstances['chart-compare-convergence'] = new Chart(ctxConvComp.getContext('2d'), {
+            type: 'line',
+            data: { labels: [], datasets: [] },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: false, // Dimatikan agar mulus seperti di tab history
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { display: true, position: 'bottom', labels: { color: '#7b9bc8', boxWidth: 12, font: { size: 11 } } },
+                    tooltip: {
+                        backgroundColor: 'rgba(15,28,51,0.95)', titleColor: '#e8f0ff', bodyColor: '#7b9bc8',
+                        borderColor: 'rgba(99,147,255,0.2)', borderWidth: 1, padding: 10,
+                        callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)} km` }
+                    }
+                },
+                scales: {
+                    x: { title: { display: true, text: 'Iterasi', color: '#4a6080' }, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#7b9bc8', maxTicksLimit: 15 } },
+                    y: { title: { display: true, text: 'Total Jarak (km)', color: '#4a6080' }, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#7b9bc8' } }
+                }
+            }
+        });
+    }
 }
 
 /**
@@ -204,6 +229,65 @@ function _updateBarChart(id, labels, values, algKeys, selectedAlg, tooltipFmt, m
             pointRadius: 0,
             fill: false,
         });
+    }
+
+    chart.update();
+}
+
+// Update chart konvergensi per-algoritma di tab history
+function updateCompareConvergenceChart(historyData) {
+    const chart = chartInstances['chart-compare-convergence'];
+    if (!chart || !historyData || !historyData.algorithms) return;
+
+    const datasets = [];
+    let maxLen = 0;
+    const algKeys = ['sa', 'ga', 'pso', 'aco'];
+
+    algKeys.forEach(alg => {
+        const data = historyData.algorithms[alg];
+        if (!data || !data.convergence_best_per_run || !data.best) return;
+
+        // Ambil kurva konvergensi dari run terbaik (index = run - 1)
+        const bestRunIdx = data.best.run - 1; 
+        const curve = data.convergence_best_per_run[bestRunIdx];
+        if (!curve) return;
+
+        maxLen = Math.max(maxLen, curve.length);
+
+        datasets.push({
+            label: algorithmMeta[alg].abbr, // Pakai singkatan (SA, GA, dll)
+            data: curve,
+            borderColor: ALG_COLORS[alg].border, // Pakai warna bawaanmu
+            backgroundColor: 'transparent',
+            borderWidth: 2,
+            pointRadius: 0,
+            tension: 0.3,
+            fill: false
+        });
+    });
+
+    if (maxLen === 0) return;
+
+    // Ratakan panjang array agar yang iterasinya cuma 20 tetap ditarik lurus ke iterasi 50
+    const padCurve = (arr) => {
+        if (arr.length === 0) return Array(maxLen).fill(0);
+        const out = [...arr];
+        while (out.length < maxLen) out.push(out[out.length - 1]);
+        return out;
+    };
+
+    datasets.forEach(ds => ds.data = padCurve(ds.data));
+
+    const labels = Array.from({ length: maxLen }, (_, i) => i + 1);
+    chart.data = { labels, datasets };
+
+    // Fokuskan sumbu Y pada sebaran angka yang relevan agar perubahannya terlihat jelas
+    const allValues = datasets.flatMap(d => d.data);
+    if (allValues.length > 0) {
+        const minVal = Math.min(...allValues);
+        const maxVal = Math.max(...allValues);
+        chart.options.scales.y.min = Math.max(0, Math.floor(minVal - 0.5));
+        chart.options.scales.y.max = Math.ceil(maxVal + 0.5);
     }
 
     chart.update();

@@ -182,6 +182,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const compData = getComparisonData();
     updateComparisonCharts(compData, selectedAlg);
     buildCompareCards(compData, selectedAlg);
+
+    if (typeof updateCompareConvergenceChart === 'function') {
+      updateCompareConvergenceChart(getHistoryData());
+    }
   }
 
   // ----------------------------------------------------------------

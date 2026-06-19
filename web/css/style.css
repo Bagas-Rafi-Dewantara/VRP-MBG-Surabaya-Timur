@@ -1066,7 +1066,7 @@ input:checked + .slider:before{
   background: var(--bg-card);
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  padding: 1rem 1rem 0;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -1116,8 +1116,8 @@ input:checked + .slider:before{
 .history-alg-card .table-wrapper {
   margin-top: 0.75rem !important;
   margin-bottom: 0 !important;
-  max-height: 400px;
-  overflow-y: auto;
+  max-height: none;
+  overflow-y: visible;
   overflow-x: hidden;
   border-radius: 0 0 var(--radius) var(--radius);
 }
